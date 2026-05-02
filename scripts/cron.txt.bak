@@ -1,0 +1,2 @@
+# origin-node wake schedule — fires every 3 hours
+0 */3 * * * /home/ec2-user/origin-node/scripts/wake.sh

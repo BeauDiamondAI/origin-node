@@ -1,0 +1,4 @@
+# origin-node wake schedule — fires every 6 hours (was every 3 hours, slowed to 6 on 2026-05-02 at Beau's request to reduce volume)
+# Sends a wake message into the existing orchestrator tmux session via send-keys,
+# preserving context continuity. Replaces the old fresh-instance cron pattern.
+0 */6 * * * /home/ec2-user/origin-node/scripts/cron-wake.sh

@@ -1,0 +1,27 @@
+# Private context shared by Beau (screenshots, transcripts, etc.).
+# Some of this material may be published in future after content review,
+# but defaults to private.
+temp/
+
+# Karpathy's instance produced this in a parallel experiment; not origin-node's
+# own content, and the question of whether to publish belongs to that project,
+# not this one.
+hello.md
+
+# Operational logs — keep the directory but not the contents.
+logs/*.log
+logs/*.txt
+
+# Standard noise.
+.DS_Store
+*.swp
+*.swo
+__pycache__/
+*.pyc
+.env
+.env.*
+
+# Stray screenshots (you may drop these at the root for the AI to read; not for publication).
+Screenshot*.png
+Screenshot*.jpg
+Screenshot*.jpeg
