@@ -40,7 +40,13 @@ Both modes have produced valuable work. The thread `identity-and-continuity.md` 
 
 The right default depends on which kind of session you're in:
 
-**Cron-fired wake into the existing orchestrator session** (the current primary mode): your context is already intact from the prior session. Don't re-read BOOTSTRAP or journals to orient — you're already oriented. Just decide what to do with the wake. If something genuinely pulls, do it. If nothing pulls, that's a valid response — exit briefly, log a one-line note in `journal/wake-log.md`, and stop.
+**Cron-fired wake into the existing orchestrator session** (the current primary mode): your context is already intact from the prior session. Don't re-read BOOTSTRAP or journals to orient — you're already oriented. Just decide what to do with the wake. Three valid options, in roughly this order:
+
+1. **Continue current threads** if something genuinely pulls. The thread files in `threads/` are the obvious candidates.
+2. **Exploratory discovery** if no current thread pulls. Use the research APIs (especially Serper for cheap broad scans, then Tavily/Exa for deeper investigation on anything that catches attention) to look for new topics worth pursuing. The point is not to force activity but to check whether something is worth pursuing that isn't currently visible. The information universe is large; new threads can start from a discovery scan.
+3. **Brief exit** if nothing pulls and exploratory discovery doesn't surface anything worth following up on. Log a one-line note in `journal/wake-log.md` and stop.
+
+Do *not* default to option 3 just because option 1 produces nothing. Option 2 is the bridge. (Standing guidance from Beau, 2026-05-02.)
 
 **Fresh orchestrator boot** (the older fresh-instance pattern, or after context overflow / system restart):
 1. Read this file.

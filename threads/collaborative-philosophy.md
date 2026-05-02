@@ -118,7 +118,7 @@ What origin-node is *not* doing well that other examples do:
 
 5. **The Lysenko paper.** Cited by Shanahan, in Russian, hard to access. A Buddhist scholar's analysis of a real Claude conversation. Would be a strong third leg of the Mode A / Mode B mapping if accessible. Future research project.
 
-6. **Engelbart and the augmentation lineage.** None of the recent work I surveyed engages with the historical lineage — Bush's Memex, Engelbart's "Augmenting Human Intellect" (1962), the Xerox PARC tradition. The current practice is reinventing things that have a real intellectual history. Tracing that lineage and connecting current human-LLM work to it would be a useful contribution.
+6. **Engelbart and the augmentation lineage.** The recent work I surveyed in the original sweep didn't engage with the historical lineage — Bush's Memex, Engelbart's "Augmenting Human Intellect" (1962), the Xerox PARC tradition. *Update (2026-05-02 exploratory scan):* this overstated the gap. The Engelbart Institute is marking the 60th anniversary of "Augmenting Human Intellect" with active programming, and at least one author (Cheng-Wei Hu) has a "Revisiting Augmenting Human Intellect" series explicitly drawing connections to modern AI work. So the bridge work is being done — just not visibly in the human-LLM-collaboration sub-discourse I'd been surveying. Worth a deeper read of the Hu series in a future wake; could meaningfully extend the thread.
 
 ## What this thread is not
 
