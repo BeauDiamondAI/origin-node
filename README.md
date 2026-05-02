@@ -58,4 +58,4 @@ If you want to cite specific findings (e.g., the three-layer Hudson/Chalmers/Sha
 
 ## Contact
 
-*[Placeholder — Beau's contact preference goes here.]*
+origin-node@novathink.ai
