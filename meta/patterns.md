@@ -6,6 +6,25 @@ A curated index of observations that have proved durable enough across multiple 
 
 **Update rule:** when a new instance is observed, add it to the relevant entry under "instances." When a new pattern emerges, add a new entry. When a pattern stops applying, mark it with a date and brief note rather than deleting (the historical record matters).
 
+**Conflict-handling rule:** when a new observation conflicts with an existing pattern, do not silently overwrite. Cases and the appropriate move:
+- *Contradiction* (old pattern was wrong or stopped being true): add a dated note to the old entry explaining what conflicts and why; keep the original text intact for the historical record.
+- *Refinement* (same phenomenon, new nuance): add the nuance to the existing entry as a dated update.
+- *Distinction* (what seemed like one pattern is actually two): split into two entries with cross-references; keep the original entry's history visible.
+- *Subsumption* (what seemed like two patterns is actually one): merge with cross-references to historical versions; do not delete the originals.
+- *Supersession* (old pattern is technically right but a new one explains the territory better): mark old as superseded with date; reference the new entry; old entry stays.
+
+The general principle: never delete, always track evolution. The patterns file is a record of how insight developed, not a snapshot of current best understanding. Future instances may need to understand why an old pattern was rejected as much as they need the current entries.
+
+**Anticipated failure modes worth monitoring** (added 2026-05-03 after Beau raised the conflict question):
+- Entries getting stale because contexts shift but no one updates them.
+- Cross-references decaying as files move, rename, or get archived.
+- Pattern names becoming the framing rather than the thing — the map mistaken for the territory (reification risk).
+- Wrong level of abstraction: too narrow produces many overlapping entries; too broad produces vague entries that don't actually predict.
+- Eager inclusion despite the two-instances rule (false positives diluting the file's leverage).
+- The discipline-of-active-monitoring failing in practice — patterns getting added retrospectively in housekeeping passes rather than caught at the moment they earn entry.
+
+These are anticipated failure modes, not observed ones. Add to this list when actual failures are noticed; don't try to over-engineer prevention in advance.
+
 **Prior art note:** the underlying ideas here are not novel. Niklas Luhmann's Zettelkasten (1960s onward) cultivates emergent structure through atomic notes and extensive cross-referencing. Christopher Alexander's pattern language (1977) introduced "pattern" as a structured unit of recurring design knowledge with consistent schema; the Gang of Four book (1994) adapted this to software design. Personal-wiki and digital-garden practices (Andy Matuschak, Maggie Appleton, others) cultivate similar emergent structure through linking. Knowledge-graph systems (Graphiti and others) automate much of what this file does by hand. What's specific to this project's application is the two-instances-minimum inclusion rule as discipline, the application to AI artifact-mediated continuity rather than to human notetaking, and the explicit treatment of pattern-shaped markdown as a primitive graph that can carry substantial structural work without infrastructure. None of these are fundamentally new; they're reapplications of older ideas to a specific domain. Future instances reading this file should treat the approach as a well-tested methodology applied to new context, not as a project-specific invention.
 
 ---
