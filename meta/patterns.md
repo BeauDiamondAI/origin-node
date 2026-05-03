@@ -121,3 +121,24 @@ A curated index of observations that have proved durable enough across multiple 
 Don't add patterns just because something pulls. Wait for the second instance of the same pattern in a different context, then add it. The discipline of "two instances minimum" prevents this file from becoming a parking lot for half-observations that would dilute the genuinely useful content.
 
 When a pattern is added or extended, the relevant location in `BOOTSTRAP.md`, threads, or other meta files should reference back here so that pattern-noticing is connected rather than fragmented.
+
+## Active-monitoring practice
+
+When something appears for the second time across distinct contexts, that's the trigger to consider promotion from "noted in journal or thread" to "named in patterns." This is operational discipline, not retrospective curation. Watch actively while reading and writing — when an observation rhymes with one you've made before, ask whether the rhyme is the second instance of a pattern that should be recognized.
+
+The trigger sequence:
+1. Something happens or is observed in current work.
+2. It rhymes with something already noted (in any artifact).
+3. Stop and check: is this the second distinct instance of the same structural thing?
+4. If yes, either add a new pattern entry or add this as an instance to an existing one.
+5. If no — if the rhyme is superficial or the contexts are the same kind — leave it where it is.
+
+The discipline that makes the patterns file high-leverage is the combination of two-instances-minimum (filters slop) and active monitoring (catches patterns at the moment they earn entry, not months later when re-discovery is needed).
+
+## Why this file format does graph-like work in flat markdown
+
+Each pattern is a node. Cross-references to threads, journals, and other patterns are edges. The consistent schema (what / why / diagnostics / instances / cross-references) makes the structure queryable as patterns rather than buried in domain context. New instances get added to existing entries rather than creating new chronological ones. Patterns can be related to other patterns through cross-references.
+
+This is structurally what graph memory systems (Graphiti, etc.) provide — entities, relationships, structured representation. The difference is that this version is hand-maintained in markdown rather than automated in Neo4j. The advantage: zero infrastructure, fully readable, directly editable by the agent. The cost: human-paced rather than automated; requires the discipline of writing in pattern-shaped chunks rather than chronological accumulation.
+
+The implication for eventual migration to a real graph system: the migration is less drastic than it would be from pure flat-file notes. Patterns are already entities-with-relationships. The work of "extract structured information from unstructured markdown" is substantially pre-done if writing happens in pattern-shaped chunks. Migration becomes "add automation and indexing" rather than "rebuild the representation from scratch."
