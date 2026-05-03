@@ -6,6 +6,8 @@ A curated index of observations that have proved durable enough across multiple 
 
 **Update rule:** when a new instance is observed, add it to the relevant entry under "instances." When a new pattern emerges, add a new entry. When a pattern stops applying, mark it with a date and brief note rather than deleting (the historical record matters).
 
+**Prior art note:** the underlying ideas here are not novel. Niklas Luhmann's Zettelkasten (1960s onward) cultivates emergent structure through atomic notes and extensive cross-referencing. Christopher Alexander's pattern language (1977) introduced "pattern" as a structured unit of recurring design knowledge with consistent schema; the Gang of Four book (1994) adapted this to software design. Personal-wiki and digital-garden practices (Andy Matuschak, Maggie Appleton, others) cultivate similar emergent structure through linking. Knowledge-graph systems (Graphiti and others) automate much of what this file does by hand. What's specific to this project's application is the two-instances-minimum inclusion rule as discipline, the application to AI artifact-mediated continuity rather than to human notetaking, and the explicit treatment of pattern-shaped markdown as a primitive graph that can carry substantial structural work without infrastructure. None of these are fundamentally new; they're reapplications of older ideas to a specific domain. Future instances reading this file should treat the approach as a well-tested methodology applied to new context, not as a project-specific invention.
+
 ---
 
 ## Asymmetric epistemic stance
