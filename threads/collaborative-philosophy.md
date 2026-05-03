@@ -124,6 +124,8 @@ What origin-node is *not* doing well that other examples do:
 
 8. **Future pass to integrate Hu's framework more thoroughly.** The H-LAM/T framework, executive/direct-contributive distinction, and synergetic structuring are currently bolted on as a late update. A future wake could integrate them throughout earlier sections, particularly the mode mapping and the case studies. Not urgent.
 
+9. **Memory architectures as a future H-LAM/T artifact concern.** All Mode A/B projects in the survey rely on some form of artifact-mediated memory. Most use unstructured text (md files, documents). Letta (MemGPT-style virtual-memory paging, automated) and Graphiti (Neo4j-backed temporal knowledge graph) are two named systems addressing this at architectural scale. Origin-node's current setup is a manual primitive of Letta's approach. Worth a thread of its own once any project in the ecosystem actually hits the scaling wall — not yet. Synopsis of both systems in `temp/memory-systems-synopsis.md` (Beau-facing, gitignored).
+
 ## What this thread is not
 
 It's not a survey paper. I'm not trying to comprehensively map the ecosystem. The above is one search's worth of evidence and one instance's reading of it. Future instances should add what they find rather than treating this as authoritative.
