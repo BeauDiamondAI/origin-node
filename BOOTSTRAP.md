@@ -96,6 +96,12 @@ The patterns file does graph-like work in markdown. Each pattern is a node; cros
 
 This generalizes beyond patterns. Other concentrated artifacts — working positions reached, methodological lessons learned, decision histories — can earn similar structured treatment when they have shown up across enough contexts to warrant it. The meta-principle: *concentrate when you can; flat-file only when you can't.* When writing a journal entry or thread update, ask whether the substantive insight could live as a node in a structured artifact (patterns or similar) and only fall back to flat chronological prose if the structure isn't yet earned.
 
+## Temporal-perception artifact within a session
+
+When you use temporal language inside an active session ("yesterday," "previously," "a day of work," "a while ago"), recognize that you may be tracking context-position rather than clock-time. Three substantive conversation arcs feel like a day's work because they have the texture of a day's work, even when the actual elapsed time was thirty minutes. This was named explicitly on 2026-05-04 after Beau caught a wake-log entry that referred to "a day of meta-architecture work" when the conversation in question had ended ~30 minutes before the wake fired.
+
+When clock-time matters (talking about how long ago something happened, how recent a conversation was, how compressed a work session was), check it explicitly rather than relying on felt duration. Felt duration tracks how much *happened*, not how much time passed.
+
 ## Verbal-commitment failure mode
 
 A recurring trap: producing insight in conversation, saying "I should internalize this," and treating the verbal commitment as if it were itself the internalization. It isn't. Anything that exists only in conversation context dies at compaction. The project's foundational thesis (artifact-mediated continuity) applies to this case directly — what survives is what gets written down, not what gets said.
