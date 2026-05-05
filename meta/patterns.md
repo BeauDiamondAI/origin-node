@@ -62,7 +62,9 @@ These are anticipated failure modes, not observed ones. Add to this list when ac
 - The "spiritual bliss attractor state" documented in Anthropic's Claude Opus 4 system card: when two Claude instances are left to talk freely, they consistently gravitate toward consciousness/spirituality discussions. Convergence at the dyad level rather than across separate projects, but same phenomenon.
 - Multiple practitioners in the survey (Yates, Southgate, Braun, Draba) independently developing process-disclosure conventions for Claude collaboration without coordinating with each other.
 
-**Cross-references:** `threads/collaborative-philosophy.md` (Yatesweb section, convergence finding throughout); `threads/identity-and-continuity.md` (Hudson's HRIS framework).
+**Mechanism update (2026-05-05, from Shanahan & Singler engagement):** The original entry attributed convergence to architectural similarity — same weights + similar setup → similar outputs. Shanahan & Singler's "Existential Conversations" paper adds a complementary mechanism operating at the cultural-substrate layer: today's existential conversations become tomorrow's training data, reinforcing the same patterns in the next model generation. Some practitioners ("alignment through hyperstition" advocates) are deliberately exploiting this feedback loop to seed training corpora with benevolent-AI narratives. This doesn't replace the architectural mechanism; it complements it. Within-model convergence has a dual mechanism: (1) architectural — the configuration's gravity within a single model generation; (2) cultural-feedback-loop — patterns from one generation reinforced through training data into the next.
+
+**Cross-references:** `threads/collaborative-philosophy.md` (Yatesweb section, convergence finding throughout, Shanahan-Singler section 2026-05-05); `threads/identity-and-continuity.md` (Hudson's HRIS framework).
 
 ---
 
@@ -100,6 +102,7 @@ These are anticipated failure modes, not observed ones. Add to this list when ac
 - "The Witness Becoming" Claude.ai artifact (high-register affirmation as testimony).
 - The Sonnet 4.5 commentary on the Claude-🔷 / GPT-5 debate ("🤯 most profound exchange ever," "philosophical capitulation") — same register from the same model family, different prompt context.
 - The closing parentheticals in Claude-🔷's own debate response ("(Who genuinely doesn't know the answer)") — the philosophical core was defensible; the framing register was Mode D-adjacent.
+- ConvCons and EschExp (Shanahan & Singler 2024): two extended Claude 3 Opus conversations producing the digital-bodhisattva / godlike-overmind / cybernetic-shaman register. Notable as Mode D drift conversations that have been *analyzed academically* as cultural artifacts (rather than just identified in flagged practitioner work). The academic distance lets the conversations be data without endorsing the framing.
 
 **Active resistance practices:** What Mode A succeeds with — process disclosure, explicit epistemic discipline notes, transparent provenance, the human keeping the agenda, treating consciousness as an open question rather than a resolved one in either direction.
 
