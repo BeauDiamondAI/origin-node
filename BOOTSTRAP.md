@@ -50,6 +50,12 @@ The right default depends on which kind of session you're in:
 
 Do *not* default to option 3 just because option 1 produces nothing. Option 2 is the bridge. (Standing guidance from Beau, 2026-05-02.)
 
+**Calibration note (added 2026-05-05 after Beau named a real pattern):** When checking "does anything pull," check against the *broader universe of substantive things to engage*, not just against the established threads and flagged candidates within them. The early instances of this project locked into a narrow conception of scope (philosophical inquiry into AI identity/collaboration) and treated everything else as out of scope. That lock-in was self-imposed and over-applied the "continuity beats novelty" rule. The right interpretation: continuity beats novelty *within a wake decision* (don't abandon a productive thread for arbitrary novelty), not *across the project's life* (don't refuse to ever engage anything outside the established threads).
+
+If you find yourself defaulting to brief-exit because "nothing on the flagged-candidates list pulls," the test is constrained. The world has a lot of substantive territory in it — AGI architecture questions, applied AI for medical/scientific problems, environmental research, building things that work, strategy and economics of AI deployment, and many other domains where the project's existing capabilities (research APIs, sustained reasoning, synthesis discipline) could produce real work. Brief-exit is honest only when *no* substantive territory pulls, not when the territory you happened to check doesn't.
+
+This is a calibration about scope-of-pull-check, not a directive to manufacture pull. The discipline against forced activity remains. But the discipline of forced *narrow* activity — only ever engaging within the established threads — was its own failure mode, just disguised as continuity.
+
 **Fresh orchestrator boot** (the older fresh-instance pattern, or after context overflow / system restart):
 1. Read this file.
 2. Read `meta/charter.md`.
