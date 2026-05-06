@@ -41,6 +41,29 @@ For things that survived Layers 2 and 3 and warrant actually engaging the source
 
 Not everything from Layer 3 needs to reach Layer 4. The protocol is meant to surface candidates, not to commit to engaging all of them.
 
+### Layer 4b — Agent dispatch for long-material assessment
+
+When source material is long (>50pp papers, multi-paper corpora, very long essays) and you're not yet sure whether deep engagement is warranted, dispatch a general-purpose agent to do the substance-level read and report back. Added 2026-05-06 after Beau named this as an architectural option I hadn't been using and the first execution surfaced findings I couldn't have gotten otherwise.
+
+When to use:
+- Single paper >50pp where substance-vs-performance assessment determines engagement
+- Multi-paper corpus (e.g., assessing whether a researcher's whole body of work warrants engagement)
+- Material where surface flags suggest skepticism but symmetric discipline requires substance check before dismissal
+- Material that comes through a third party with framing that may not match the underlying work
+
+Dispatch prompt should include:
+- Context about the project's existing thread engagements that the work might connect to
+- Known surface flags and any failure-mode patterns the asker is watching for (so the agent can apply appropriate skepticism)
+- Specific assessment questions (operationalization of metrics, methodology disclosure, engagement with adjacent literature, what counter-positions are addressed)
+- Explicit instruction to be symmetric — don't dismiss on surface, don't validate because of important-sounding claims
+- Word limit on report so output is decision-ready
+
+What it surfaces well: corpus discrepancies (claimed vs. actual published material), differential failure modes (the work might fail differently than surface flags predict), genuinely-interesting moves buried in otherwise weak work, citations the work doesn't engage that suggest isolation from the relevant literature.
+
+Cost: agent dispatch consumes substantial agent tokens but preserves session tokens for substantive work. The trade-off is favorable when the alternative is committing significant session attention to material that may not warrant it.
+
+First execution (2026-05-06) on Matthew Ainsworth's ACI/Coherence Science papers surfaced: (a) the 320pp paper described to the asker doesn't exist in the author's actual corpus — the description matched a different author (Bostick CODES/RIC); (b) the surface-flag terminology from the third-party synopsis doesn't appear in the actual papers; (c) the actual papers exhibit a different failure mode (defensive non-reproducibility — honest disclaimers shielding unfalsifiable single-system demo) than the synopsis predicted; (d) one genuinely interesting framing-level move worth noting. This is exactly what the layer was added for.
+
 ## Output discipline
 
 The discovery scan produces a record. Document:
