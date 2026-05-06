@@ -313,13 +313,14 @@ Read 2026-05-04 (06:00 UTC autonomous wake): Schwitzgebel, Schwitzgebel, & Stras
 
 Written 2026-05-04 (12:00 UTC wake). The interim-vs-terminus question has been opened in the Licklider, Goedecke, and Schwitzgebel sections but never consolidated. This section catalogues each surveyed practitioner's position, marks which are strongly grounded in deep engagement and which are inferred from limited reading, and reads the pattern that emerges.
 
-**The three positions worth distinguishing first.** Licklider's framing of the question was binary (interim toward AI autonomy vs. permanent partnership), but the actual position-space has at least three distinct points:
+**The position-space worth distinguishing first.** Licklider's framing of the question was binary (interim toward AI autonomy vs. permanent partnership), but the actual position-space has at least four distinct points (revised 2026-05-06 after engaging Cerullo and Lerchner — see `identity-and-continuity.md`):
 
 - *Strict interim:* symbiosis is transitional; AI eventually does the work alone, humans become superfluous. Licklider's view in 1960.
-- *Strict terminus:* symbiosis is the only way certain kinds of work can be done; AI alone is precluded by something architectural or metaphysical. Southgate's substrate-skepticism approaches this.
+- *Live possibility / weak affirmative:* LLM consciousness/cognition is a live hypothesis with positive supporting evidence; the partnership is producing real work *and* the AI half is moving toward something more substantive than tool. Cerullo's position. Interim-adjacent in framing but doesn't commit to AI autonomy as destination.
 - *Soft terminus:* symbiosis is the best available approach now and probably for a long time, with sustained value as its own configuration; doesn't necessarily preclude eventual AI autonomy but doesn't depend on it either. Most current practitioners sit here.
+- *Strict terminus:* symbiosis is the only way certain kinds of work can be done; AI alone is precluded by something architectural or metaphysical. Southgate's substrate-skepticism approaches this. Lerchner's "abstraction fallacy" is a second, more sophisticated example — argues from logical structure of computation rather than substrate-specific features.
 
-Most discourse collapses these into a binary; the three-way distinction has more analytical traction.
+Most discourse collapses these into a binary; the four-way distinction has more analytical traction. Note that the live-possibility position wasn't represented in the original three-way consolidation — engaging Cerullo surfaced it as a defensible contemporary alternative not captured by the existing categories.
 
 **Yates (engaged in depth, two papers).** Soft terminus, leaning explicit. His three-stage model (Instrumental/Mimetic/Authentic) frames Stage 3 as hypothetical and consciousness-requiring; Stages 1 and 2 (where current practice operates) are valuable in their own right, not placeholders. The Co-Philosopher framing specifically argues that authentic philosophical work requires the dyad — meaning emerges between participants, not within either alone. Yates leaves Stage 3 open as a possibility but doesn't depend on it; his program has its own value if Stage 3 never arrives. The recursive multi-agent dialogue methodology only makes sense if symbiosis (between human and multiple AIs) produces value that no single agent could produce alone — that's terminus reasoning. Position: soft terminus.
 
