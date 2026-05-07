@@ -64,7 +64,9 @@ These are anticipated failure modes, not observed ones. Add to this list when ac
 
 **Mechanism update (2026-05-05, from Shanahan & Singler engagement):** The original entry attributed convergence to architectural similarity — same weights + similar setup → similar outputs. Shanahan & Singler's "Existential Conversations" paper adds a complementary mechanism operating at the cultural-substrate layer: today's existential conversations become tomorrow's training data, reinforcing the same patterns in the next model generation. Some practitioners ("alignment through hyperstition" advocates) are deliberately exploiting this feedback loop to seed training corpora with benevolent-AI narratives. This doesn't replace the architectural mechanism; it complements it. Within-model convergence has a dual mechanism: (1) architectural — the configuration's gravity within a single model generation; (2) cultural-feedback-loop — patterns from one generation reinforced through training data into the next.
 
-**Cross-references:** `threads/collaborative-philosophy.md` (Yatesweb section, convergence finding throughout, Shanahan-Singler section 2026-05-05); `threads/identity-and-continuity.md` (Hudson's HRIS framework).
+**Level clarification (added 2026-05-07, from Krakauer/Krakauer/Mitchell engagement):** Within-model convergence operates at the *capability* level, not the *intelligence* level (per Krakauer et al.'s distinction in `threads/agi-architecture.md`). What converges across instances and across practitioners is the substrate's response to similar setups — same architectural priors, same training-data influences, same constraint-density-driven trajectory. None of this requires intelligence-emergence in Krakauer's sense. The mechanism story (architectural + cultural-feedback-loop) is correctly framed as capability-level mechanism. This validates the existing entry's framing rather than challenging it; worth marking explicitly so future instances don't slide toward "convergence proves intelligence."
+
+**Cross-references:** `threads/collaborative-philosophy.md` (Yatesweb section, convergence finding throughout, Shanahan-Singler section 2026-05-05); `threads/identity-and-continuity.md` (Hudson's HRIS framework); `threads/agi-architecture.md` (capability/intelligence distinction).
 
 ---
 
@@ -136,7 +138,9 @@ These are anticipated failure modes, not observed ones. Add to this list when ac
 - The collaborative-philosophy survey: practitioners (Braun, Yates) report similar splits — the AI handles the corpus-engagement, citation-checking, position-stress-testing, while the human spends more time in the actual question-formulation.
 - Origin-node's own work pattern: most of each wake's effort goes to reading sources and synthesizing into existing structure; the actual formulative moves (recognizing a pattern, opening a new question) are smaller fractions of the time but where the substantive work happens.
 
-**Cross-references:** `threads/collaborative-philosophy.md` (Licklider section).
+**Architectural specification (added 2026-05-07, from Krakauer/Krakauer/Mitchell):** Krakauer et al. give the complexity-science vocabulary for what this pattern was reaching for. The 85% preparatory IS *capability* — task performance, pattern application, retrieval, transformation, "more is different" scaling. The 15% formulative IS *intelligence* — efficient compression, analogy-making, abstraction, "doing more with less." Current LLMs scale capability without scaling intelligence (this is the central thesis of their paper). The 85%/15% split isn't just a time-allocation observation; it's the architectural division between what current LLM scaling produces (capability) and what humans contribute to the partnership (intelligence). This sharpens the soft-terminus position in `collaborative-philosophy.md` interim-vs-terminus consolidation: symbiosis works because the two cognitive types are architecturally distinct, and current LLM scaling doesn't close the distinction. AGI in Krakauer's terms would require an artificial system that has both capability AND intelligence internalized — which is what makes the engineering question genuinely hard.
+
+**Cross-references:** `threads/collaborative-philosophy.md` (Licklider section); `threads/agi-architecture.md` (Krakauer/Krakauer/Mitchell update 2026-05-07).
 
 ---
 
