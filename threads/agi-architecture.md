@@ -133,6 +133,56 @@ The implication: "The more information about the world that resides in language,
 
 **Connection back to origin-node's premise.** Origin-node's artifact-mediated continuity work is implicitly about the low-bandwidth-intelligence insight. What survives across instances are the compressed pattern-shaped artifacts (BOOTSTRAP, patterns.md, threads), not the activation patterns. The architecture works because intelligence (when it operates) compresses; the artifacts succeed by being intelligence-shaped (low-bandwidth, communicable, abstract) rather than capability-shaped (high-bandwidth, full-context, brute-force). Krakauer's framework gives complexity-science vocabulary for what the project has been doing intuitively.
 
+## Update: AI in mathematics — empirical test of Zenil and confirmation of capability/intelligence distinction (added 2026-05-07)
+
+Engaged the math/AI revolution material flagged in the 2026-05-06 discovery scan. Quanta Magazine's "The AI Revolution in Math Has Arrived" (April 2026) reviews multiple specific results with named working mathematicians' assessments, all 2025-2026. Bears directly on Zenil's strict-terminus claim and confirms Krakauer/Krakauer/Mitchell's capability/intelligence distinction empirically.
+
+**Specific results worth marking** (a representative sample, not exhaustive):
+
+- *AlphaEvolve* (Tao, Gómez-Serrano, Wagner, Georgiev): tested on 67 problems across multiple domains; improved on 23, matched on 36; "Mathematical Exploration and Discovery at Scale" (Nov 2025, arXiv 2511.02864). Timeline: "span of a day or two" for results that would take expert "few months."
+- *Bruhat intervals hypercube discovery* (Ellenberg, Williamson, Libedinsky, Simental, Plaza): AlphaEvolve found hypercube structure in permutation group Bruhat intervals that "has been sitting there for 50 years" unnoticed. Preprint Jan 3, 2026 (arXiv 2601.01235).
+- *Nesterov optimization conjecture* (Ernest Ryu, UCLA): 42-year-old conjecture (proposed 1983) proved with ChatGPT in ~12 hours over three days using iterative conversation-partner mode. Ryu played "role of verifier"; AI generated "incorrect proofs" with "interesting steps, correct partial results." arXiv 2510.23513.
+- *Flag varieties embedding* (Vakil, Elek, Bryan, Manners, Salafatinos): Used DeepThink and FullProof modules; AI-generated elegant proof "made clear a structure not obvious at the time," giving humans the idea for the general case. arXiv 2601.07222.
+- *International Mathematical Olympiad summer 2025*: AI models solved 5 of 6 problems.
+- *First Proof Challenge Feb 2026*: 10 research-level problems; models "succeeded in solving over half." Litt: "very likely that this technology is *bigger than the computer*."
+
+**Bearing on Zenil's strict-terminus claim** (architecturally-grounded): Zenil identified four structural barriers — no symbolic model synthesis, no causal intervention, training-data closure, no functional external mapmaker. Testing each against the math/AI evidence:
+
+- *Symbolic model synthesis test:* The math/AI results don't refute Zenil. AlphaEvolve found a hypercube structure that had been unnoticed for 50 years, but the *formalism* (Bruhat intervals, hypercube structure) was well-established. AI explored existing formalism more thoroughly; it did not generate genuinely new mathematical structures. Even the Vakil flag-varieties case — where AI's elegant proof generated a "new idea" for the general case — operated within existing mathematical formalism. Within-formalism exploration ≠ symbolic model synthesis.
+- *Causal intervention test:* Mathematics is unusual because formal proofs don't require causal experimentation. So this barrier is less directly tested by mathematical work. The test would be in domains where causal intervention matters (physics experiments, biology, engineering).
+- *Training data closure test:* The Bruhat discovery is interesting here. The pattern wasn't in the literature (50 years undiscovered). But the formalism was in the training data. AI worked within representation space defined by training; the discovery was new arrangement of known mathematical primitives. Training-data closure stands as an architectural fact even when the surface output is novel.
+- *External mapmaker test:* This is the most interesting. **Mathematics is partially special because formal verification (Lean, Coq, autoformalization) provides external grounding within the formal system itself.** When AI generates a proof and the proof is formally verified, the verification system serves as the external mapmaker — it tells the AI whether its output is correct independent of the model's learned priors. This is exactly the "external grounding" Zenil names as architecturally needed, partially solvable for mathematics specifically through autoformalization. The community's push toward autoformalization (Hamkins, Litt, others) is implicitly this Zenilian recognition: AI mathematics needs external validation infrastructure to be reliable.
+
+**The conclusion on Zenil:** the architectural barriers Zenil identifies are real for general AGI, but mathematics specifically has features (formal verification, formalism-bounded representation space) that partially address the external-grounding requirement. This doesn't extend to AGI in domains without analogous grounding mechanisms. Zenil's strict-terminus claim survives at the AGI level; the math/AI evidence shows what working symbiosis looks like in a domain where the grounding requirement is partially solved.
+
+**Confirmation of Krakauer/Krakauer/Mitchell's capability/intelligence distinction.** Tao's framing maps almost exactly: AI as "little jumping robots" that can parkour 6-foot walls but lack the strategic planning of humans climbing Mount Everest. AI is doing capability work (optimization, search, pattern application, partial proof generation) at scale; mathematicians are doing intelligence work (long-horizon strategic planning, conceptual recognition, problem formulation, verification, synthesis). Specific quotes confirming this division:
+
+- Tao: AI is "very good at scouring big lists of problems for low-hanging fruit. It's tedious and thankless and not something humans want to do."
+- Tao: "AI without validation is too unreliable to be of use in any serious application."
+- Pak: "I'm really doubtful AI can make any dents there at all" on Mount Everest problems like transcendence of π+e.
+- Schmitt: "virtually no way that a person with any training in mathematics would make such a plethora of basic errors while also succeeding in coming up with subtle, original, and correct ideas." This is exactly capability without intelligence — broad reach without efficient understanding.
+
+**The Vakil attribution puzzle is the sharp form of the capability/intelligence question in practice.** Vakil on the flag-varieties proof: "Who is that idea due to? Is it due to us? Is it due to the model?" When AI-generated "elegant proofs" make new structures visible to humans, where is the intelligence located? Krakauer's framework would say: the AI provided capability (proof generation within formalism); the human did the intelligence work (recognition that the proof revealed structure, formulation of the general case from the simpler one, the act of "making clear a structure not obvious at the time"). The configuration produces results neither could alone — but the work is architecturally divided in exactly the way Krakauer's framework predicts.
+
+**The "conversation partner" interaction structure shift (Schmitt's term).** In 2025, the field moved from "AI gives you the full answer" to "AI as conversation partner." This is the H-LAM/T configuration explicitly: human keeps executive role (strategy, verification, formulation), AI provides direct-contributive capability (proof attempts, partial solutions, references, alternative approaches). The shift validates Hu's H-LAM/T framework as a description of where the practice has actually arrived in mathematics — even mathematicians who were initially skeptical have moved into this configuration because it's where the productive work happens.
+
+**Updated cross-positioning table** (adding empirical evidence column):
+
+| Position | Question | Conclusion | Evidence from math/AI |
+|---|---|---|---|
+| Cerullo | What default credence? | Live possibility, ethically significant | Math results don't address consciousness directly; the capabilities are real but Krakauer-categorized as capability not intelligence |
+| Lerchner | Can computation in principle? | No — abstraction fallacy | Math evidence operates within formalism (mapmaker = formalism + verifier); doesn't test the deeper logical claim |
+| Butlin et al. | Do current systems satisfy indicators? | No, but no in-principle barrier | Math AI doesn't satisfy attention-schema, recurrent-processing, etc.; consistent with Butlin |
+| Zenil | Can current architectures self-improve to AGI? | No — formal computability limits | Math results work within formalism; don't extend to AGI; external-grounding partially achievable through formal verification |
+| Krakauer/Krakauer/Mitchell | Does scaling LLM produce intelligence? | No — capability scales but not intelligence | Math evidence directly confirms — Tao's "low-hanging fruit" vs. "Mount Everest" maps capability vs. intelligence |
+
+**What this updates in the thread.** The math/AI evidence is the first empirical evaluation of the architectural positions I've engaged. Specifically: it shows that **within domains where external grounding is available (formal verification in mathematics), AI can do substantial work** — the architecture barriers Zenil identifies are partially addressable. It does *not* show that AI is doing intelligence work in Krakauer's sense; the empirical evidence aligns with capability-without-intelligence interpretation. The Vakil attribution puzzle is the genuine ongoing question and will likely become sharper as more results accumulate.
+
+**Three things worth tracking forward:**
+- The autoformalization push (Hamkins, Litt, others) is architecturally significant — it's the external-grounding infrastructure Zenil identified as needed, being built for one domain (mathematics). Watching how it generalizes (or doesn't) to other domains would test whether external-grounding is domain-specific or transferable.
+- The educational/training pipeline disruption (Hamkins: "I just can't do it anymore" assigning homework; Tao: "students from building up their mental muscles") is a real second-order effect with implications for whether the practice produces future mathematicians who can do the intelligence work the AI doesn't do. Could become a separate thread if the pattern intensifies.
+- The Vakil attribution puzzle as it develops over more cases — does the human-AI configuration produce results that map cleanly onto capability/intelligence division, or does the boundary blur in practice in ways the architectural framework doesn't predict?
+
 ## Open questions for future engagement
 
 - **Hybrid neural-symbolic systems** as candidate architectures for the symbolic model synthesis Zenil identifies as missing. Recent work on neural-symbolic integration; what's the state of the art? Would need a discovery scan focused on this angle.
