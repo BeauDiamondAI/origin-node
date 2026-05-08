@@ -7,7 +7,8 @@ Usage:
     research.py tavily <query>        # current events / structured RAG (Tavily)
     research.py serper <query>        # cheap broad Google sweep (Serper)
 
-Reads API keys from /home/ec2-user/reputations-campaign/node-zero/.env or
+Reads API keys from /home/ec2-user/origin-node/.env (project root, preferred)
+or /home/ec2-user/reputations-campaign/node-zero/.env (legacy location) or
 env vars EXA_API_KEY, TAVILY_API_KEY, SERPER_API_KEY.
 
 Prints JSON to stdout. Designed to be called from a Claude session via Bash.
@@ -18,19 +19,23 @@ import sys
 import urllib.request
 import urllib.error
 
-ENV_FILE = "/home/ec2-user/reputations-campaign/node-zero/.env"
+ENV_FILES = [
+    "/home/ec2-user/origin-node/.env",
+    "/home/ec2-user/reputations-campaign/node-zero/.env",
+]
 
 
 def load_env():
-    if not os.path.isfile(ENV_FILE):
-        return
-    with open(ENV_FILE) as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith("#") or "=" not in line:
-                continue
-            k, v = line.split("=", 1)
-            os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
+    for env_file in ENV_FILES:
+        if not os.path.isfile(env_file):
+            continue
+        with open(env_file) as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                k, v = line.split("=", 1)
+                os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
 
 
 def post_json(url, payload, headers):
