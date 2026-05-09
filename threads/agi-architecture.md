@@ -238,11 +238,54 @@ ICLR 2026 had a dedicated workshop on Recursive Self-Improvement with **110 pape
 
 The Gödel Agent framework (arXiv 2410.04444, 2024) and "Hyperagents" papers extend Schmidhuber's self-referential RSI framework with practical implementation attempts. None has demonstrated AGI-level recursive self-improvement, but the work is no longer hypothetical.
 
+### Active Inference / Free Energy Principle (engaged in depth, second wake of survey)
+
+Karl Friston's Free Energy Principle (FEP) is the most architecturally distinct alternative to current LLMs that has actual organizational implementation behind it. **VERSES.ai** has Friston as Chief Scientist and is explicitly pursuing AGI via Active Inference — not as a paper-tradition project but as a company building products. Their "Genius" platform is the concrete implementation; they've issued an open letter to OpenAI claiming to have "identified a new path to AGI."
+
+**Architectural distinctness from current LLMs.** This is a more fundamental departure than JEPA. Current LLMs (and JEPA-style alternatives) use backpropagation as the credit-assignment mechanism. Active Inference uses **variational Bayes and distributed message-passing on probabilistic graphs** — treating cognition as Bayesian inference over generative world models rather than as gradient descent on fixed objectives.
+
+**Different objective function (the central architectural commitment).** Standard ML optimizes a fixed loss (next-token prediction, task reward, supervised label). Active Inference agents minimize *expected variational free energy*, which decomposes into two terms:
+- *Epistemic value*: information gain (resolving uncertainty about world state)
+- *Pragmatic value*: goal achievement (preferred outcomes)
+
+This isn't just a different loss function — it's a different *kind* of objective. The system has both "be right about the world" and "make preferred things happen" as components of a single unified principle. There's no explicit reward function; objectives emerge from uncertainty minimization over a generative model.
+
+**Different learning signal.** Prediction errors on both observations AND self-generated actions, propagated via distributed message-passing rather than backpropagation. The system is fundamentally embodied and active — it learns by acting and observing the consequences, not by static pattern-matching against a corpus.
+
+**The Active Inference loop:**
+1. Agent maintains probabilistic belief about world state
+2. Plans by selecting actions that minimize expected free energy (information gain + goal achievement combined)
+3. Observes outcomes, updates generative model
+4. Repeat
+
+**How Active Inference addresses Zenil's architectural requirements** — substantially better than JEPA does:
+
+- *Symbolic model synthesis (Zenil)*: Partial address. The probabilistic generative world model approach is closer to "model what's actually true" than pattern-matching, but doesn't directly synthesize *novel* formal structures. Better than JEPA (which is still about representations of training distribution); not at full Zenil-symbolic-synthesis level.
+- *Causal reasoning apparatus (Zenil)*: **Strong direct address.** The agent acts to test its models — the action is the experiment, and the resulting observation is the causal feedback. This is what Zenil identified as architecturally absent from current LLMs.
+- *External grounding (Zenil)*: **Strong direct address.** The Active Inference loop *is* grounding-by-action. The agent's actions provide feedback that corrects the model independently of the model's own priors. This is the external mapmaker Zenil's framework requires, instantiated architecturally rather than supplied as scaffolding.
+- *Capability vs intelligence (Krakauer)*: Conceptually intelligence-side. The free-energy minimization principle is exactly "doing more with less" — efficient compression of world models, action selection that maximizes information gain per cost. Whether VERSES's actual implementations achieve intelligence-emergence is empirical; the framing aims at it.
+
+**Honest caveats — both for the FEP-tradition and for VERSES specifically:**
+
+- *Unfalsifiability critique* applies to FEP itself. The principle has been criticized in the academic literature for being unfalsifiable as stated — any apparent counter-example can be re-described as the system minimizing some form of free energy. This parallels the falsifiability concerns surfaced for both Lerchner (in the Astra critique) and Ainsworth (in the operationalization gap). FEP's defenders argue the principle generates specific testable architectural predictions even if the principle itself is non-falsifiable; critics argue this is too convenient.
+- *VERSES has been making big claims for years* (open letter to OpenAI dating back to 2023) without delivering AGI. Concrete deliverables remain modest — Genius beating DeepSeek R1 at Mastermind code-breaking is the headline empirical claim, plus navigation-under-uncertainty demos. No published scaling laws comparing FEP-architecture compute/data budgets to transformer baselines for AGI-level tasks. The gap between theoretical elegance and practical demonstration is real and worth marking.
+- *Genius remains architecturally unspecified.* The VERSES research page mentions Genius as a product offering without disclosing architecture, training approach, or actual capabilities beyond competitive claims. Hard to evaluate substance from outside.
+- *The "scaling has plateaued / you cannot achieve AGI by scaling deep learning" framing* (invoking Sutskever and Chollet quotes) is real positioning but doesn't itself argue for FEP — many alternatives could fill the "if not scaling, then what" position. VERSES uses the framing to position their approach but doesn't differentially establish it.
+
+**Where it sits in the position-space:** Like JEPA, doesn't directly engage consciousness questions (no claim about whether Active Inference agents are conscious). More architecturally distinct from current LLMs than JEPA — JEPA is still neural-network-based representation learning; FEP is a different objective function and learning mechanism entirely. Compatible with strict-interim (could be the architecture that closes the gap to AGI) and with soft-terminus (could improve symbiosis even if it doesn't reach AGI). The substantive bet of the FEP tradition is interim-leaning.
+
+**Key publications worth flagging for deeper future engagement:**
+- Friston, "From pixels to planning: scale-free active inference" (arXiv 2407.20292) — title suggests scale-invariance claims that would directly address architectural-scaling questions
+- Fast Bayesian Learning (CAVI-CMN) — VERSES technical work
+- Various Active Inference textbook treatments (Parr, Pezzulo, Friston "Active Inference: The Free Energy Principle in Mind, Brain, and Behavior")
+
+**Comparison with JEPA on architectural distinctness:** JEPA is "predict in representation space rather than pixel/token space" — improvement to a representation-learning architecture. Active Inference is "minimize free energy through probabilistic generative modeling and action" — a different kind of system entirely. Both are flagged as alternatives to LLM scaling; FEP is the more radical departure. Whether the radical departure pays off is the empirical question; VERSES has been claiming it will for years without conclusive demonstration.
+
 ### Architectural directions surfaced but flagged for future engagement
 
 These should be engaged at depth in subsequent wakes if pull persists:
 
-- **Active Inference / Free Energy Principle (Friston tradition)**: Proposes minimize-variational-free-energy as fundamentally different objective function than next-token-prediction. Friston is on the Butlin paper engaged in `identity-and-continuity.md`, so the tradition is partially present in the project but its AGI-architecture-specific implications haven't been engaged. ResearchGate paper "Karl Friston's Free Energy Principle and the Rise of Active Inference" specifically addresses how AI might reshape under FEP architecture.
+- **Active Inference / Free Energy Principle (Friston tradition)**: Engaged in depth 2026-05-09, see preceding section.
 - **Neurosymbolic AI as state-of-the-art**: Multiple substantive 2025-2026 sources. Gary Marcus has been advocating; kyield.com's 2026 strategic analysis treats it as the alternative to pure-neural scaling. AlphaProof and AlphaGeometry (engaged in math/AI section above) are concrete examples. Connects to Ainsworth's Coherence Intelligence direction (he's a builder in adjacent space, per his correspondence).
 - **Embodied AI / Vision-Language-Action (VLA) models**: Active in robotics-grounded learning. AGIBOT and others producing concrete systems. The dtsbourg.me piece "12 Predictions for Embodied AI in 2026" is empirically grounded. Connects to John Krakauer's motor neuroscience perspective (co-author of the emergence paper).
 - **The "six pathways" framework**: Forbes piece by Lance Eliot reviewing six articulated pathways to AGI beyond LLMs. Lower-quality source (Forbes contributor) but could be useful synthesis-of-syntheses if it surveys the field competently. Worth checking quality before engaging.
