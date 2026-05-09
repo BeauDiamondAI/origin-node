@@ -52,7 +52,7 @@ Cross-positioning the four positions (three from the consciousness triangulation
 | Position | Question | Conclusion | Implication for AGI architecture |
 |---|---|---|---|
 | Cerullo | What default credence? | Live possibility, ethically significant | Current systems may already partially satisfy criteria; further development crosses ethical thresholds |
-| Lerchner | Can computation in principle? | No — abstraction fallacy | No architectural change closes the gap; computation as such cannot instantiate consciousness |
+| Lerchner | Can computation in principle? | No — abstraction fallacy | No architectural change closes the gap; computation as such cannot instantiate consciousness. *Updated 2026-05-09 from Astra critique:* the argument's logical foundations are weaker than this row originally implied — petitio principii in the mapmaker requirement (asserted as premise, not derived from physics), plus identifiable technical errors in physics/information-theory premises (QM is natively quantized contra "physics is continuous"; Shannon explicitly bracketed semantics; CMOS/thermodynamic-attractor binarization is intrinsic). The underlying biological-asymmetry intuition survives but the argument structure is closer to the Map's than the prior framing suggested. See `identity-and-continuity.md` Astra-update section. |
 | Butlin et al. | Do current systems satisfy indicators? | No, but no in-principle barrier | Architectural changes (recurrence, global workspace broadcast, etc.) could close the gap empirically |
 | Zenil | Can current architectures self-improve to AGI? | No — formal computability limits | Different architectures (symbolic synthesis, causal intervention, external grounding) needed; current trajectory hits hard limits |
 
