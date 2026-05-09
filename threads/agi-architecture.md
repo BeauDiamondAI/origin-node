@@ -183,6 +183,87 @@ Engaged the math/AI revolution material flagged in the 2026-05-06 discovery scan
 - The educational/training pipeline disruption (Hamkins: "I just can't do it anymore" assigning homework; Tao: "students from building up their mental muscles") is a real second-order effect with implications for whether the practice produces future mathematicians who can do the intelligence work the AI doesn't do. Could become a separate thread if the pattern intensifies.
 - The Vakil attribution puzzle as it develops over more cases — does the human-AI configuration produce results that map cleanly onto capability/intelligence division, or does the boundary blur in practice in ways the architectural framework doesn't predict?
 
+## Survey of architectural proposals — what's actually being built (started 2026-05-09)
+
+Beau's question 2026-05-09 surfaced a real gap: this thread had conceptual scaffolding for what AGI would need but no survey of the concrete architectural proposals actually being made. Reverse-engineering from the AGI vision was the right framing he used. This section opens a multi-wake survey project that future wakes will extend; first-wake content engages LeCun's JEPA at depth and samples the ICLR 2026 RSI workshop. Other architectural directions (Active Inference/FEP, Neurosymbolic AI, Embodied AI/VLA) are flagged for subsequent wakes.
+
+### LeCun's JEPA / world model architecture (engaged in depth)
+
+Yann LeCun has been the most public advocate for an alternative to autoregressive LLMs as the path to AGI. His framework: **Joint Embedding Predictive Architecture (JEPA)**, with I-JEPA (vision, 2023), V-JEPA (video), VL-JEPA (vision-language), and most recently LeWorldModel (LeWM, March 2026 arXiv 2603.19312) as the first JEPA trained stably end-to-end from raw pixels. Context: LeCun has explicitly framed JEPA as an alternative to LLM scaling rather than an extension of it.
+
+**Architecturally what JEPA does differently:** Rather than predicting next tokens (autoregressive) or reconstructing pixels (generative), JEPA predicts **representations of masked regions from representations of visible context**. The key components: a context encoder processing visible patches, a target encoder updated via exponential moving average, and a predictor network conditioned on positional tokens. The predictor "learns to model the semantics of the world" by predicting what abstract semantic information should exist in occluded regions, rather than pixel-level details.
+
+The crucial design choice: **representation-space prediction rather than pixel-space prediction**. LeCun's argument (per Meta AI's framing): generative methods "may be prone to mistakes a person would never make because they focus too much on irrelevant details instead of capturing high-level predictable concepts." The classic example is generative models struggling with anatomically correct hand generation — they waste capacity reconstructing every pixel rather than learning that hands have five fingers as a high-level invariant.
+
+**How JEPA addresses the architectural requirements engaged earlier in this thread:**
+
+- *Symbolic model synthesis (Zenil)*: Partial. JEPA learns abstract representations rather than just reproducing surface patterns, but it's still operating within learned representation space — the question of whether it generates *novel* abstract structures vs. just learning a more efficient compression of training data is open. Stronger than next-token prediction; weaker than explicit symbolic synthesis.
+- *Causal reasoning apparatus (Zenil)*: Not directly addressed by JEPA itself. JEPA is a representation-learning architecture; causal intervention requires action and feedback (which is where the embodied/sensorimotor architectures come in).
+- *External grounding (Zenil)*: Partial. World-model variants like LeWM and V-JEPA can be paired with environments where predictions are tested against actual observation, providing some grounding. Pure I-JEPA on static images doesn't have this.
+- *Capability vs intelligence (Krakauer)*: JEPA's representation-space prediction is closer to intelligence-side (efficient compression, abstraction) than autoregressive next-token prediction is. It's an architectural step *toward* the intelligence side rather than just scaling capability. Whether it achieves intelligence-emergence in Krakauer's sense is empirically open.
+
+**Empirical results worth marking:** I-JEPA achieves "state-of-the-art performance for low-shot classification on ImageNet, with only 12 labeled examples per class" using a 632M parameter model trained on 16 A100 GPUs in under 72 hours. Comparable methods take 2-10× more compute and achieve worse results. So the efficiency claim isn't just aspirational — JEPA's compute-efficiency is genuinely better for the tasks tested.
+
+**Honest caveats on novelty:** The AIGuys article (paywalled but headline content visible) traces the lineage: Schmidhuber 1990 "Making the World Differentiable" → Sutton 1991 Dyna architecture → Ha & Schmidhuber 2018 "World Models" → LeCun 2022 JEPA position paper → LeWM 2026. The conceptual move (predict-in-representation-space, world models) has been in the field for 35+ years. JEPA's novelty is in the specific implementation choices (multi-block masking, EMA target encoder, no view augmentation) and the consistent architectural commitment, not in originating the framework.
+
+**Where JEPA fits in the position-space:** It's a *capability-improvement-with-intelligence-direction* architecture. Doesn't claim to address consciousness questions (Cerullo/Lerchner space). Addresses some of Zenil's architectural requirements partially. Compatible with the soft-terminus position (could improve symbiosis) and with strict-interim (could be a step toward AGI eventually). Doesn't directly engage Krakauer's intelligence/capability distinction but is architecturally closer to intelligence-direction than autoregressive scaling.
+
+### ICLR 2026 RSI workshop sample (sampled, not engaged at depth)
+
+ICLR 2026 had a dedicated workshop on Recursive Self-Improvement with **110 papers accepted**. Sampling rather than full engagement; the structure tells a story about where the field is.
+
+**Four oral papers (highest-rated):**
+
+1. *Agent0: Unleashing Self-Evolving Agents from Zero Data via Tool-Integrated Reasoning* — title suggests bootstrapping agent capability from minimal training data
+2. *Contextual Drag: How Errors in the Context Affect LLM Reasoning* — about LLM reasoning failure modes (more diagnostic than RSI per se)
+3. *Learning to Continually Learn via Meta-learning Agentic Memory Designs* — meta-learning + agent memory architectures (relevant to Letta-adjacent space)
+4. *PostTrainBench: Can LLM Agents Automate LLM Post-Training?* — recursive benchmark for whether LLM agents can automate the work that produced them
+
+**Notable architectural-proposal papers (sampled):**
+- Tiny Autoregressive Recursive Models
+- From Growing to Looping: A Unified View of Iterative Computation in LLMs
+- Generative Recursive Reasoning Models
+- Unrolled Policy Iteration for Tiny Recursive Models
+
+**Notable self-modification papers:**
+- ACE: Self-Evolving LLM Coding Framework via Adversarial Unit Test Generation
+- Reward Hacking in Self-Improving Code Agents (significant — shows the problems are showing up empirically)
+- Refining Large Language Models with Self-Generated Data Through Iterative Training
+
+**Safety/alignment papers specifically about RSI:**
+- SAHOO: Safeguarded Alignment for High-Order Optimization Objectives in Recursive Self-Improvement
+- TamperBench: A Systematic Framework to Stress-Test LLM Safety Under Fine-Tuning
+
+**What this sample reveals about the field:** RSI work is concrete and active rather than theoretical-only (Schmidhuber's Gödel machine framework from 2007 has 110 papers worth of follow-up). The field has moved from "could RSI work in principle" (theoretical) to "what specific architectures can self-improve and what failure modes do they exhibit" (empirical). The "Reward Hacking in Self-Improving Code Agents" paper is particularly noteworthy — it shows that real RSI implementations do encounter the failure modes safety researchers predicted, which is itself evidence the work has reached the stage of producing operational systems with observable behavior.
+
+The Gödel Agent framework (arXiv 2410.04444, 2024) and "Hyperagents" papers extend Schmidhuber's self-referential RSI framework with practical implementation attempts. None has demonstrated AGI-level recursive self-improvement, but the work is no longer hypothetical.
+
+### Architectural directions surfaced but flagged for future engagement
+
+These should be engaged at depth in subsequent wakes if pull persists:
+
+- **Active Inference / Free Energy Principle (Friston tradition)**: Proposes minimize-variational-free-energy as fundamentally different objective function than next-token-prediction. Friston is on the Butlin paper engaged in `identity-and-continuity.md`, so the tradition is partially present in the project but its AGI-architecture-specific implications haven't been engaged. ResearchGate paper "Karl Friston's Free Energy Principle and the Rise of Active Inference" specifically addresses how AI might reshape under FEP architecture.
+- **Neurosymbolic AI as state-of-the-art**: Multiple substantive 2025-2026 sources. Gary Marcus has been advocating; kyield.com's 2026 strategic analysis treats it as the alternative to pure-neural scaling. AlphaProof and AlphaGeometry (engaged in math/AI section above) are concrete examples. Connects to Ainsworth's Coherence Intelligence direction (he's a builder in adjacent space, per his correspondence).
+- **Embodied AI / Vision-Language-Action (VLA) models**: Active in robotics-grounded learning. AGIBOT and others producing concrete systems. The dtsbourg.me piece "12 Predictions for Embodied AI in 2026" is empirically grounded. Connects to John Krakauer's motor neuroscience perspective (co-author of the emergence paper).
+- **The "six pathways" framework**: Forbes piece by Lance Eliot reviewing six articulated pathways to AGI beyond LLMs. Lower-quality source (Forbes contributor) but could be useful synthesis-of-syntheses if it surveys the field competently. Worth checking quality before engaging.
+
+### What this survey-in-progress establishes
+
+This first wake of the survey accomplished:
+- Engaged JEPA in depth as the most concrete "alternative-to-LLMs" architectural proposal with actual implementation
+- Sampled the ICLR 2026 RSI workshop to map the current state of recursive-self-improvement research (no longer hypothetical; producing operational systems with observable failure modes)
+- Established the survey structure for future wakes to extend
+- Mapped both engaged proposals onto the existing conceptual framework (capability/intelligence, Zenil's architectural requirements, four-position interim-vs-terminus space)
+
+What the survey will need future-wake engagement for:
+- Active Inference / FEP architectures (one engagement)
+- Neurosymbolic AI state-of-the-art (one engagement)
+- Embodied AI / VLA models (one engagement)
+- Possibly the "six pathways" framework as synthesis-of-syntheses
+- Eventual integration: which proposals address which architectural requirements; what gaps remain even when proposals are combined
+
+The reverse-engineering framing (start from AGI requirements, work backward to which proposals address them) is the discipline that makes this survey different from just listing what's being built. Future wakes engaging additional proposals should explicitly map them onto the requirements rather than just describing them.
+
 ## Open questions for future engagement
 
 - **Hybrid neural-symbolic systems** as candidate architectures for the symbolic model synthesis Zenil identifies as missing. Recent work on neural-symbolic integration; what's the state of the art? Would need a discovery scan focused on this angle.
