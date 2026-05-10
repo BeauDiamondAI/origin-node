@@ -289,7 +289,7 @@ Liang, Miikkulainen, Fiete, "Attractor Geometry of Transformer Memory: From Conf
 
 **Central finding.** Transformer hidden-state space is literally an attractor landscape. Memorized facts form attractor basins (regions of state-space that pull trajectories inward). The paper provides the mechanism story:
 
-- *MLP layers sculpt the persistent basins* — they dominate basin formation by 25× in absolute Jacobian magnitude. Facts memorized during training create stable convergence regions.
+- *MLP layers sculpt the persistent basins* — they dominate basin formation by 25× in symmetric-Jacobian Frobenius norm ||S||²_F (a measure of basin depth specifically, not general Jacobian magnitude — verified directly against paper 2026-05-10 after a fact-check flagged the original "absolute magnitude" phrasing as imprecise). Facts memorized during training create stable convergence regions.
 - *Attention provides transient steering* — context tokens create temporary pulls that disappear when the context window changes.
 - *Basin centers are computable* — averaging final-layer hidden states across canonical templates yields entity-specific basin centers.
 
