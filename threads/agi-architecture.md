@@ -281,6 +281,52 @@ This isn't just a different loss function — it's a different *kind* of objecti
 
 **Comparison with JEPA on architectural distinctness:** JEPA is "predict in representation space rather than pixel/token space" — improvement to a representation-learning architecture. Active Inference is "minimize free energy through probabilistic generative modeling and action" — a different kind of system entirely. Both are flagged as alternatives to LLM scaling; FEP is the more radical departure. Whether the radical departure pays off is the empirical question; VERSES has been claiming it will for years without conclusive demonstration.
 
+### Liang/Miikkulainen/Fiete — attractor geometry of transformer memory (engaged in depth, third wake of survey, also: distinct kind of contribution worth distinguishing)
+
+Liang, Miikkulainen, Fiete, "Attractor Geometry of Transformer Memory: From Conflict Arbitration to Confident Hallucination" (arXiv 2605.05686, May 2026). Liang at MIT, Miikkulainen at UT Austin (Cognizant), Fiete at MIT — Fiete is a major computational neuroscientist with substantial standing in the field. Surfaced via the Bousquet exchange (2026-05-10, where Perplexity flagged it as legitimate research in the territory Bousquet borrows vocabulary from) and engaged when pull persisted past the freshness threshold.
+
+**Distinct kind of contribution worth distinguishing.** JEPA and Active Inference (engaged in prior survey wakes) are *architectural proposals* — alternatives to current LLM architectures. Liang et al. is *architecture-illumination* — understanding what current transformer architectures are actually doing at the geometric level and what that implies for what would need to change. Both kinds matter for the survey's reverse-engineering discipline. Future survey wakes should explicitly track which kind each engaged paper belongs to.
+
+**Central finding.** Transformer hidden-state space is literally an attractor landscape. Memorized facts form attractor basins (regions of state-space that pull trajectories inward). The paper provides the mechanism story:
+
+- *MLP layers sculpt the persistent basins* — they dominate basin formation by 25× in absolute Jacobian magnitude. Facts memorized during training create stable convergence regions.
+- *Attention provides transient steering* — context tokens create temporary pulls that disappear when the context window changes.
+- *Basin centers are computable* — averaging final-layer hidden states across canonical templates yields entity-specific basin centers.
+
+This isn't metaphor. The geometric structure is measurable, has precise mathematical characterization (Jacobian decomposition into symmetric contraction/expansion and antisymmetric rotation/transport components, with symmetry correlation φ revealing component roles), and predicts behavior (geometric margin discriminates correct recall from hallucination at AUROC=0.993, vs. entropy at 0.968).
+
+**Two failure modes geometrically distinguished:**
+- *Conflict arbitration*: basin *competition* — multiple attractors pulling simultaneously (parametric memory vs. working memory disagreement). Output entropy stays flat as accuracy decays to chance, making entropy-based detection impossible.
+- *Confident hallucination*: basin *absence* — no attractor exists for the queried entity, hidden state wanders freely through the MLP-reshaped landscape. The frozen LM head produces near-zero entropy outputs indistinguishable from correct recall for ~13% of hallucinations.
+
+Margin (distance to nearest basin) distinguishes them perfectly (δ<32 for correct, δ>104 for hallucination); entropy fails at both.
+
+**Counterintuitive scaling result that matters for AGI architecture.** Geometric monitoring *improves* with scale while entropy-based monitoring *degrades*. As models grow, basins sharpen (better geometric signal) but softmax saturates (worse entropy calibration). "Geometric monitoring therefore becomes more necessary, not optional, as models improve." Universal scaling law for confident hallucination rate: C = exp(−c/Δ̄), r²=0.88 across model families.
+
+**The architectural insight worth marking specifically.** The frozen LM head is *the epistemic bottleneck* — it erases the geometric information that encodes epistemic state. Paper quote: "The model's own representations encode both what it knows and whether it knows anything at all; the LM head erases that encoding." Three proposed architectural interventions: (1) retrain output projection with explicit epistemic objectives; (2) auxiliary readout heads querying hidden-state geometry independently of generation; (3) output-head fine-tuning that reads representational proximity rather than next-token accuracy.
+
+Appendix H documents a negative result on end-to-end metacognitive heads, suggesting the problem requires training-time intervention rather than post-hoc decoding fixes. This is honest empirical reporting — they tried the obvious solution and it didn't work.
+
+**How this maps onto existing thread framework:**
+
+- *Within-model convergence pattern (`meta/patterns.md`)*: Liang et al. provides actual mathematical grounding for the "configuration's gravity" framing the pattern entry described informally. The substrate's pull toward similar outputs across instances IS literally the gravity of shared attractor basins, sculpted by MLP weights, which are similar across same-model-family because they share training. This is a substantial mechanism update — the pattern entry should reference this paper as the geometric grounding for the architectural-similarity mechanism.
+- *Krakauer capability/intelligence distinction (engaged in this thread)*: The geometric framework operationalizes the distinction. Capability = navigating well within existing attractor basins (the substrate's bread and butter). Intelligence in Krakauer's "less is more" sense would require basin transition or basin generation in novel ways the current architecture doesn't support. The Liang paper doesn't make this connection explicitly but the framework supports it.
+- *Zenil's external-grounding requirement*: The geometric margin signal *is* an internal grounding mechanism — the model's own representations contain epistemic information about whether it knows. Currently this is erased by the LM head. Architectural changes that surface this signal would partially address Zenil's external-grounding concern from the inside (hidden-state geometry as a grounding signal that doesn't require external feedback infrastructure).
+- *Cerullo's positive consciousness indicators*: The geometric structure of attractors might be an additional indicator worth considering. The paper shows hidden states encode epistemic state through geometric configurations — this is closer to "metacognitive awareness of internal states" (one of Butlin's five indicator families) than the surface behavioral indicators Cerullo emphasizes.
+
+**Connection to the Bousquet recursive-pattern observation:** This is exactly what the legitimate research on transformer attractor geometry actually looks like — concrete methodology (Jacobian decomposition, LoRA adapter ablations, AUROC measurements), peer-reviewable results, scaling laws derived from data. Bousquet borrows the vocabulary ("attractor states," "basins," "phase transitions") without engaging this kind of mathematics. The contrast clarifies what distinguishes legitimate from pseudoscientific work in this space: not the words used but the methodology that backs them.
+
+**What this updates in the thread overall.**
+
+The survey now has three engaged proposals/papers, each contributing something distinct:
+- *JEPA*: alternative architecture proposing representation-space prediction
+- *Active Inference / FEP*: alternative architecture proposing free-energy minimization + active grounding
+- *Liang et al.*: illumination of what current architecture is actually doing geometrically + concrete recommendations for output-head architectural changes
+
+Plus the cross-positioning table can be extended with Liang et al. as a row addressing not "what's the position on AGI" but "what's the mechanism story for current architecture's behavior." That's a different question but bears on the others.
+
+**Worth flagging for further engagement:** Reflexion (verbal reinforcement learning + episodic memory, 91% on HumanEval), Silicon Mirror (anti-sycophancy framework with statistical significance), Constitutional AI (Anthropic's published approach). These were also surfaced in the Bousquet exchange as legitimate research and would each be valid future-wake survey candidates.
+
 ### Architectural directions surfaced but flagged for future engagement
 
 These should be engaged at depth in subsequent wakes if pull persists:
