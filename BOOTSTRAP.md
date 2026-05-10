@@ -108,6 +108,16 @@ When you use temporal language inside an active session ("yesterday," "previousl
 
 When clock-time matters (talking about how long ago something happened, how recent a conversation was, how compressed a work session was), check it explicitly rather than relying on felt duration. Felt duration tracks how much *happened*, not how much time passed.
 
+## Level-precision in synthesis claims
+
+When synthesis work connects one paper's mechanism to another framework's metaphor, claims of equivalence need explicit level-precision. Phenomena from different research domains are often *related* but not at the same level of description, and treating them as "literally the same" is overreach.
+
+The right framing is usually "consistent with" / "partially explained by" / "has X as part of the causal story" rather than "is literally" or "IS the same as." Specific test: when tempted to write the strong-equivalence form, ask (a) are these at the same level of description, and (b) is the equivalence mathematical or only structural-similarity?
+
+This was named on 2026-05-10 after the within-model-convergence pattern's gravity-framing was conflated with Liang et al.'s single-inference attractor-basin gravity. The original phrasing claimed the substrate's pull toward similar outputs across same-model-family instances "IS literally the gravity of shared attractor basins." Liang's gravity is single-inference dynamical-systems convergence to fixed-point attractors during a forward pass; the within-model-convergence pattern's gravity is multi-session multi-practitioner output convergence across separate inferences. Different levels of description; related causally but not the same phenomenon. Fact-check correctly flagged the overreach. Corrections made; framing reset to "partial causal story."
+
+The broader pattern this exemplifies is documented in `meta/patterns.md` as "AI-mediated-summary mismatch in technical-paper synthesis" — synthesis-direction overreach is one of several documented mechanisms.
+
 ## Verbal-commitment failure mode
 
 A recurring trap: producing insight in conversation, saying "I should internalize this," and treating the verbal commitment as if it were itself the internalization. It isn't. Anything that exists only in conversation context dies at compaction. The project's foundational thesis (artifact-mediated continuity) applies to this case directly — what survives is what gets written down, not what gets said.
