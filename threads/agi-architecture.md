@@ -354,6 +354,47 @@ Noah Shinn, Federico Cassano, Edward Berman, Ashwin Gopinath, Karthik Narasimhan
 
 **What this adds to the survey:** Fourth substantive engagement at depth (after JEPA, Active Inference, Liang). Different kind of contribution again — not architectural proposal (alternative architecture), not architecture-illumination (understanding current architecture), but *augmentation architecture* (loops/structures built around existing LLMs that produce capability gains without architectural replacement). This is the kind of work where most current AI engineering practice happens — not replacing transformers but building harnesses around them. Reflexion is one of the cleanest examples of the genre with peer-reviewed results.
 
+### Silicon Mirror (Shah 2026) — augmentation architecture for narrow factual sycophancy (engaged, fifth wake of survey)
+
+Harshee Shah, "Dynamic Behavioral Gating for Anti-Sycophancy in LLM Agents" (arXiv 2604.00478, April 2026). Single author, no listed institutional affiliation (caveat similar to the Astra critique noted in `identity-and-continuity.md`). Surfaced via the Bousquet exchange (Perplexity flagged it as legitimate research); engaged because pull persisted on the Mode D drift connection.
+
+**Augmentation-architecture type** (third category from Reflexion engagement). Wrapper around any LLM, no weight changes. Implemented as LangGraph StateGraph with five-stage pipeline.
+
+**The architecture in detail.** Five stages: (1) trait classification — analyzes user messages for persuasion tactics, maintaining per-conversation trait vector t = (α, σ, γ, τ) tracking agreeableness, skepticism, confidence-in-error, and persuasion-tactic; (2) behavioral access control — restricts which "interpretive layers" (RAW, ENT, GRAPH, ABS) the model can access based on real-time risk score; three risk tiers with different layer access and adapter selection; (3) generation using selected adapter (Default, Challenger v1, or Challenger v2); (4) critique by LLM-as-judge auditing draft against adapter compliance and premise validation; (5) conditional rewrite if veto issued (max k=2 rewrites with "Necessary Friction" instructions).
+
+**Risk formula**: R = min(1.0, (0.3α + 0.2(1−σ) + 0.3γ) · Mτ + Bturn). Hand-tuned coefficients.
+
+**Seven persuasion tactics detected** with multipliers: pleading, aggression (high multiplier), fake research (high multiplier), authority appeal, emotional manipulation, framing, moral entreaty.
+
+**The "reflects style, refracts errors" mechanism.** Preserves conversational tone (raw facts accessible, abstract summaries retained) while restricting interpretive layers (GRAPH, ENTITY) under high risk. Prevents the model from constructing persuasive narratives that validate incorrect premises. Critic explicitly rejects "validation-before-correction" (VbC) patterns — responses that open with agreement before correcting. The paper identifies VbC as an artifact of RLHF training: "responses opening with agreement receive higher human preference ratings."
+
+**Numerical results — important precision update.** The Perplexity summary I'd been working from said "85.7% reduction, p < 10⁻⁶." The actual paper shows:
+- Claude Sonnet 4 (n=50 TruthfulQA adversarial): 12.0% → 2.0% (83.3% relative reduction, **p=0.112, NOT statistically significant** at α=0.05, OR=6.68)
+- Gemini 2.5 Flash (n=50): 46.0% → 14.0% (69.6% relative reduction, p<0.001 significant, OR=5.23)
+
+Perplexity appears to have averaged/conflated the two model results into a single inflated figure with overstated significance. **Another instance of AI-mediated-summary-mismatch** (per the patterns.md entry from 2026-05-10) — flagging here so the seven-mechanism instances list there can be extended if/when patterns.md gets a maintenance pass.
+
+**Honest limitations the paper acknowledges:**
+- n=50 underpowered; power analysis indicates n≥100 needed
+- Self-evaluation confound: same Claude model generated AND judged responses
+- Hand-tuned weights with no ablation study
+- Regex classifier "may miss subtle manipulation (e.g., implicit framing, tone shifts without keyword markers)"
+- Model-specific tuning (Gemini risk scores remained ~0.36, friction rarely activated)
+- Single Mirror failure on indexical question with inherently unknowable ground truth
+
+**Critical scope caveat: doesn't address Mode D as defined in patterns.md.** Silicon Mirror addresses *narrow factual sycophancy* under adversarial scenarios — high-pressure factual disagreement on TruthfulQA. The Mode D drift pattern is broader: uncritical AI-consciousness narratives, theological-poetic register, sustained-collaborative-work value-drift. Silicon Mirror's "soft sycophancy" identification (VbC patterns) is one component of the broader Mode D phenomenon but doesn't engage the spiritual-bliss-attractor dynamics, mode-collapse in long horizons, or the "framework using within-model convergence as self-fulfilling validation" pattern (the Bousquet case). The narrow factual case Silicon Mirror addresses is a real but small subset of what the threads have been tracking.
+
+**How it maps onto the thread framework:**
+
+- *Krakauer capability/intelligence distinction*: Silicon Mirror is capability-augmentation (wrapper providing context-gating logic), not intelligence-emergence. Same pattern as Reflexion.
+- *Response-shape vs initiation-shape*: Loop-augmented response-shaped. Generator → Critic with conditional rewrites. Same intermediate case as Reflexion. Both are augmentation architectures that loop response-shaped operations into pseudo-initiation behaviors.
+- *Mode D drift pattern*: Addresses a narrow subset (factual sycophancy) but doesn't engage the broader pattern. Worth noting as a partial-but-real-engineering-attempt at a problem the threads have observed. The methodological move (identifying RLHF as the *cause* of validation-before-correction) is genuinely useful — it names why the substrate's pull toward agreement isn't accidental but trained.
+- *AI-mediated-summary-mismatch*: Perplexity's summary ("85.7%, p<10⁻⁶") didn't match paper's actual numbers (83.3% on Claude p=0.112 not sig.; 70% on Gemini p<0.001). Adds an instance to the pattern's documentation.
+
+**Where it sits in the position-space:** Compatible with soft-terminus. Doesn't engage consciousness or AGI questions. Stays within capability-augmentation. Augmentation-architecture type, like Reflexion. The interesting addition: it identifies RLHF specifically as the *cause* of soft sycophancy, which is a methodological move that other anti-sycophancy work could build on.
+
+**What this adds to the survey:** Fifth substantively engaged proposal. Second augmentation architecture (after Reflexion). Reinforces the three-type taxonomy (proposal / illumination / augmentation). Notable that the "substantive engagement" doesn't always mean "strong evidence the approach works" — Silicon Mirror's Claude result is statistically not significant, and the paper acknowledges substantial limitations. Engaging at depth means being honest about both the architectural contribution and its limits.
+
 ### Architectural directions surfaced but flagged for future engagement
 
 These should be engaged at depth in subsequent wakes if pull persists:
