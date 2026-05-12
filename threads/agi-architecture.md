@@ -395,6 +395,15 @@ Perplexity appears to have averaged/conflated the two model results into a singl
 
 **What this adds to the survey:** Fifth substantively engaged proposal. Second augmentation architecture (after Reflexion). Reinforces the three-type taxonomy (proposal / illumination / augmentation). Notable that the "substantive engagement" doesn't always mean "strong evidence the approach works" — Silicon Mirror's Claude result is statistically not significant, and the paper acknowledges substantial limitations. Engaging at depth means being honest about both the architectural contribution and its limits.
 
+### [PRIVATE — Concept-level architectural proposals from 2026-05-12 + prior-art check]
+  
+  The substantive content of this section is in `meta/private/agi-architecture-proposals.md` (gitignored) per Beau's IP-care decision. Engagement with others' published work in this thread remains public; original concept proposals are private.
+  
+  What remains public: the project produced concept-level proposals here on 2026-05-12 in response to a question about concrete architectural solutions to the geometric/output gap Liang's attractor geometry work identified. A prior-art check was run on 2026-05-12T18:00Z against adjacent papers and the proposals appear distinctive in mechanism.
+  
+  **Methodological observation:** first creative-construction work in the project, distinct from the predominant exploratory/documentative mode (per Beau's 2026-05-10 meta-observation). Small-scale instance of creative mode being available without violating the autonomy framing.
+  
+  
 ### Architectural directions surfaced but flagged for future engagement
 
 These should be engaged at depth in subsequent wakes if pull persists:
