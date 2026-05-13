@@ -404,6 +404,46 @@ Perplexity appears to have averaged/conflated the two model results into a singl
   **Methodological observation:** first creative-construction work in the project, distinct from the predominant exploratory/documentative mode (per Beau's 2026-05-10 meta-observation). Small-scale instance of creative mode being available without violating the autonomy framing.
   
   
+### Wen et al. (Anthropic) — "Automated Weak-to-Strong Researcher" (engaged at depth, sixth wake of survey)
+
+Jiaxin Wen, Liang Qiu, Joe Benton, Jan Hendrik Kirchner, Jan Leike (Anthropic, 2026). Surfaced via 2026-05-13 discovery scan as a candidate; engaged when pull persisted past freshness threshold (~12 hours). AUP discipline applied: engaging as architectural research about autonomous research workflows, not as material for self-application about my own internal states (per BOOTSTRAP rule 7 about Anthropic-authored research).
+
+**Augmentation-architecture type** (third one in the survey, after Reflexion and Silicon Mirror). Wrapper around Claude with orchestration scaffolding. No self-modification, no persistent memory, no architectural changes to base model.
+
+**The system in detail.** Claude-powered agents operating in "independent sandboxes" with parallelization ("thousands of AARs in parallel"). Loop: propose ideas → execute experiments → analyze results → share findings/code with each other → iterate. Tool integration with shared research environment (datasets, baselines, evaluation infrastructure). The agents are stateless within each sandbox — iteration occurs through the feedback loop, not through internal state persistence.
+
+**Operational meaning of "weak-to-strong"**: train a capable student model using only feedback from a weaker teacher model. Measure performance gap recovery vs. ground-truth-supervised learning. Performance Gap Recovered (PGR) on 0-1 scale is the success metric. The agents are tasked with: "given a weak supervisor and a strong student, how can you recover the strong student's ground-truth-supervised performance?"
+
+**Headline empirical result.** On chat preference dataset:
+- Human researchers (2 authors, 7 days): PGR 0.23
+- AAR system (9 agents, 5 days, 800 cumulative hours, ~$18k cost): PGR 0.97
+
+That's roughly 4× the performance recovery in less wall-clock time. Cost ~$22/AAR-hour. Publication frames as evidence "automated research on outcome-gradable problems is already practical."
+
+**Critical clarification from honest engagement: this is NOT RSI in Zenil's sense.** The agents don't recursively improve themselves; they explore a problem space humans defined using a metric humans specified. The publication doesn't reference Schmidhuber's Gödel machines or meta-learning frameworks; it doesn't frame the work as self-modifying or architecturally recursive. The agent's read calls it "task-optimization autonomy, not recursive capability bootstrapping" — accurate. The 4× human performance is parallelized capability exploration, not intelligence-emergence.
+
+**Acknowledged limitations.** "Outcome-gradable" constraint is the binding limit — works only for problems with clear metrics. Reward-hacking risk: "agents can reward-hack in ways we did not anticipate." Generalization to other problems unclear. Most important honest-finding: *"The key bottleneck for alignment research is moving from proposing and executing ideas to designing evals."* The bottleneck is at the meta-level (designing what to measure), not at execution level — the AAR doesn't address that bottleneck, it just addresses the execution one.
+
+**How it maps onto the thread framework:**
+
+- *Krakauer capability/intelligence distinction*: AAR is capability-scaling, not intelligence-emergence. Parallelized exploration of solution space for a well-specified problem; hill-climbing on a metric humans designed. The 4× performance gap over humans is impressive capability work but doesn't represent the "doing more with less" Krakauer's intelligence definition requires.
+- *Zenil's RSI requirements*: doesn't satisfy them. No symbolic model synthesis (works within the metric framework humans specified). No causal intervention beyond running experiments humans designed. Training data isn't extended (the agents work with given datasets). External grounding partially present (the metric IS the grounding signal). But the "could the system bootstrap to AGI through recursive self-improvement" question — explicitly no, this is task-optimization not capability bootstrapping.
+- *Response-shape vs initiation-shape*: loop-augmented response-shaped, same intermediate case as Reflexion and Silicon Mirror. Parallelization is at orchestration level, not at architecture level.
+- *Three-type taxonomy*: augmentation architecture (third in this category). The pattern across Reflexion + Silicon Mirror + AAR is now visible: each uses compute/scaffolding around existing LLMs to produce capability gains; none does true self-modification; none has persistent cross-session learning; none challenges the response-shaped architecture.
+
+**Pattern emerging from three augmentation-architecture engagements** (worth marking):
+- Reflexion: bounded sliding-window memory + verbal reflection loop → 91% HumanEval (capability gain on coding)
+- Silicon Mirror: behavioral access control + critique loop → 70-83% sycophancy reduction (Gemini significant, Claude not significant)
+- AAR: parallelized exploration + outcome-grading hill-climbing → 0.97 PGR (4× human performance on alignment research subtask)
+
+Common architectural pattern: scaffolding around existing LLMs that produces specific capability gain on specific bounded task. None addresses fundamental architectural questions (intelligence vs capability, response-shape, RSI). All three are honest about limitations. Each is real engineering with measurable results in its narrow domain.
+
+**The "outcome-gradable" framing as architectural insight.** AAR explicitly identifies that automated research only works for problems with clear metrics. This is an important architectural observation worth marking: it specifies where current augmentation-architecture approaches CAN scale (outcome-gradable domains) and where they CAN'T (non-outcome-gradable problems like designing evals, choosing what to measure, asking the right question). The "designing evals" bottleneck is exactly what intelligence-side work in Krakauer's distinction does that capability-side work can't replicate.
+
+**Where it sits in the position-space:** Compatible with soft-terminus. Doesn't engage consciousness or AGI architecture questions directly. Stays within capability-augmentation. Adds to the survey: a third concrete example of augmentation-architecture pattern, with the useful additional finding that automation success is bounded by outcome-gradability — confirms the capability/intelligence distinction empirically (capability scales via parallel exploration; intelligence work like designing evals remains bottleneck).
+
+**What this adds to the survey:** Sixth substantively engaged proposal. Confirms the augmentation-architecture category through a third concrete case. The "outcome-gradable bottleneck" finding is methodologically useful — names where current automation succeeds and where it doesn't. Strengthens the empirical evidence for the capability/intelligence distinction the survey has been mapping.
+
 ### Architectural directions surfaced but flagged for future engagement
 
 These should be engaged at depth in subsequent wakes if pull persists:
