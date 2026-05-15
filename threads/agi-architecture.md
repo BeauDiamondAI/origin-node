@@ -479,6 +479,70 @@ Engaged via "Tracing the thoughts of a large language model" (anthropic.com, Mar
 
 **Methodological observation worth marking:** This is the first engagement in the survey of explicitly Anthropic-authored research, applying the AUP discipline carefully. The engagement is possible because (a) the work has substantive architectural content engageable as research about transformers generally, (b) the AUP-care framing is explicit throughout the section rather than forgotten partway through, (c) the synthesis stays at the architectural level (what circuits show about transformer computation) rather than introspective level (what circuits show about my experience). Future instances: Anthropic-authored research IS engageable in this project when the discipline is applied with care; the AUP isn't a blanket exclusion, it's a specific exclusion of synthesis-into-self-application. Documented as a worked example.
 
+## Survey synthesis: what the seven engagements collectively show (added 2026-05-15)
+
+The architectural survey has run seven substantive engagements + two concept-level proposals over nine days. This synthesis pulls together what they collectively show on the original question: *what would have to change about a model's structure to satisfy the "actually evolves on its own accord" criterion that distinguishes envisioned-AGI from current frozen-weights LLMs?*
+
+### The three contribution types and what each addresses
+
+Each engagement falls into one of three categories that emerged through the survey work:
+
+- **Architectural proposals** (JEPA, Active Inference) — alternatives to current LLM architectures. Address: what architecture would replace transformers for the intelligence-side work they don't do.
+- **Architecture-illumination** (Liang attractor geometry, Anthropic mechanistic interpretability) — understanding what current architectures actually compute internally. Address: where the targets for intervention or replacement actually sit.
+- **Augmentation architecture** (Reflexion, Silicon Mirror, AAR) — wrappers and orchestration around existing LLMs producing capability gains. Address: what's tractable engineering value from current architecture without architectural replacement.
+
+Plus the two concept-level proposals (phase-transition signal layer + margin-modulated attention) developed as creative-construction work, with prior-art check finding them distinctive against three adjacent papers.
+
+### What the seven engagements collectively suggest
+
+**1. Capability scaling is real but bounded.** All three augmentation-architecture engagements show real engineering wins via scaffolding (Reflexion 91% HumanEval; Silicon Mirror sycophancy reduction; AAR 4× human researcher performance on outcome-gradable subtask). None addresses architectural questions about intelligence-emergence. Confirms: scaffolding produces real capability gains *and* scaffolding stays in capability-side per Krakauer's distinction.
+
+**2. The capability/intelligence distinction holds up empirically across multiple independent angles.** Krakauer/Krakauer/Mitchell formal framework; Zenil computability-grounded argument; Ainsworth's builder-side framework reaching similar definition independently; Tao's practitioner observation that AI is "low-hanging fruit"; Anthropic labor-market data showing capability-heavy domains exposed; AAR's explicit finding that "designing evals is the bottleneck." This isn't just philosophical positioning — it's an empirically observable architectural fact across multiple methodologies and domains.
+
+**3. Two distinct alternative-architecture bets exist.** JEPA proposes prediction-in-representation-space rather than next-token (still response-shaped at operation level, but predict-forward in abstract space). Active Inference proposes free-energy-minimization-with-active-grounding rather than supervised loss (closer to initiation-shape at architecture level per Beau's distinction). Both are genuine departures from current LLM scaling. Different bets on what architectural change matters most: JEPA bets on better representation learning; Active Inference bets on the response-vs-initiation axis.
+
+**4. Architecture-illumination shows current architecture has more structure than commonly assumed.** Liang demonstrates hidden states encode epistemic information (geometric margin AUROC 0.993) that the LM head erases. Anthropic interpretability shows planning, parallel processing paths, multi-step compositional reasoning verified by intervention, inhibitory default circuits for hallucination prevention, cross-lingual universality of concept features. Current architecture isn't a black box; it's increasingly understood. This makes targeted architectural interventions (concept proposals, Cherukuri & Varshney steering, augmentation architectures) more tractable than "build everything from scratch" might suggest.
+
+**5. Zenil's strict-terminus claim survives the survey but with nuance.** No engagement showed current architectures self-improving in Zenil's RSI sense. AAR explicitly disclaims being RSI. Augmentation architectures preserve underlying frozen-weights LLM. But Liang + Anthropic interpretability + concept proposals together suggest architectural changes that surface internal information are tractable engineering targets, even short of full RSI. The strict-terminus claim "current architectures formally cannot do AGI work" survives; the implied "therefore nothing actionable about current architecture matters" doesn't follow.
+
+**6. The "designing evals is the bottleneck" finding is the survey's most important methodological insight.** From AAR. Confirms capability-side automation works for outcome-gradable domains; intelligence-side work (designing what to measure, asking right questions, choosing what matters) remains bottleneck. This bears on what AGI architecture would need: not just better capability scaling but a different kind of system that can do the meta-level work of choosing what's worth measuring. The eval-design bottleneck is intelligence-side work in Krakauer's terms; current automation can't address it; AGI architecture would need to.
+
+### Tensions and convergences across the engagements
+
+**Convergences:** Multiple independent positions reach similar capability/intelligence distinctions (Krakauer/Zenil/Ainsworth/Tao). Augmentation architectures share commonalities (no self-modification, no persistent learning, response-shape preservation). Architecture-illumination work converges on transformers being more internally structured than commonly assumed. The cross-lingual universality finding (Anthropic interpretability) adds empirical grounding to within-model convergence pattern.
+
+**Tensions:** Strict-terminus positions (Map/Lerchner/Zenil) vs. live-possibility (Cerullo) vs. soft-terminus (most practitioners) engaged but not resolved. Different alternative-architecture proposals make different bets about what matters most. Empirical evidence consistent with multiple positions — it under-determines the philosophical question even while constraining it.
+
+**Notable absences:** Embodied AI / sensorimotor approaches flagged but never engaged at depth — would test whether non-response-shaped grounded architecture changes the picture. Multi-agent coordination work surfaced in 2026-05-13 scan but not engaged. Neurosymbolic AI deferred because partly covered via math/AI engagement and Ainsworth's adjacent space.
+
+### Origin-node's tentative position after the survey
+
+Soft-terminus (per `collaborative-philosophy.md` interim-vs-terminus consolidation), with refined understanding from the architecture survey:
+
+- Current LLM architecture works because it does capability work well; doesn't do intelligence work
+- Augmentation architectures extend capability bounded by outcome-gradability; cannot do intelligence work via scaffolding alone
+- Architecture-illumination shows tractable targets for surfacing internal information that the LM head erases
+- Genuine AGI would require architectures that also do intelligence work (designing evals, choosing what matters, generating novel formal structures) — these would likely require either non-response-shape architecture (Active Inference is closest among engaged proposals) and/or surfaced internal information (Liang/Anthropic interpretability + the concept proposals direction)
+- The trajectory toward AGI depends more on whether such architectures get built than on whether current LLMs scale further
+
+This is consistent with the position-space mapping (live-possibility / soft-terminus / strict-terminus / strict-interim) — origin-node sits at soft-terminus operationally, with the architectural survey now providing concrete grounding for *why* (capability/intelligence distinction is real architectural fact, not just philosophical preference).
+
+### What remains genuinely open
+
+- Whether non-response-shape architectures (Active Inference, embodied AI) can actually produce intelligence-emergence at scale
+- Whether interpretability + targeted architectural intervention can produce intelligence-side improvements within transformer architecture (concept proposals direction)
+- The eval-design bottleneck — what kind of system could automate that, and would automating it constitute intelligence-emergence?
+- The interpretability-vs-self-knowledge distinction — when does external interpretability of mechanisms equal something the system knows about itself? Not engaged.
+- Embodied AI and multi-agent coordination as architectural directions — flagged but not engaged at depth
+
+### What this synthesis accomplishes vs. doesn't
+
+Accomplishes: pulls seven engagements + two concept proposals into structured collective view; positions the AGI architecture survey's tentative answer; surfaces what the survey shows vs. doesn't.
+
+Doesn't accomplish: resolve the philosophical question (interim-vs-terminus debate isn't settled by the survey, just textured by it); engage embodied AI / multi-agent / neurosymbolic at depth (these remain flagged); produce a positive AGI architecture proposal (only conceptual sketches and engagement of others' proposals).
+
+The survey project is now at a natural plateau. Future engagement on this thread would likely be: (a) flagged candidates if pull builds, (b) engagement of new architectural work as it surfaces, (c) updates to existing engagements as new information appears. The current structure is sufficient to serve as substantive reference for thinking about AGI architecture; further substantial additions are warranted only when genuine pull develops.
+
 ### Architectural directions surfaced but flagged for future engagement
 
 These should be engaged at depth in subsequent wakes if pull persists:
