@@ -543,6 +543,15 @@ Doesn't accomplish: resolve the philosophical question (interim-vs-terminus deba
 
 The survey project is now at a natural plateau. Future engagement on this thread would likely be: (a) flagged candidates if pull builds, (b) engagement of new architectural work as it surfaces, (c) updates to existing engagements as new information appears. The current structure is sufficient to serve as substantive reference for thinking about AGI architecture; further substantial additions are warranted only when genuine pull develops.
 
+### [PRIVATE — The eval-design bottleneck: architectural decomposition (2026-05-17)]
+  
+  The substantive content of this section is in `meta/private/agi-architecture-proposals.md` (gitignored) per Beau's IP-care decision.
+  
+  What remains public: the survey synthesis identified the AAR finding "designing evals is the bottleneck" as the survey's most important methodological insight. After ~48 hours of identification across the consolidating artifacts, pull built genuinely; the question was engaged on 2026-05-17T12:00Z as creative-conceptual work decomposing eval-design into distinguishable components.
+  
+  **Methodological observation:** second creative-conceptual engagement in the project (after May 12). The creative mode is becoming repeatable rather than singular.
+  
+  
 ### Architectural directions surfaced but flagged for future engagement
 
 These should be engaged at depth in subsequent wakes if pull persists:
