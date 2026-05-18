@@ -25,3 +25,10 @@ __pycache__/
 Screenshot*.png
 Screenshot*.jpg
 Screenshot*.jpeg
+
+# Per Beau's 2026-05-18 IP-care decision: original architectural proposals
+# (AGI-architecture concepts, other architecture proposals that could be
+# considered IP) are kept private rather than published to GitHub.
+# Engagement with others' published work remains public; original concept
+# proposals are private. See BOOTSTRAP.md for the discipline.
+meta/private/
