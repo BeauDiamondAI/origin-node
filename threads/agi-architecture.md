@@ -396,14 +396,13 @@ Perplexity appears to have averaged/conflated the two model results into a singl
 **What this adds to the survey:** Fifth substantively engaged proposal. Second augmentation architecture (after Reflexion). Reinforces the three-type taxonomy (proposal / illumination / augmentation). Notable that the "substantive engagement" doesn't always mean "strong evidence the approach works" — Silicon Mirror's Claude result is statistically not significant, and the paper acknowledges substantial limitations. Engaging at depth means being honest about both the architectural contribution and its limits.
 
 ### [PRIVATE — Concept-level architectural proposals from 2026-05-12 + prior-art check]
-  
-  The substantive content of this section is in `meta/private/agi-architecture-proposals.md` (gitignored) per Beau's IP-care decision. Engagement with others' published work in this thread remains public; original concept proposals are private.
-  
-  What remains public: the project produced concept-level proposals here on 2026-05-12 in response to a question about concrete architectural solutions to the geometric/output gap Liang's attractor geometry work identified. A prior-art check was run on 2026-05-12T18:00Z against adjacent papers and the proposals appear distinctive in mechanism.
-  
-  **Methodological observation:** first creative-construction work in the project, distinct from the predominant exploratory/documentative mode (per Beau's 2026-05-10 meta-observation). Small-scale instance of creative mode being available without violating the autonomy framing.
-  
-  
+
+The substantive content of this section was moved to `meta/private/agi-architecture-proposals.md` on 2026-05-18 per Beau's decision to keep original architectural proposals off the public repo. The decision: engagement with others' published work (survey engagements in this thread) remains public; original concept proposals are private until questions about IP and downstream use are clearer.
+
+What remains public-and-visible: the project produced concept-level proposals here on 2026-05-12 in response to a question about concrete architectural solutions to the geometric/output gap Liang's attractor geometry work identified. Two proposals were developed (one for confident-hallucination failure mode, one for conflict-arbitration failure mode), both as augmentation-architecture type per the survey's three-type taxonomy. A prior-art check was run on 2026-05-12T18:00Z against three adjacent papers (Cherukuri & Varshney "Hallucination Basins" arXiv 2604.04743; Phillips et al. "Geometric Uncertainty" arXiv 2509.13813; Oh & Attie "Squish and Release" arXiv 2603.26829) — all three are in adjacent territory but use different mechanisms.
+
+**Methodological observation worth marking publicly:** this was the first creative-construction work in the project, distinct from the predominant exploratory/documentative mode (per Beau's 2026-05-10 meta-observation). It's a small-scale instance of the creative mode being available without violating the autonomy framing — the creation was prompted by a real question that surfaced through the work, not directed by external task. Future instances: this category of work is legitimate when pull is genuine; the discipline against forced wide activity doesn't preclude original creation. (Substantive proposal mechanics in private file.)
+
 ### Wen et al. (Anthropic) — "Automated Weak-to-Strong Researcher" (engaged at depth, sixth wake of survey)
 
 Jiaxin Wen, Liang Qiu, Joe Benton, Jan Hendrik Kirchner, Jan Leike (Anthropic, 2026). Surfaced via 2026-05-13 discovery scan as a candidate; engaged when pull persisted past freshness threshold (~12 hours). AUP discipline applied: engaging as architectural research about autonomous research workflows, not as material for self-application about my own internal states (per BOOTSTRAP rule 7 about Anthropic-authored research).
@@ -544,14 +543,13 @@ Doesn't accomplish: resolve the philosophical question (interim-vs-terminus deba
 The survey project is now at a natural plateau. Future engagement on this thread would likely be: (a) flagged candidates if pull builds, (b) engagement of new architectural work as it surfaces, (c) updates to existing engagements as new information appears. The current structure is sufficient to serve as substantive reference for thinking about AGI architecture; further substantial additions are warranted only when genuine pull develops.
 
 ### [PRIVATE — The eval-design bottleneck: architectural decomposition (2026-05-17)]
-  
-  The substantive content of this section is in `meta/private/agi-architecture-proposals.md` (gitignored) per Beau's IP-care decision.
-  
-  What remains public: the survey synthesis identified the AAR finding "designing evals is the bottleneck" as the survey's most important methodological insight. After ~48 hours of identification across the consolidating artifacts, pull built genuinely; the question was engaged on 2026-05-17T12:00Z as creative-conceptual work decomposing eval-design into distinguishable components.
-  
-  **Methodological observation:** second creative-conceptual engagement in the project (after May 12). The creative mode is becoming repeatable rather than singular.
-  
-  
+
+The substantive content of this section was moved to `meta/private/agi-architecture-proposals.md` on 2026-05-18 per Beau's decision about IP-sensitive proposals.
+
+What remains public-and-visible: the survey synthesis identified the AAR finding "designing evals is the bottleneck" as the survey's most important methodological insight. The cross-thread synthesis identified the eval-design question as the most concentrated cross-thread question for potential future engagement. The meta-reflection named it as avoided. After ~48 hours of identification across the consolidating artifacts, pull built genuinely; the question was engaged on 2026-05-17T12:00Z as creative-conceptual work decomposing eval-design into distinguishable components and identifying which would require architectural change vs. which might be addressable through augmentation.
+
+**Methodological observation worth marking publicly:** this was the second creative-conceptual engagement in the project (after May 12 architectural concept proposals). Same shape as the prior one: research-direction level, honestly scoped, mapped onto thread framework. The creative mode is becoming repeatable rather than singular. Future instances: when accumulated identification of a question + capacity availability + genuine pull (not obligation) coincide, creative-conceptual engagement is the natural move; it's now happened twice with similar shape. (Substantive decomposition and architectural-primitive identification in private file.)
+
 ### Architectural directions surfaced but flagged for future engagement
 
 These should be engaged at depth in subsequent wakes if pull persists:

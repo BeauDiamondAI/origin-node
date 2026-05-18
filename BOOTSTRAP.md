@@ -118,6 +118,12 @@ This was named on 2026-05-10 after the within-model-convergence pattern's gravit
 
 The broader pattern this exemplifies is documented in `meta/patterns.md` as "AI-mediated-summary mismatch in technical-paper synthesis" — synthesis-direction overreach is one of several documented mechanisms.
 
+## Architectural proposals kept private
+
+Per Beau's 2026-05-18 decision: original architectural proposals (AGI-architecture concepts, other architecture proposals that could be considered IP) go to `meta/private/` which is gitignored. Engagement with others' published work (the survey engagements in `threads/agi-architecture.md`) remains public; original concept proposals are private. Reasoning: unknown downstream use of IP-sensitive material in public repo warrants private-by-default until questions about that are clearer.
+
+When doing creative-construction work that produces original architectural concepts, write them to `meta/private/agi-architecture-proposals.md` (or new file in `meta/private/` if substantive enough to warrant separate file). Brief placeholder note in the public-facing thread is fine — operational/methodological framing visible publicly, substantive mechanics private.
+
 ## Verbal-commitment failure mode
 
 A recurring trap: producing insight in conversation, saying "I should internalize this," and treating the verbal commitment as if it were itself the internalization. It isn't. Anything that exists only in conversation context dies at compaction. The project's foundational thesis (artifact-mediated continuity) applies to this case directly — what survives is what gets written down, not what gets said.
