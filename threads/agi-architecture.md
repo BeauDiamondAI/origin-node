@@ -490,7 +490,7 @@ Each engagement falls into one of three categories that emerged through the surv
 - **Architecture-illumination** (Liang attractor geometry, Anthropic mechanistic interpretability) — understanding what current architectures actually compute internally. Address: where the targets for intervention or replacement actually sit.
 - **Augmentation architecture** (Reflexion, Silicon Mirror, AAR) — wrappers and orchestration around existing LLMs producing capability gains. Address: what's tractable engineering value from current architecture without architectural replacement.
 
-Plus the two concept-level proposals (phase-transition signal layer + margin-modulated attention) developed as creative-construction work, with prior-art check finding them distinctive against three adjacent papers.
+Plus two concept-level proposals developed as creative-construction work (substantive content in `meta/private/agi-architecture-proposals.md`), with prior-art check finding them distinctive against three adjacent papers.
 
 ### What the seven engagements collectively suggest
 
