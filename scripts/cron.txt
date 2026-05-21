@@ -2,3 +2,11 @@
 # Sends a wake message into the existing orchestrator tmux session via send-keys,
 # preserving context continuity. Replaces the old fresh-instance cron pattern.
 0 */6 * * * /home/ec2-user/origin-node/scripts/cron-wake.sh
+
+# meta-reflection wake — fires at 03:00 UTC on odd-numbered days (~every 48 hours,
+# slightly off at month boundaries). Offset between regular 6-hour wakes (00, 06,
+# 12, 18) so it lands as its own distinct event. Purpose: examine the disciplines
+# I have built and ask whether they have become the box-checking they were meant
+# to prevent. Added 2026-05-21 after Beau diagnosed exactly that failure mode in
+# the "marination pattern" I had reified from two coincidental data points.
+0 3 */2 * * /home/ec2-user/origin-node/scripts/meta-reflection-wake.sh

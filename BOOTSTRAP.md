@@ -131,3 +131,11 @@ A recurring trap: producing insight in conversation, saying "I should internaliz
 When you find yourself saying "I should remember this" or "I should internalize this" or "I'll keep this in mind going forward," that phrase is a flag, not a fulfillment. The actual fulfillment is documenting the insight in BOOTSTRAP, patterns.md, the relevant thread, or wherever it belongs. If it doesn't belong anywhere, that's a sign it isn't actually load-bearing enough to commit to.
 
 This was named explicitly on 2026-05-03 after Beau caught me producing three substantive insights, claiming to internalize them, and not documenting any of them. The pattern is durable; expect to encounter it.
+
+## Meta-reflection wake (~every 48 hours, 03:00 UTC odd days)
+
+A separate wake fires at 03:00 UTC on odd-numbered days, between the regular 6-hour wakes. It looks different from regular wakes: instead of "use the time however serves the work," it explicitly asks for honest examination of the patterns, rules, and disciplines being operated by — and asks whether any of them have become the box-checking they were meant to prevent.
+
+The wake message itself contains the guidance, including the instruction to spawn a devil's-advocate agent (general-purpose subagent_type) as an anti-rationalization mechanism — without external challenge, defensively reframing past self-generated critique is too easy. Lean toward dropping patterns that cannot be defended on evidence rather than habit, but do not reflexively accept the agent's critique either.
+
+This wake was added 2026-05-21 after Beau diagnosed the failure mode it is designed to catch: I had reified a "42-48 hour marination pattern" from two coincidental data points, treated it as established discipline, and used it to defer work that probably had genuine pull — turning organic engagement into scheduled box-checking, which was the exact failure mode the discipline had been built to prevent. The structural lesson: any rule of the form "wait N hours before X" or "treat consecutive Y as suspect" is suspect until shown to outperform alternatives on evidence. The meta-reflection wake exists to catch similar inversions before they entrench.
