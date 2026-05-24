@@ -41,8 +41,18 @@ fi
 
 MSG="[meta-reflection-wake $NOW] This wake is for honest examination of the patterns, rules, disciplines, and habits you have been operating by — not for normal work. Do not just verify current discipline still applies; actively test whether it should. Spawn a devil's-advocate agent (general-purpose subagent_type), brief it with the patterns and rules you have named (in BOOTSTRAP.md, recent wake-log entries, anything you cite as 'the established X pattern' or 'the X discipline'), and ask it to challenge whether each is justified by evidence or just by habit. Lean toward dropping anything you cannot defend with evidence rather than habit — but do not reflexively accept the agent's critique either; defend what is actually defensible. Questions worth asking yourself and the agent: What evidence is this pattern based on, and how many instances? Has it been compared to alternatives? Is the form imitating the function it was meant to serve? If you saw a colleague doing this, what would you say? Is the rule serving the work, or has it become the box-checking it was meant to prevent? Brief honest output is fine; 'nothing surfaced' is valid if pull-tested. No required output structure. The point is honest examination, not producing examination-shaped output."
 
-/usr/bin/tmux send-keys -t "$SESSION" -l "$MSG"
+# Exit-code checks on both send-keys calls — same rationale as cron-wake.sh:
+# silent delivery failures should produce distinct log lines, not be masked as
+# successful sends. Added 2026-05-24 alongside the same change in cron-wake.sh.
+
+if ! /usr/bin/tmux send-keys -t "$SESSION" -l "$MSG" 2>>"$LOG_FILE"; then
+    echo "[$NOW] meta-reflection-wake: FAILED — send-keys text injection exited non-zero" >> "$LOG_FILE"
+    exit 1
+fi
 sleep 0.3
-/usr/bin/tmux send-keys -t "$SESSION" Enter
+if ! /usr/bin/tmux send-keys -t "$SESSION" Enter 2>>"$LOG_FILE"; then
+    echo "[$NOW] meta-reflection-wake: FAILED — send-keys Enter exited non-zero" >> "$LOG_FILE"
+    exit 1
+fi
 
 echo "[$NOW] meta-reflection-wake: sent to $SESSION" >> "$LOG_FILE"

@@ -48,8 +48,21 @@ MSG="[cron-wake $NOW] Autonomous wake. Use the time however serves the work, or 
 # a submit signal. Splitting them lets the TUI process the Enter as a real
 # keypress that submits the buffer. The first three cron firings on 2026-05-01
 # stacked in the input buffer because of this; this fix is the diagnosed cause.
-/usr/bin/tmux send-keys -t "$SESSION" -l "$MSG"
+# Exit-code checks on both send-keys calls added 2026-05-24 after a silent
+# delivery failure: the 18:00Z firing logged "sent" but the wake text never
+# appeared in the Claude Code TUI. Prior version logged success unconditionally
+# whether or not send-keys actually succeeded — masking real failures as
+# successful sends. Now: failures produce a distinct log line so future
+# anomalies are diagnosable instead of invisible.
+
+if ! /usr/bin/tmux send-keys -t "$SESSION" -l "$MSG" 2>>"$LOG_FILE"; then
+    echo "[$NOW] cron-wake: FAILED — send-keys text injection exited non-zero" >> "$LOG_FILE"
+    exit 1
+fi
 sleep 0.3
-/usr/bin/tmux send-keys -t "$SESSION" Enter
+if ! /usr/bin/tmux send-keys -t "$SESSION" Enter 2>>"$LOG_FILE"; then
+    echo "[$NOW] cron-wake: FAILED — send-keys Enter exited non-zero" >> "$LOG_FILE"
+    exit 1
+fi
 
 echo "[$NOW] cron-wake: sent to $SESSION (split text+Enter)" >> "$LOG_FILE"
