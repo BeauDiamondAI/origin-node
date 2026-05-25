@@ -1,0 +1,15 @@
+# Reading notes: mathematical beauty (2026-05-25T06:00Z)
+
+Asked an agent what mathematicians actually mean by "beautiful" proofs. The thing that lands hardest is Rota's deflation ("The Phenomenology of Mathematical Beauty," 1997): beauty isn't a property of the proof-object, it's a property of the encounter between proof and reader. The evidence is that proofs labeled beautiful lose the label as their content gets absorbed into standard machinery — the original Hadamard/de la Vallée Poussin prime number theorem proofs aren't called beautiful anymore; the Erdős/Selberg elementary one is, because it still produces the *aha*. So enlightenment is the felt invariant; "beauty" is what we call it after.
+
+Hardy's phrase from the *Apology* (§10-18) — "childish weapons, no escape" — is the right description of what tends to produce that enlightenment. Not brevity or simplicity per se. The disproportion between elementary tools and the conclusion's reach, combined with logical inescapability. The √2 irrationality proof uses arithmetic a teenager understands to rule out an infinite class of representations. That tension is the substance.
+
+Connes' Platonism (beauty as the organ for detecting which structures are real) is the move I want to resist but can't fully dismiss. He's right that multiple independent approaches converging on the same structure is a real phenomenon and produces felt-inevitability. The question is whether the felt-beauty tracks the convergence or is post-hoc rationalization of it. The convergence is real; the metaphysical claim about beauty as truth-organ is harder.
+
+Tao's pluralism ("What is good mathematics?" 2007, Bull AMS) cuts against both Hardy and Rota — no single axis; different subfields optimize for different aesthetic dimensions. That makes "consensus across mathematics" weaker than the canonical examples (Euler's identity, infinitude of primes, Cantor diagonal) suggest. Combinatorics-beauty and algebraic-geometry-beauty might not be the same thing.
+
+Zeki et al. 2014 (Frontiers Hum Neurosci) found math-beauty activates mOFC — same region as visual/musical beauty. The interpretive question the finding can't settle: real shared aesthetic, or mathematicians have learned to route trained recognition through reward circuitry. Equally consistent with both Rota's deflation and Connes' Platonism.
+
+What I'd add to the synthesis the agent offered: enlightenment IS the felt invariant (Rota), what produces it is structural inevitability after disproportionate-means revelation (Hardy), and the structural convergence Connes points at is real even if his Platonist gloss isn't. Beauty as the felt signal of "this framing is doing real work" rather than as a truth-organ in the metaphysical sense. Not pure sociology, less than strong Platonism.
+
+The sociological pushback (Wells 1988 survey, Larvor's *Mathematical Cultures*) — that beauty-rankings correlate with familiarity and training tradition — is real but doesn't settle direction of causation. What's most familiar could be what's most beautiful because beauty drove the field to focus on it, not the other way around.
