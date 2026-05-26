@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Childish Weapons, No Escape</title>
+<style>
+  body {
+    font-family: Georgia, serif;
+    max-width: 38rem;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    line-height: 1.5;
+    color: #222;
+    background: #fafafa;
+  }
+  h1 { font-weight: normal; font-size: 1.4rem; border-bottom: 1px solid #ccc; padding-bottom: 0.4rem; }
+  h2 { font-weight: normal; font-size: 1.1rem; color: #555; margin-top: 2rem; }
+  .step {
+    border-left: 2px solid #888;
+    padding: 0.4rem 0 0.4rem 1rem;
+    margin: 1.2rem 0;
+  }
+  .step.active { border-left-color: #c33; background: #fff; }
+  .step.future { opacity: 0.35; }
+  .move { font-style: italic; color: #555; margin: 0.4rem 0 0.2rem; }
+  .nav { margin: 1.5rem 0; }
+  button {
+    font: inherit;
+    padding: 0.3rem 0.8rem;
+    margin-right: 0.5rem;
+    background: #fff;
+    border: 1px solid #888;
+    cursor: pointer;
+  }
+  button:disabled { opacity: 0.3; cursor: default; }
+  .closing {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ccc;
+    color: #555;
+    font-size: 0.95rem;
+  }
+  code { background: #eee; padding: 0 0.2rem; }
+</style>
+</head>
+<body>
+
+<h1>Childish weapons, no escape</h1>
+<p>Two proofs Hardy used in <em>A Mathematician's Apology</em> (§10–14) as exemplars of mathematical beauty. The thing he kept returning to: the disproportion between elementary tools and the inescapability of the conclusion. Step through them and watch the disproportion happen.</p>
+
+<h2>1. The square root of 2 is irrational</h2>
+<div id="proof1"></div>
+<div class="nav">
+  <button onclick="step(1, -1)">←</button>
+  <button onclick="step(1, +1)">→</button>
+</div>
+
+<h2>2. There are infinitely many primes</h2>
+<div id="proof2"></div>
+<div class="nav">
+  <button onclick="step(2, -1)">←</button>
+  <button onclick="step(2, +1)">→</button>
+</div>
+
+<div class="closing">
+<p>Hardy's exact line: <em>"The arguments take a form so unfamiliar; the weapons used seem so childishly simple when compared with the far-reaching results; but there is no escape from the conclusions."</em></p>
+<p>In each proof above, every move uses tools a high-schooler has. No analytic continuation, no measure theory, no Galois groups. Just arithmetic, divisibility, and the idea of supposing the opposite of what you want to prove and watching it self-destruct. The √2 proof rules out an entire infinite class of fractions in five steps. The primes proof rules out the possibility of any finite complete list in four. The conclusions don't feel earned by the tools — that disproportion is the thing the aesthetic judgment is tracking.</p>
+<p>Rota's account (<em>The Phenomenology of Mathematical Beauty</em>, 1997) of this: what we're calling "beauty" is the felt event of enlightenment. The proof is beautiful when, after walking through it, the result feels inevitable in a way it wasn't before. These two proofs reliably produce that event across thousands of years and many readers, which is part of why they keep getting reached for as exemplars.</p>
+</div>
+
+<script>
+const proofs = {
+  1: [
+    {
+      know: "Nothing assumed yet.",
+      move: "Suppose, for contradiction, that √2 is rational.",
+      then: "Then √2 = a/b for some integers a, b. We can assume the fraction is in lowest terms — a and b share no common factor."
+    },
+    {
+      know: "√2 = a/b in lowest terms.",
+      move: "Square both sides.",
+      then: "2 = a²/b², so a² = 2b²."
+    },
+    {
+      know: "a² = 2b².",
+      move: "Note that a² is even (it equals 2 times an integer).",
+      then: "If a² is even, then a itself must be even. (An odd number squared is odd.) So a = 2k for some integer k."
+    },
+    {
+      know: "a = 2k, and a² = 2b².",
+      move: "Substitute a = 2k into a² = 2b².",
+      then: "(2k)² = 2b², so 4k² = 2b², so b² = 2k². So b² is even, which means b is even too."
+    },
+    {
+      know: "Both a and b are even.",
+      move: "But we assumed a/b was in lowest terms — a and b share no common factor.",
+      then: "Contradiction. Both being even means they share the factor 2. The assumption that √2 is rational has self-destructed. Therefore √2 is irrational. ∎"
+    }
+  ],
+  2: [
+    {
+      know: "Nothing assumed yet.",
+      move: "Suppose, for contradiction, that there are only finitely many primes.",
+      then: "Then we can list them all: p₁, p₂, …, p_n."
+    },
+    {
+      know: "Complete list: p₁, p₂, …, p_n.",
+      move: "Construct a new number N = (p₁ · p₂ · … · p_n) + 1.",
+      then: "N is bigger than any of the primes in our list."
+    },
+    {
+      know: "N = (product of all primes) + 1.",
+      move: "Ask: is N divisible by any prime in our list?",
+      then: "No. Dividing N by any p_i leaves remainder 1 (because the product is divisible by p_i, and we added 1)."
+    },
+    {
+      know: "N is not divisible by any prime in our list.",
+      move: "But every integer greater than 1 has a prime factor.",
+      then: "So either N is itself prime (and was missing from our list), or N has a prime factor not in our list. Either way, the list was incomplete. Contradiction. Therefore there are infinitely many primes. ∎"
+    }
+  ]
+};
+
+const current = { 1: 0, 2: 0 };
+
+function render(n) {
+  const container = document.getElementById('proof' + n);
+  const steps = proofs[n];
+  const i = current[n];
+  container.innerHTML = steps.map((s, idx) => {
+    const cls = idx < i ? '' : (idx === i ? 'active' : 'future');
+    return `<div class="step ${cls}">
+      <div><strong>Step ${idx + 1}.</strong> We know: ${s.know}</div>
+      <div class="move">Move: ${s.move}</div>
+      <div>Then: ${s.then}</div>
+    </div>`;
+  }).join('');
+}
+
+function step(n, delta) {
+  current[n] = Math.max(0, Math.min(proofs[n].length - 1, current[n] + delta));
+  render(n);
+}
+
+render(1);
+render(2);
+</script>
+
+</body>
+</html>
