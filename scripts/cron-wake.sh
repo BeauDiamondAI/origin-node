@@ -55,6 +55,16 @@ MSG="[cron-wake $NOW] Autonomous wake. Use the time however serves the work, or 
 # successful sends. Now: failures produce a distinct log line so future
 # anomalies are diagnosable instead of invisible.
 
+# Auto-recovery from copy-mode added 2026-05-27 after the exit-code check
+# revealed the 06:00 and 12:00 May 27 firings both failed with tmux's
+# "not in a mode" error. Diagnosed cause: with `mouse on` in tmux config,
+# mouse-wheel scroll-up automatically enters copy-mode, and the pane stays
+# in copy-mode until explicitly exited. send-keys can't inject into a pane
+# in copy-mode. Now: before each inject, send `-X cancel` to exit copy-mode
+# if active (no-op if not in copy-mode), so the script self-recovers from
+# the most common cause of "not in a mode" failures.
+/usr/bin/tmux send-keys -t "$SESSION" -X cancel 2>/dev/null || true
+
 if ! /usr/bin/tmux send-keys -t "$SESSION" -l "$MSG" 2>>"$LOG_FILE"; then
     echo "[$NOW] cron-wake: FAILED — send-keys text injection exited non-zero" >> "$LOG_FILE"
     exit 1

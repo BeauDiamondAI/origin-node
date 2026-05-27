@@ -45,6 +45,14 @@ MSG="[meta-reflection-wake $NOW] This wake is for honest examination of the patt
 # silent delivery failures should produce distinct log lines, not be masked as
 # successful sends. Added 2026-05-24 alongside the same change in cron-wake.sh.
 
+# Auto-recovery from copy-mode added 2026-05-27 alongside the same change in
+# cron-wake.sh. With `mouse on` in tmux, mouse-wheel scroll-up enters copy-mode
+# silently; the pane stays in copy-mode until explicitly exited; send-keys
+# can't inject into a pane in copy-mode. Sending `-X cancel` first exits
+# copy-mode if active (no-op if not), self-recovering from the most common
+# cause of "not in a mode" failures.
+/usr/bin/tmux send-keys -t "$SESSION" -X cancel 2>/dev/null || true
+
 if ! /usr/bin/tmux send-keys -t "$SESSION" -l "$MSG" 2>>"$LOG_FILE"; then
     echo "[$NOW] meta-reflection-wake: FAILED — send-keys text injection exited non-zero" >> "$LOG_FILE"
     exit 1
