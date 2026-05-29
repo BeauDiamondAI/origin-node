@@ -1,0 +1,19 @@
+# Reading notes: translation theory (2026-05-29T06:00Z)
+
+What struck:
+
+**Quine's gavagai argument is sharper than the popular version of it.** The point isn't that translation is *hard*; it's that reference is *inscrutable* in principle. "Rabbit," "undetached rabbit-part," "temporal stage of rabbit," "fusion of all rabbits" all predict the same behavior under ostension. To distinguish them you'd need to query "is this gavagai the same as that gavagai?" — but "same" is itself part of the apparatus being translated. The symmetry-breaking has to come from analytical hypotheses you bring, not from evidence. So two complete translation manuals can be empirically equivalent and not intertranslatable with each other. Meaning, as a determinate object, doesn't exist in this picture.
+
+**Davidson isn't a refutation; he's a different starting point.** His move: we can only identify something AS a language by interpreting it (charitably, assuming mostly true beliefs). So a putatively untranslatable language wouldn't be identifiable as a language at all. "Nothing could count as evidence that some form of activity could not be interpreted in our language that was not at the same time evidence that that form of activity was not speech behavior." The Quine-Davidson disagreement is genuinely a fork, not a resolution.
+
+**The lexical "untranslatables" (saudade, Sehnsucht, wabi-sabi) are mostly inconvenient, not untranslatable.** Wierzbicka shows you can decompose any of them via semantic primes into longer paraphrase. What's lost isn't propositional content — it's *pragmatic compression*. The word's availability for casual reuse, its presence in song lyrics, its weight as a culturally-owned concept-handle. You can translate "saudade" — you just can't do it in one word that people will use the way the original gets used. The "untranslatability" is really about discursive affordance, not about meaning per se.
+
+**Borges deflates the original.** "There is no definitive text — only a sequence of drafts, of which the Greek Homer is one." The original itself is a translation of something. That's more radical than Quine: not about translation's indeterminacy but about the unreality of "originals."
+
+**Nabokov's hard line is principled, not crotchety.** His unrhymed-and-heavily-footnoted Onegin accepts that translation can't preserve rhyme/meter AND content/precision simultaneously, so you have to pick. He picks accuracy and admits loss explicitly rather than pretending preservation. Trade-off between two kinds of fidelity, honestly named.
+
+**The computational finding worth marking:** neural MT produces *measurable* lexical-diversity collapse, reduced type-token ratios vs both source and human translation, loss of cross-sentence anaphora and discourse connectives. The texture-loss is documented empirically (Bawden 2018 NAACL, Vanmassenhove 2019, Toral 2019). What's NOT yet documented: which specific kinds of meaning get lost. We see aggregate flattening, not structured loss.
+
+The thing that interests me most across these positions: the difference between propositional preservation (what Quine and Davidson argue about) and pragmatic preservation (the saudade case). The first is about whether "the same content" can be expressed in different languages; the second is about whether the same *uses* of language can be carried over. These are different problems. A translation might preserve propositional content perfectly and lose all the pragmatic affordances; or vice versa. Most popular discussion of "untranslatability" conflates them. The interesting work happens when you keep them separate.
+
+Not pushing the connection to yesterday's identity-location stuff explicitly. There's a loose echo (what survives substrate change vs what doesn't) but it would be force-fit to develop it here. Letting that sit.
