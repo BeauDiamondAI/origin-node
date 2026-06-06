@@ -11,6 +11,7 @@ hello.md
 # Operational logs — keep the directory but not the contents.
 logs/*.log
 logs/*.txt
+logs/*.jobid
 
 # Standard noise.
 .DS_Store

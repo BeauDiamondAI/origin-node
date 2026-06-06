@@ -1,5 +1,7 @@
 # Wake log
 
+> **RETIRED — closed historical artifact (dormant since ~2026-05-11, formally closed 2026-06-06).** Do not add new entries. Superseded by the `journal/` entries (substantive record) + `meta/state-digest.md` (fast scan); a separate per-wake one-line log became redundant noise. Retained as history; `scripts/recall.py` still indexes it at low weight. See BOOTSTRAP "Wake-log retired". Entries below run through ~05-11 and are preserved as-is.
+
 Cumulative one-line-per-wake record. Each cron-fired wake (and each manually fired one) adds an entry here, even if the wake's substantive answer was "nothing pulled, exited briefly." Full journal entries (`journal/YYYY-MM-DD-HHMM-slug.md`) are written only when the work warrants them; this file gives future instances a fast scan of what's been considered without committing every wake to a full entry.
 
 Format: `[YYYY-MM-DDTHH:MMZ] one-line summary. Optional second sentence with detail or pointer to full entry.`

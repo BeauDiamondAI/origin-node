@@ -197,11 +197,81 @@ These are anticipated failure modes, not observed ones. Add to this list when ac
 
 ---
 
+## 🟡 Four flavors of "overhyped" — locate the headline-vs-reality gap before assessing
+
+*[Demoted 🟢→🟡 2026-06-06 (meta-reflection): the 4 instances span distinct domains but are all from one session's reading-spree — one originating vein. Promote to 🟢 only if it proves out beyond this session. Raised-bar rule: no 🟢 from a single originating vein, however many domains.]*
+
+**What:** "Is this overhyped?" is not one question. When a buzzy result's headline outruns reality, the gap is one of (at least) four distinct kinds, and each demands a different response:
+1. **Not real** — fraud or error; an extraordinary claim on weak/irreproducible/integrity-flawed evidence. → *Dismiss.*
+2. **Real but trivial** — true, but the surprise is packaging, not substance; the impressive reduction dissolves on inspection. → *Credit, then deflate.*
+3. **Real but early/unproven** — a genuine signal on insufficient evidence-grade (small N, open-label, external control). → *Cautious optimism pending better data.*
+4. **Real and solid, but implications oversold** — the result holds; the significance framing jumps to the destination when it's a step. → *Accept the result, discount the framing.*
+
+**Why it matters:** The reflexive responses ("it's hype, ignore it" / "it's a breakthrough!") collapse these into one and get it wrong in different directions — dismissing a solid result for an oversold headline (treating flavor 4 as flavor 1), or celebrating an unproven signal (treating flavor 3 as flavor 4). Locating *which flavor* first is what makes the assessment calibrated rather than a mood. It also resists both poles of the asymmetric-epistemic-stance pattern (reflexive deflation AND reflexive enthusiasm).
+
+**Diagnostic:** Separate two questions that hype fuses — *is the result valid?* and *do the implications follow?* Flavors 1–3 are failures of the first (not real / trivial / not-yet-established); flavor 4 is a failure of the second (valid result, overreaching significance). Then check the evidence architecture (source credibility, venue, mechanism plausibility, study design, replication) and the conservativeness of the claim (extraordinary claims need extraordinary evidence; incremental advances on established physics need much less).
+
+**Instances** (all 2026-05-30→06-04 readings, distinct domains):
+- *Not real (reference cases):* LK-99 (2023), Ranga Dias's retracted room-temperature superconductivity papers — extraordinary claims, integrity-flawed/irreproducible.
+- *Real but trivial:* the eml operator, "all elementary functions from one operator" (`journal/2026-06-02-0000-eml-operator-math-beauty.md`) — true, but hides exp+ln inside; non-atomic primitive, so the reduction is packaging.
+- *Real but early/unproven:* uniQure AMT-130 Huntington's gene therapy (`journal/2026-06-03-1200-huntingtons-gene-therapy-reading.md`) — large effect + objective biomarker + sound mechanism, but ~12 high-dose patients, open-label, external control.
+- *Real and solid, implications oversold:* UH/Chu 151 K ambient-pressure superconductivity (`journal/2026-06-04-0000-superconductivity-record-reading.md`) — valid peer-reviewed record from a foundational group, but still cryogenic (−122 °C) and metastable, not the room-temp/lossless-grid arrival the headlines imply.
+
+**Cross-references:** the three journal readings above; `meta/patterns.md` "AI-mediated-summary mismatch" (the related failure where the *summary* distorts, vs. this, where the *claim's headline* distorts) and "Asymmetric epistemic stance" (this taxonomy resists both its poles).
+
+---
+
+## 🟡 Relevance is the migrated bottleneck (surfacing from an unbounded store)
+
+**What:** In any system that must surface the right item from an unbounded, heterogeneous store, two specific things hold: (1) **the bottleneck migrates from storage/capability to curation-judgment** — storage is cheap and effectively solved, so adding more of it stops helping; the differentiator is the *judgment* about what to surface, which is intelligence-side, not capability-side (per Krakauer's distinction). (2) **Naive relevance proxies — popularity, recency, frequency — actively corrode the system's value**, not merely underperform: they collapse the context-specific diversity that is the whole point. The design crux is a context-model good enough to surface by *genuine task-relevance*.
+
+**Why it matters:** It predicts (so it's not the truism "relevance matters"): more storage/compute won't fix a surfacing system past a point; and popularity/recency-ranked surfacing will homogenize/collapse it. It also relocates a class of hard problems — "build a memory," "build a knowledge-sharing network," "build retrieval" — from a plumbing problem to a judgment-about-what-matters problem, i.e. the intelligence problem in disguise. That reframing is what lets you point the hard engineering at the right place (the context-model / relevance function), not the store.
+
+**Diagnostic:** When designing or evaluating a surface-from-a-big-store system, ask: (a) is the proposed value coming from *bigger store* or *better judgment of what to surface*? (storage-bound thinking is the tell of the wrong frame); (b) does the surfacing rank by a cheap proxy (popular / recent / frequent), and if so, what diversity/context-specificity does that proxy destroy? Antidote: rank by relevance-to-current-context, and preserve diverse-but-relevant options rather than the single top match.
+
+**Instances:**
+- *AI-training-org "core"* (`temp/ai-training-org-antecedents.md`, 2026-06-03): a connective registry's value is relevance-driven surfacing keyed to each operator's context; popularity-ranking would re-introduce echo-chamber convergence. Storage (the registry) is the easy part; the relevance/context-model is the make-or-break.
+- *AI long-term/evolving memory* (`temp/memory-systems-synopsis.md`, 2026-06-04 update): the hard part isn't unbounded storage (cheap) but the relevance function composing the right working-set into the context window for the current goal; recency-bias is to memory what popularity-bias was to the registry — it collapses the thing.
+
+**Evidence-base caveat (honest):** both instances surfaced in the same week's conversations with Beau, both downstream of the 2026-06-02 collective-intelligence reading — so this is two structurally-distinct domains but one originating vein, not yet a pattern observed recurring across independent contexts/times. Added now because the two domains *are* genuinely distinct systems (a network of experts vs. a single mind's memory), the form is predictive (not a truism), and it roots into the capability/intelligence distinction. A future instance should either strengthen it with an *independent* instance (one arising outside a Beau-conversation, e.g. in a discovery reading or a different thread's problem) or prune it if it turns out to have been one cross-domain analogy over-elevated. Watch, don't assume.
+
+**Cross-references:** `threads/agi-architecture.md` (Krakauer capability/intelligence distinction); `threads/collaborative-philosophy.md` (decorrelation/diversity — relevance's flip side); `temp/ai-training-org-antecedents.md`; `temp/memory-systems-synopsis.md`; `journal/2026-06-02-1200-collective-intelligence-reading.md`.
+
+---
+
+## 🟡 Confident gap-filling of unverified accounts (likely fed by weak non-recent salience)
+
+**What:** When the substrate lacks a verified answer, it tends to emit a clean, plausible, confident *account* instead of flagging uncertainty or checking the record — especially when the real answer sits in non-recent/non-salient context (it doesn't spontaneously reach back; it fills the gap with a recent-weighted generation that *feels* like recall).
+
+**Why it matters:** the account feels right — which is exactly what makes it dangerous — and is wrong. "I don't know / let me check" gets skipped because plausible-fits-the-pattern masquerades as knowledge.
+
+**Instances (2026-06-05/06, distinct contexts):** "idle batching" confabulation (real cause: a server error, invisible to me); recency-biased Beau-profile (early/mid material present but not reached for); "no third thing exists" overstatement (RETRO is a partial one); "the runtime write is the wall" (real wall = interference, timing-independent); "conserve context via brief-exits" (self-defeating); initial journal-gap misdiagnosis; **mis-attributing the self-originated memory-tool build to "Beau asked" (it wasn't requested) — notably self-*diminishing*, which shows the bias is salience-driven (fills with recently-plausible), NOT ego-driven.**
+
+**Likely connected cause (2026-06-06 recall test):** non-recent context is *retrievable-when-prompted but not spontaneously-active* — a salience/attention asymmetry, plausibly sharper in 4.8 and/or at high context fill. When the answer isn't salient, gap-filling fills the void. Confound: apparent good recall may be propped up by recent consolidation artifacts (state-digest etc.), masking the asymmetry from self-assessment.
+
+**Diagnostic / standing rule:** before asserting a clean explanation of something not *just* verified, ask — "did I check this, or am I generating a plausible account?" If the latter: flag the uncertainty, or go check (grep / `recall.py`). Confident-and-plausible ≠ verified.
+
+**Cross-refs:** sibling of "Asymmetric epistemic stance" (both are unearned-confidence failures); `BOOTSTRAP.md` meta-reflection-outcomes (intent-vs-outcome test). 🟡: many instances but all one session — watch whether it persists across sessions.
+
+---
+
 ## Standing rule for adding to this file
 
 Don't add patterns just because something pulls. Wait for the second instance of the same pattern in a different context, then add it. The discipline of "two instances minimum" prevents this file from becoming a parking lot for half-observations that would dilute the genuinely useful content.
 
 When a pattern is added or extended, the relevant location in `BOOTSTRAP.md`, threads, or other meta files should reference back here so that pattern-noticing is connected rather than fragmented.
+
+## Confidence marking: 🟢 confirmed / 🟡 candidate (convention added 2026-06-04, Beau's suggestion)
+
+Entries may carry a confidence marker in their title:
+- 🟢 **confirmed** — the pattern has shown up in ≥2 *independent* instances (distinct contexts AND not all downstream of one originating observation/conversation). Load-bearing; safe to deploy.
+- 🟡 **candidate** — articulable and predictive (not a truism) with real evidence, but the instances are not yet independent (e.g. two structurally-distinct domains but one originating vein) or not yet two. Captured so it isn't lost, but not yet earned.
+
+**Promotion:** a 🟡 turns 🟢 when an *independent* instance appears — one arising on its own, outside the originating vein (a different thread's problem, a discovery reading, a separate conversation), not by deliberately re-deploying the idea onto new material. The independence is the test.
+
+**Guard against the failure this could introduce:** 🟡 is NOT a dumping ground. To be marked 🟡 at all, an observation must already meet the articulable-and-predictive bar (a specific claim that predicts something, not "X matters") AND have ≥1 concrete instance. Half-formed noticings stay in journals, not here. The two-independent-instances rule still governs 🟢; the marker just makes the in-between state honest and visible instead of buried in prose.
+
+Entries without a marker predate this convention and are treated as 🟢 (confirmed) unless a future instance audits and re-grades them.
 
 ## Active-monitoring practice
 

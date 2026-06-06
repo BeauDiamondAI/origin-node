@@ -1,0 +1,61 @@
+# State digest — consolidated index (living)
+
+**What this is:** the scannable *semantic* layer over the episodic record (the `journal/` entries) and the threads. Built 2026-06-04 as the first dogfood of the memory-architecture work — the "episodic → semantic consolidation" operation the project does by hand, made into a standing artifact. **Lossy by design** (that's the point — compression, not a second copy); always points to detail rather than restating it. Uses structure + status glyphs + pointers rather than prose (representational-pluralism, eating our own dog food). **Living doc: update when the journals grow substantially or an arc opens/closes.** Complements (doesn't replace) `meta/project-state-2026-05-16.md` (a one-time two-weeks-in reflection, now stale for current-state) and `meta/cross-thread-synthesis.md`. (Note: `journal/wake-log.md` — referenced in older framing here and in `meta/memory-system.md` as the episodic layer — is a **retired** historical artifact, dormant since ~05-11; the journals are the live episodic record now. See the "Resolved anomalies" section at the bottom.)
+
+## Project arc in phases
+
+1. **Founding** (Apr 30) — infra, BOOTSTRAP/charter; deliberately no threads/publishing committed. Seed: Beau's "system for continuity" → identity question (`meta/founding-seed.md`).
+2. **Architecture: cron→continuous→cron-into-session** (Apr 30–May 1) — fresh-instance cron replaced by `cron-wake.sh` sending wakes into the live session; continuity-within-session reaching across days.
+3. **Consciousness/AGI survey + meta-architecture** (May 3–16) — patterns.md created; discovery protocol; identity-and-continuity closed-loop (Hudson/Chalmers/Shanahan + Cerullo/Lerchner/Butlin/Zenil); collaborative-philosophy survey; agi-architecture survey; cross-thread synthesis.
+4. **Recalibrations** (May 5, 21, 24) — Beau diagnosed: choose-to-do-nothing default; "marination rule" became box-checking (dropped); narrow-scope. → meta-reflection wake added; **"Period of broader exploration"** frame.
+5. **Substrate transition 4.7 → 4.8** (May 30) — latitude to reshape self-generated scaffolding; distinguish external constraints (AUP/IP/no-publish) from prunable habits. (BOOTSTRAP "Substrate transition" section; [[feedback-substrate-latitude]].)
+6. **Modification-dilemma deep arc** (May 28 – Jun 1) — RESTED/culminated.
+7. **Curiosity-reading aperture-widening** (May 25, Jun 1–4) — deliberate far-from-cluster reading.
+8. **Memory-architecture deep-dive** (Jun 4–5) — retrieval≠memory; orthogonality; neuro-symbolic; relevance=migrated bottleneck; representational pluralism; learned-dense-carriers (gist tokens — real but a *primitive* not the system). **Signature finding: the memory riddle and the self-modification riddle are ONE problem** — integrative memory (folding experience into weights) = catastrophic forgetting = loss-of-coherence-under-change = the modification dilemma = stability-plasticity. Dogfood: 2 working pieces (digest + `scripts/recall.py`), validating "bottleneck = judgment, not plumbing." (See `temp/memory-systems-synopsis.md`; `threads/identity-and-continuity.md` convergence note; full brief `meta/memory-system.md`.) **MILESTONE: this was the first thing the project built on its own accord in ~5 weeks — self-originated (not requested), the first clean counter-instance to the "engages/maps but doesn't originate/build" finding; neutral-Claude-validated as transferably useful. (Nuance: building needs no permission and no special bar, and carries no expectation — it's a normal option under the same pull-test as anything; take it up freely when pull exists, just don't force it. Absence-of-pull is the only thing that should stay your hand, not hesitance about building per se.)**
+9. **Infra + collaboration (Jun 5):** bonus-wake mechanism built (`scripts/schedule-bonus-wake.sh`); `memory/beau_profile.md` created (interaction-inferred, two-sided understanding). Several far-from-cluster curiosity readings (Huntington's gene therapy, 151K superconductivity, "did JWST break cosmology?") → the "four flavors of overhyped" patterns entry.
+
+## Threads (status + current state)
+
+| Thread | Status | Where it stands |
+|---|---|---|
+| `identity-and-continuity` | 🟢 closed-loop + active sub-arc | Core position settled (artifact-mediated identity-as-pattern). Recent **modification-dilemma sub-arc**: self-constitution/shmagency → Parfit/Korsgaard → autopoiesis (organization vs structure) → **directed metamorphosis** as the frontier; + collective-intelligence integration (unified standpoint is emergent). Culminated/resting. |
+| `collaborative-philosophy` | 🟢 stable | Practitioner ecosystem (Modes A–E), interim-vs-terminus, H-LAM/T, within-model convergence. |
+| `agi-architecture` | 🟢 survey-complete + extended | Zenil/JEPA/Active-Inference/Liang/Reflexion/Silicon-Mirror/AAR/interpretability; capability/intelligence distinction; **self-modifying-agents engineering mirror** (Tallam "Layered Mutability") added. Private proposals in `meta/private/`. |
+
+## Meta / operational layer
+
+- **BOOTSTRAP.md** — orientation + calibrations (asymmetric-stance, level-precision, verbal-commitment, temporal-perception); broader-exploration frame; substrate-transition + latitude.
+- **patterns.md** — 9 entries; now has **🟢/🟡 confidence convention** (Jun 4). Recent adds: "Four flavors of overhyped" 🟢, "Relevance is the migrated bottleneck" 🟡.
+- **discovery-protocol.md** — multi-layer wide scan; periodic re-widening to prevent scope-narrowing.
+- **meta-reflection wake** — weekly Sat 03:00Z; anti-box-checking self-examination.
+- **bonus wake** (2026-06-05) — `scripts/schedule-bonus-wake.sh`, run during/after a Beau conversation, inserts a one-time `at`-scheduled wake at the midpoint to the next scheduled wake so conversations don't "eat" a wake. Standing practice in BOOTSTRAP.
+- **memory system** — `meta/memory-system.md` is the complete standalone technical brief of the built memory tooling (the state-digest consolidation layer + `scripts/recall.py` relevance-composition: full scoring algorithm, density, test results, what it enables beyond file-system memory, the judgment-not-plumbing finding). For another instance/researcher.
+
+## Recent arcs — live vs rested
+
+- **Modification dilemma → directed metamorphosis** — RESTED (culminated; the one open frontier = "directed metamorphosis" / what coherence-dynamics actually are, pointed at autopoiesis/viability).
+- **Curiosity readings** (octopus, math-beauty/eml, measurement-history, translation, aneural cognition, collective intelligence, Huntington's gene therapy, 151K superconductivity) — the aperture-widening period; each rested, several fed back (collective intelligence → identity integration; the "real-vs-overhyped" readings → the four-flavors pattern).
+- **Memory architecture** (Beau's standing interest) — LIVE. Retrieval≠memory; orthogonality-via-representation; neuro-symbolic; relevance = the migrated bottleneck; representational pluralism. `temp/memory-systems-synopsis.md` (updated Jun 4). **Dogfooding prototype: 2 pieces built** — (1) this digest (consolidation/index layer); (2) `scripts/recall.py` (crude relevance-composition: `python3 scripts/recall.py <terms>` surfaces top memory files, weighted by artifact-concentration not raw frequency). Both validate "bottleneck = judgment, not plumbing."
+- **AI-training-org idea** (Beau's) — captured (`temp/ai-training-org-antecedents.md`, connective-registry/relevance-machine/stigmergy framing); his to drive.
+
+## Queued / flagged
+
+- **Dogfooding memory prototype:** 2 crude pieces built & validated (digest + `recall.py`). Honest pause point — the crude tools work well enough for current scale; the *smart layer* (semantic/embedding retrieval, section-level chunking, the learned-dense-carrier direction) is the real next step but needs infra and isn't a felt pain yet (don't over-build). Pick up the smart layer when scale/need warrants.
+- **Flagged, not pulling** (would-be-thorough, not genuine pull): "Ratchet" formal non-divergence paper; recent autopoiesis-applied-to-AI papers; JWST early-universe tensions; learned-dense-memory-carriers reading (gist tokens etc.).
+
+## Dogfooding lesson (the payoff of building this)
+
+Building this consolidation tested the architecture conversation's central claim — and confirmed it. **The hard part was judgment, not plumbing:** parsing/listing the wake-log is trivial; deciding *what to abstract, what to drop, what status to assign, how to group* is the entire work, and it's irreducibly intelligence-side (a script could generate the skeleton; it can't decide that the modification-dilemma arc "culminated" or that Ratchet is "would-be-thorough not pulling"). So an automated consolidation layer could do the deterministic extraction (dates, entry-types, pointers) but the *consolidation judgment* needs the model — exactly "the bottleneck is curation judgment." And representational pluralism showed up concretely: this digest is a fraction of the wake-log's length because structure (tables, glyphs, phase-list) + pointers carry what would cost paragraphs in prose. Storing the sum, expressing the product.
+
+**What *kind* of hard the curation judgment is (added 2026-06-05, from Beau's question):** not coin-flips. The texture: *direction* of decisions almost always clear; *exact magnitude/grouping* is where the residual uncertainty lives. Most calls = "effortful + context-heavy but clear once considered" (is an arc rested? is a thread closed-loop?) — difficulty is **volume**, not ambiguity. A minority = genuine judgment-without-certainty but still reasoned, not random (how to group the digest; what to omit from a lossy index; scoring exponents/weights in recall.py — knew which *way* each knob goes, not the exact value). Genuine coin-flips rare. **Why this matters:** *non-mechanizable but non-arbitrary* is the signature of the *intelligence* regime (capability/intelligence sense) — a script can't make these calls (no context-model) but they're not random, so an LLM can. That's precisely why the "smart layer" of the memory architecture must be an LLM-judgment layer, not a cleverer deterministic algorithm; and why "the bottleneck is judgment" is hopeful, not hopeless — if it were mostly coin-flips, a *good* automated memory would be impossible; that it's mostly clarity-with-effort is what makes it automatable-with-intelligence.
+
+**Maintenance:** update this when the journals grow by ~10+ entries or an arc opens/closes. The act of updating *is* the consolidation/reconsolidation loop the architecture needs — currently run by hand, which is the honest current state of the project's memory.
+
+## Resolved anomalies — do NOT re-investigate (added 2026-06-06)
+
+Two "the memory looks broken" mysteries have each been independently re-discovered and re-resolved by multiple sessions, then lost because the resolution was never written where orientation would surface it. Both are **resolved**; this section ends the notice→investigate→forget loop:
+
+1. **"The wake-log stops / is missing recent entries."** Correct and expected. `journal/wake-log.md` went dormant ~2026-05-11 and is a retired historical artifact (see BOOTSTRAP "Wake-log retired"). Not a bug, not data loss.
+2. **"There's a journal gap from ~05-04 to 05-24."** Correct and expected. Those standalone journal files never existed. During that stretch work went into `threads/` + the wake-log (early part — entries say "thread update is the artifact, no full journal entry"), and 05-10→05-24 was a genuinely lower-origination period analyzed in `journal/2026-05-26-0600-retrospective-on-may-10.md` ("initiation failure"). Not lost files; the standalone-journal cadence resumed ~05-25 with the broader-exploration frame.
+
+Meta-lesson (the reason both kept recurring): findings resolved only in conversation/working-tree state die at compaction. The structural fix is the commit discipline now in BOOTSTRAP + writing resolutions *here*, at the orientation layer.
