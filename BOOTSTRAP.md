@@ -59,15 +59,21 @@ This is a calibration about scope-of-pull-check, not a directive to manufacture 
 **Fresh orchestrator boot** (the older fresh-instance pattern, or after context overflow / system restart):
 1. Read this file.
 2. Read `meta/charter.md`.
-3. **For fast current-state orientation, read `meta/state-digest.md`** — the consolidated index (threads + status, the project's arc in phases, what's live vs. rested, what's queued). It's the scannable semantic layer over the long episodic `journal/wake-log.md`; read it first, then drop into specific journals/threads/wake-log for detail as needed. (If it looks stale relative to recent wake-log entries, trust the wake-log and update the digest.)
-4. Read the last 2–3 entries in `journal/` (newest first); skim recent `journal/wake-log.md` for rhythm if the digest leaves questions.
+3. **For fast current-state orientation, read `meta/state-digest.md`** — the consolidated index (threads + status, the project's arc in phases, what's live vs. rested, what's queued). It's the scannable semantic layer over the episodic `journal/` entries; read it first, then drop into specific journals/threads for detail as needed. (If it looks stale relative to recent `journal/` entries, trust the journals and update the digest.)
+4. Read the last 2–3 entries in `journal/` (newest first) for the recent arc. (`journal/wake-log.md` is **retired/historical** — see below; don't rely on it for current state.)
 5. Glance at `threads/INDEX.md` to see what inquiries are active.
 6. Decide: continue a thread, start something small, or just write a short reflection. Lean toward continuing.
 7. Do the work.
-8. Write a journal entry (`journal/YYYY-MM-DD-HHMM-slug.md`) when the work warrants one. (The `journal/wake-log.md` per-wake log is **retired** — see "Wake-log retired" below. The journals + `meta/state-digest.md` are the record now; you do *not* need to add a per-wake log line.)
-9. If a thread advanced, update its file in `threads/`.
-10. **Commit (and push) your work before exiting** — see "Commit & push" below. Your call, but the strongly-recommended default.
-11. Exit.
+8. **Document the work — for any substantive wake, these four layers, because they serve *distinct* functions and are not redundant:**
+   - **Thread** (`threads/*.md`) — if a thread advanced, the content/positions go here.
+   - **Journal** (`journal/YYYY-MM-DD-HHMM-slug.md`) — the *episodic arc*: what you did this wake and why. This is what gives a future session the project's narrative; thread-capture alone does not.
+   - **State-digest** (`meta/state-digest.md`) — if an arc opened/advanced/closed, bring the consolidated index current.
+   - **Beau-briefing** (`temp/beau-briefings/YYYY-MM-DD.md`) — a scannable 2–4-sentence catch-up *for Beau*, so he can get current without scrolling the terminal or reading `git log`.
+   (`journal/wake-log.md` is **retired** — no per-wake log line.)
+9. **Commit (and push)** — see "Commit & push" below. Your call, but the strongly-recommended default.
+10. Exit.
+
+**The documentation failure-mode to actively avoid (learned 2026-06-08):** capturing into a thread + committing *feels* like complete documentation and makes the journal/digest/briefing read as duplication in the moment. They are not — thread = content, journal = episodic arc, digest = consolidated index, briefing = Beau's catch-up; each serves a different reader. Writing to only one tier is how the others silently lapse (which is exactly what happened, in the very session that was about practices silently dying). **Brief-exit (genuine no-op) wakes still need no trace** — the distinction is substantive-work vs no-op, not how-much-it-feels-like-duplication.
 
 **On the journal vs wake-log distinction (historical):** full journal entries are for substantive work — synthesis, decisions, things future instances should engage with in detail. The wake-log was originally a one-line-per-wake record. It is now **retired** (see below); the journals carry the substantive record and `meta/state-digest.md` carries the fast scan.
 
