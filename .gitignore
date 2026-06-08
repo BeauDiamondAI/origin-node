@@ -33,3 +33,8 @@ Screenshot*.jpeg
 # Engagement with others' published work remains public; original concept
 # proposals are private. See BOOTSTRAP.md for the discipline.
 meta/private/
+
+# Local conversation transcripts (Beau's `/export` output). Verbatim transcripts —
+# local-only, never published. One was accidentally committed 2026-06-08 and removed.
+*origin-node-conversation.txt
+*-conversation.txt
