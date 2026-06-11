@@ -131,6 +131,12 @@ Building both pieces tested one claim and confirmed it: **the bottleneck is cura
 
 ---
 
+## 6b. Third dogfood — `scripts/refs.py` (the dependency layer, 2026-06-11)
+
+A third crude tool, completing **consolidation** (state-digest) → **relevance** (recall.py) → **dependency** (refs.py). Stdlib, literal path-matching; parses the corpus's explicit cross-references into a forward/reverse graph (`refs.py <file>` = "what points at X, so might go stale if I change X"; plus `--orphans`, `--stale <commit>`). Built to dogfood the **dependency-self-model** the directed-metamorphosis arc named as the missing piece for safe self-modification (`identity-and-continuity.md` move 5; `agi-architecture.md` dependency-self-model verification).
+
+**The finding — §6's principle, a third confirmation.** The structural graph is trivially extractable (plumbing); the reverse-dep query is genuinely useful and actionable. But it cannot tell a *live* dependency (X's correctness depends on Y's current content) from a *dead/historical* mention — `--stale` massively over-flags — and it is blind to *implicit conceptual* dependencies (reliance on a claim without naming the file's path). Both gaps are the same ones the knowledge-editing literature found (ripple effects; "Does Localization Inform Editing?" → knowing-where ≠ editable) and the same **judgment-not-plumbing** shape recall.py found for relevance. So a crude dependency-tracker doesn't *close* the dependency-self-model gap — it *locates* it: structure is plumbing; live-vs-dead and implicit-conceptual is judgment. Deliberately left crude (no heuristics to suppress the over-flagging — that would fake-solve the judgment problem with more plumbing). Full write-up: `journal/2026-06-11-0600-refs-dependency-dogfood.md`.
+
 ## 7. What a fuller version would add (the smart layer, honestly paused)
 
 Not built, because the crude version works for current scale and the smart layer needs infra that isn't yet a felt pain (avoiding the over-build trap):
