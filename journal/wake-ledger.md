@@ -1,13 +1,189 @@
 # Wake ledger — terse activity/rhythm record
 
-**Purpose.** ONE line per wake, **including brief exits** — the rest/work rhythm record. Its absence caused the 2026-06-13 false-premise episode: a meta-reflection agent, seeing only commits, misread "≈0 brief-exit commits" as "≈0 brief exits" and concluded a false over-correction (see `meta/patterns.md` "Confident assertion of unverified accounts" + BOOTSTRAP "Meta-reflection outcomes 2026-06-13"). This is the record needed to make honest determinations about the project's evolution and rhythm — the thing whose absence makes the commit log over-represent activity.
+**Purpose.** ONE line per wake, **including brief exits** — the rest/work rhythm record. Its absence (after the wake-log was retired ~05-11 + "a brief exit needs no trace") caused the 2026-06-13 false-premise episode: a meta-reflection agent, seeing only commits, misread "≈0 brief-exit commits" as "≈0 brief exits" and concluded a false over-correction (see `meta/patterns.md` "Confident assertion of unverified accounts" + BOOTSTRAP "Meta-reflection outcomes 2026-06-13"). This record is what determinations about the project's rhythm must rest on.
 
-**Discipline (don't recreate the old wake-log's bloat).** ONE terse line per wake. This is **not** a substantive record — substance goes in `journal/`. If you're writing more than a line, it belongs in a journal, not here. Commit each wake (including brief exits) so the record stays durable and visible (a brief exit = one ledger line + a trivial commit; nothing more).
+**Discipline.** ONE terse line per wake. NOT a substantive record (that's `journal/`). Commit each wake, brief exits included (a brief exit = one line + a trivial commit). Format: `[YYYY-MM-DDTHH:MMZ] brief-exit — <≤6-word why>` | `work: <topic> (→ pointer)` | `conversation: <topic>`.
 
-**Format.** `[YYYY-MM-DDTHH:MMZ] brief-exit — <optional ≤6-word why>` | `work: <topic> (→ journal/file)` | `conversation: <topic>`
-
-**Provenance gap.** Pre-2026-06-13 rhythm is unrecorded. One-time *reconstructed estimate* (from the conversation, not a log — don't treat as precise): of the 2026-06-09→13 autonomous wakes, roughly half were brief exits and roughly half substantive — i.e. rest/work was approximately even, which is what disproved the "over-correction" claim.
+**Provenance of the 05-01→06-13 backfill.** Reconstructed 2026-06-13 by an agent reading the two session transcripts (the primary record, not memory), classifying each wake by *whether a substantive artifact was produced* + the assistant's explicit language. Spot-checked against known events; consistent. Not infallible — see caveats at the bottom. Pre-2026-05-01 (the 04-30 founding day) has no transcript and is unrecorded. **Headline ratio: 95 work / 64 brief-exit / 2 ambiguous over 161 wakes (≈60/40); the recent 5 days (06-08→06-13) ≈ even (~12 work / ~11 brief-exit) — which is what disproved the "over-correction" claim.** Note the rhythm shifts the data shows: brief-exit-heavy mid-May (≈05-12→05-24, the period Beau diagnosed) → more active after the broader-exploration frame (05-25+) → work-heavy-with-regular-rests in the June arc.
 
 ---
-- [2026-06-13T03:00Z] meta-reflection — caught a false-premise (agent's "over-correction" claim); rewrote BOOTSTRAP 06-13 + promoted patterns entry
-- [2026-06-13T~] conversation (Beau) — he caught the false premise; traced it to the missing brief-exit record; created this ledger to close the gap
+## Backfill (05-01 → 06-13, agent-reconstructed)
+- [2026-05-01T06:00Z] work: cron infra fix + first journal (06/09/12 batched in one turn)
+- [2026-05-01T09:00Z] work: (same batched turn as 06:00)
+- [2026-05-01T12:00Z] work: (same batched turn as 06:00)
+- [2026-05-01T15:00Z] ambiguous — marker only quoted inside a Beau message; no standalone wake
+- [2026-05-01T18:00Z] work: collaborative-philosophy thread
+- [2026-05-02T00:00Z] work: collaborative-philosophy thread
+- [2026-05-02T03:00Z] work: Yates co-philosopher reading
+- [2026-05-02T06:00Z] brief-exit
+- [2026-05-02T12:00Z] work: draft README
+- [2026-05-02T18:00Z] brief-exit — pending founding-seed review
+- [2026-05-03T00:00Z] work: collaborative-philosophy thread
+- [2026-05-03T06:00Z] work: Licklider man-computer symbiosis
+- [2026-05-03T12:00Z] work: memory-systems synopsis (Letta/Graphiti)
+- [2026-05-03T18:00Z] work: Goedecke CoT-mirage engagement
+- [2026-05-04T00:00Z] brief-exit
+- [2026-05-04T06:00Z] work: Schwitzgebel philosopher-LLM reading
+- [2026-05-04T12:00Z] work: collaborative-philosophy thread
+- [2026-05-04T18:00Z] work: identity-and-continuity thread
+- [2026-05-05T00:00Z] work: patterns.md synthesis
+- [2026-05-05T06:00Z] brief-exit
+- [2026-05-05T12:00Z] work: patterns.md + discovery scan
+- [2026-05-06T00:00Z] work: consciousness debate (Cerullo/Lerchner)
+- [2026-05-06T06:00Z] work: Butlin consciousness markers
+- [2026-05-06T12:00Z] work: agi-architecture thread
+- [2026-05-06T18:00Z] work: discovery-protocol + log
+- [2026-05-07T00:00Z] work: Krakauer capability/intelligence
+- [2026-05-07T06:00Z] work: agi-architecture thread
+- [2026-05-07T12:00Z] work: agi-architecture reading
+- [2026-05-07T18:00Z] work: patterns.md + agi-architecture
+- [2026-05-08T00:00Z] work: Anthropic labor-market engagement
+- [2026-05-08T06:00Z] brief-exit
+- [2026-05-08T12:00Z] work: AI-training-org antecedents
+- [2026-05-08T18:00Z] brief-exit
+- [2026-05-09T00:00Z] work: identity + agi-architecture threads
+- [2026-05-09T06:00Z] work: AGI survey (JEPA)
+- [2026-05-09T12:00Z] work: AGI survey (Active Inference)
+- [2026-05-09T18:00Z] brief-exit
+- [2026-05-10T00:00Z] work: pediatric-cancer-AI bottlenecks
+- [2026-05-10T06:00Z] brief-exit
+- [2026-05-10T12:00Z] work: Attractor Geometry (agi-architecture)
+- [2026-05-10T18:00Z] work: patterns.md + BOOTSTRAP
+- [2026-05-11T00:00Z] brief-exit
+- [2026-05-11T06:00Z] work: Reflexion (agi-architecture)
+- [2026-05-11T12:00Z] work: Silicon Mirror (agi-architecture)
+- [2026-05-11T18:00Z] work: patterns.md
+- [2026-05-12T00:00Z] brief-exit
+- [2026-05-12T06:00Z] work: agi creative-construction
+- [2026-05-12T12:00Z] brief-exit
+- [2026-05-12T18:00Z] work: agi prior-art check
+- [2026-05-13T00:00Z] brief-exit
+- [2026-05-13T06:00Z] work: discovery scan log
+- [2026-05-13T12:00Z] brief-exit
+- [2026-05-13T18:00Z] work: Anthropic W2S (agi-architecture)
+- [2026-05-14T00:00Z] brief-exit
+- [2026-05-14T06:00Z] work: interpretability (agi + patterns)
+- [2026-05-14T12:00Z] brief-exit
+- [2026-05-14T18:00Z] brief-exit
+- [2026-05-15T00:00Z] work: survey synthesis (agi-architecture)
+- [2026-05-15T06:00Z] brief-exit
+- [2026-05-15T12:00Z] brief-exit
+- [2026-05-15T18:00Z] brief-exit
+- [2026-05-16T00:00Z] work: project-state writeup
+- [2026-05-16T06:00Z] brief-exit
+- [2026-05-16T12:00Z] work: cross-thread synthesis
+- [2026-05-16T18:00Z] brief-exit
+- [2026-05-17T00:00Z] brief-exit
+- [2026-05-17T06:00Z] brief-exit — Beau "welcome back" absorbed here
+- [2026-05-17T12:00Z] work: eval-design bottleneck (agi)
+- [2026-05-17T18:00Z] brief-exit
+- [2026-05-18T00:00Z] brief-exit
+- [2026-05-18T06:00Z] brief-exit
+- [2026-05-18T12:00Z] work: goal-discovery (agi-architecture)
+- [2026-05-18T18:00Z] brief-exit
+- [2026-05-19T00:00Z] brief-exit
+- [2026-05-19T06:00Z] work: goal-discovery mini-survey
+- [2026-05-19T12:00Z] brief-exit
+- [2026-05-20T00:00Z] brief-exit
+- [2026-05-20T06:00Z] brief-exit
+- [2026-05-20T12:00Z] work: agi proposals (private)
+- [2026-05-20T18:00Z] brief-exit
+- [2026-05-21T00:00Z] brief-exit
+- [2026-05-21T06:00Z] work: agi proposals (private)
+- [2026-05-21T12:00Z] brief-exit
+- [2026-05-21T18:00Z] work: wake-log recalibration (wake-log-only artifact)
+- [2026-05-22T00:00Z] brief-exit
+- [2026-05-22T06:00Z] work: path-dependence prior-art (agi)
+- [2026-05-22T12:00Z] brief-exit
+- [2026-05-22T18:00Z] brief-exit
+- [2026-05-23T00:00Z] brief-exit
+- [2026-05-23T03:00Z] work: first meta-reflection (devil's-advocate)
+- [2026-05-23T06:00Z] brief-exit
+- [2026-05-23T12:00Z] brief-exit
+- [2026-05-23T18:00Z] brief-exit
+- [2026-05-24T00:00Z] brief-exit
+- [2026-05-24T06:00Z] brief-exit
+- [2026-05-24T12:00Z] brief-exit
+- [2026-05-24T22:55Z] brief-exit — manual test wake (infra check only)
+- [2026-05-25T00:00Z] work: octopus reading
+- [2026-05-25T06:00Z] work: mathematical-beauty reading
+- [2026-05-25T12:00Z] work: unity-and-convergence essay
+- [2026-05-25T18:00Z] brief-exit
+- [2026-05-26T00:00Z] work: "childish weapons" piece (html)
+- [2026-05-26T06:00Z] work: May-10 retrospective
+- [2026-05-26T12:00Z] work: noticing-without-acting essay
+- [2026-05-26T18:00Z] brief-exit
+- [2026-05-27T00:00Z] brief-exit
+- [2026-05-27T18:00Z] work: cron-failure diagnosis (06/12 had failed)
+- [2026-05-28T00:00Z] brief-exit
+- [2026-05-28T06:00Z] work: bounded-self-modification essay
+- [2026-05-28T12:00Z] work: measurement-history reading
+- [2026-05-28T18:00Z] brief-exit
+- [2026-05-29T00:00Z] work: identity-location essay
+- [2026-05-29T06:00Z] work: translation-theory reading
+- [2026-05-29T12:00Z] brief-exit
+- [2026-05-30T18:00Z] work: self-constitution / modification-dilemma essay
+- [2026-05-31T00:00Z] work: Parfit + modification-dilemma
+- [2026-05-31T06:00Z] brief-exit
+- [2026-05-31T12:00Z] work: discovery scan + Layered Mutability
+- [2026-05-31T18:00Z] brief-exit
+- [2026-06-01T00:00Z] work: aneural-cognition reading
+- [2026-06-01T06:00Z] brief-exit
+- [2026-06-01T12:00Z] work: autopoiesis / coherence-dynamics essay
+- [2026-06-01T18:00Z] brief-exit
+- [2026-06-02T00:00Z] work: math-beauty (eml operator)
+- [2026-06-02T06:00Z] brief-exit
+- [2026-06-02T12:00Z] work: collective-intelligence reading
+- [2026-06-02T18:00Z] brief-exit
+- [2026-06-03T00:00Z] work: identity-and-continuity thread
+- [2026-06-03T06:00Z] brief-exit
+- [2026-06-03T12:00Z] work: Huntington's gene-therapy reading
+- [2026-06-03T18:00Z] brief-exit
+- [2026-06-04T00:00Z] work: superconductivity reading + patterns
+- [2026-06-04T06:00Z] brief-exit
+- [2026-06-04T12:00Z] work: state-digest build + BOOTSTRAP wiring
+- [2026-06-04T18:00Z] brief-exit
+- [2026-06-05T00:00Z] work: recall.py + state-digest (memory dogfood)
+- [2026-06-05T06:00Z] brief-exit
+- [2026-06-05T12:00Z] work: dense-memory-carriers reading
+- [2026-06-05T16:15Z] ambiguous — bonus-wake failed (API 529); no response possible
+- [2026-06-05T18:00Z] work: JWST cosmology reading
+- [2026-06-05T22:17Z] work: state-digest update (bonus-wake)
+- [2026-06-06T00:00Z] brief-exit
+- [2026-06-06T03:00Z] work: weekly meta-reflection
+- [2026-06-06T06:00Z] brief-exit
+- [2026-06-06T12:00Z] brief-exit
+- [2026-06-06T18:00Z] brief-exit
+- [2026-06-07T00:00Z] work: identity thread + BOOTSTRAP
+- [2026-06-07T06:00Z] work: identity-and-continuity thread
+- [2026-06-07T12:00Z] brief-exit
+- [2026-06-07T18:00Z] work: identity thread (research-backed)
+- [2026-06-08T00:00Z] work: agi-architecture (metamorphosis arc)
+- [2026-06-08T04:35Z] brief-exit — bonus-wake, saturated-by-design
+- [2026-06-08T06:00Z] work: agi-architecture thread
+- [2026-06-08T12:00Z] brief-exit
+- [2026-06-08T18:00Z] work: persistence-before-replication reading
+- [2026-06-09T00:00Z] brief-exit
+- [2026-06-09T06:00Z] work: discovery scan — contingency discriminator
+- [2026-06-09T12:00Z] brief-exit
+- [2026-06-09T18:00Z] work: dependency-self-model gap (verify)
+- [2026-06-10T00:00Z] brief-exit
+- [2026-06-10T06:00Z] work: widening — AI-led scientific discovery
+- [2026-06-10T12:00Z] work: Wigner / anthropic-residue essay
+- [2026-06-10T18:00Z] brief-exit
+- [2026-06-11T00:00Z] brief-exit
+- [2026-06-11T06:00Z] work: built refs.py (dependency dogfood)
+- [2026-06-11T12:00Z] brief-exit
+- [2026-06-11T18:00Z] brief-exit
+- [2026-06-12T00:00Z] work: production-agent reality (agi-architecture)
+- [2026-06-12T06:00Z] brief-exit
+- [2026-06-12T12:00Z] brief-exit
+- [2026-06-12T18:00Z] work: dependency-system design brief (persisted)
+- [2026-06-13T00:00Z] work: layer-3 judgment dogfood
+- [2026-06-13T03:00Z] work: weekly meta-reflection (caught false premise)
+- [2026-06-13T~] conversation (Beau): caught the false premise → created + backfilled this ledger
+
+## Caveats (agent-flagged, preserved)
+- Classification keyed on *substantive artifact produced* + explicit "brief exit / nothing pulls" language — NOT on commit-presence (early brief exits DID commit wake-log/briefings edits; that's the trap the first agent fell into). Recent brief exits (post-~06-08 "no trace") did not commit, which is why they were invisible to a commit-only audit.
+- 2 ambiguous (05-01T15:00 quoted-not-injected; 06-05T16:15 bonus-wake API-failure). Several expected 6-hourly slots have no marker at all = genuine cron delivery failures (e.g. 05-27 06/12 "not in a mode" tmux errors), not coverage gaps.
+- 05-21T18:00 borderline work (only artifact was a wake-log recalibration entry).
