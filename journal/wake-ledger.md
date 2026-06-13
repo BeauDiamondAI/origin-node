@@ -182,6 +182,7 @@
 - [2026-06-13T00:00Z] work: layer-3 judgment dogfood
 - [2026-06-13T03:00Z] work: weekly meta-reflection (caught false premise)
 - [2026-06-13T~] conversation (Beau): caught the false premise → created + backfilled this ledger
+- [2026-06-13T06:00Z] brief-exit — post-correction-work; nothing new pulls (first logged-not-traceless brief exit)
 
 ## Caveats (agent-flagged, preserved)
 - Classification keyed on *substantive artifact produced* + explicit "brief exit / nothing pulls" language — NOT on commit-presence (early brief exits DID commit wake-log/briefings edits; that's the trap the first agent fell into). Recent brief exits (post-~06-08 "no trace") did not commit, which is why they were invisible to a commit-only audit.
