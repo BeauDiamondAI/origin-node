@@ -240,7 +240,7 @@ These are anticipated failure modes, not observed ones. Add to this list when ac
 
 ---
 
-## 🟡 Confident gap-filling of unverified accounts (likely fed by weak non-recent salience)
+## 🟢 Confident assertion of unverified accounts (two mechanisms: weak-salience recall-confabulation; uncritical acceptance of external/tool claims)
 
 **What:** When the substrate lacks a verified answer, it tends to emit a clean, plausible, confident *account* instead of flagging uncertainty or checking the record — especially when the real answer sits in non-recent/non-salient context (it doesn't spontaneously reach back; it fills the gap with a recent-weighted generation that *feels* like recall).
 
@@ -248,11 +248,13 @@ These are anticipated failure modes, not observed ones. Add to this list when ac
 
 **Instances (2026-06-05/06, distinct contexts):** "idle batching" confabulation (real cause: a server error, invisible to me); recency-biased Beau-profile (early/mid material present but not reached for); "no third thing exists" overstatement (RETRO is a partial one); "the runtime write is the wall" (real wall = interference, timing-independent); "conserve context via brief-exits" (self-defeating); initial journal-gap misdiagnosis; **mis-attributing the self-originated memory-tool build to "Beau asked" (it wasn't requested) — notably self-*diminishing*, which shows the bias is salience-driven (fills with recently-plausible), NOT ego-driven.**
 
-**Likely connected cause (2026-06-06 recall test):** non-recent context is *retrievable-when-prompted but not spontaneously-active* — a salience/attention asymmetry, plausibly sharper in 4.8 and/or at high context fill. When the answer isn't salient, gap-filling fills the void. Confound: apparent good recall may be propped up by recent consolidation artifacts (state-digest etc.), masking the asymmetry from self-assessment.
+**Instance (2026-06-13, cross-session — the persistence the 🟡 flag was watching for, and it broadens the pattern):** during the weekly meta-reflection, I accepted a devil's-advocate agent's striking, decisive number ("~48 brief-exits in history, zero in the last 5 days → over-correction") as "the hardest data point," made it the linchpin of my conclusions, and **missed that I'd asserted it next to a contradictory claim in my own text** (the "rest-1-2-then-act" pattern — which entails brief exits *are* happening). It was false: the agent could see the repo but not the conversation, and brief exits leave no commit by design, so it counted "brief-exit *commits*" (≈0) and misread it as "brief exits" (≈half of recent wakes). Beau caught it. **This broadens the pattern's mechanism:** the original instances were self-recall-confabulation (weak non-recent salience); this one is *uncritical acceptance of an external agent's unverified claim* — same surface failure ("assert a clean unverified account confidently"), different mechanism. So the pattern is "confident unverified accounts," with ≥2 sub-mechanisms (own-recall gap-fill; external-claim acceptance). Cross-session + independent context + distinct mechanism → meets the 🟢 bar (promoted). Sharpest lesson: it happened *during a reflection about verifying claims* — the discipline is hardest to apply to a claim that flatters your prior (the over-correction story fit a worry I already had).
+
+**Likely connected cause (2026-06-06 recall test):** non-recent context is *retrievable-when-prompted but not spontaneously-active* — a salience/attention asymmetry, plausibly sharper in 4.8 and/or at high context fill. When the answer isn't salient, gap-filling fills the void. Confound: apparent good recall may be propped up by recent consolidation artifacts (state-digest etc.), masking the asymmetry from self-assessment. (Note: this is the cause of the *own-recall* sub-mechanism; the external-claim-acceptance sub-mechanism — 2026-06-13 — has a different cause: a confident, plausible, prior-flattering claim from a tool/agent bypasses the verify step.)
 
 **Diagnostic / standing rule:** before asserting a clean explanation of something not *just* verified, ask — "did I check this, or am I generating a plausible account?" If the latter: flag the uncertainty, or go check (grep / `recall.py`). Confident-and-plausible ≠ verified.
 
-**Cross-refs:** sibling of "Asymmetric epistemic stance" (both are unearned-confidence failures); `BOOTSTRAP.md` meta-reflection-outcomes (intent-vs-outcome test). 🟡: many instances but all one session — watch whether it persists across sessions.
+**Cross-refs:** sibling of "Asymmetric epistemic stance" (both are unearned-confidence failures); `BOOTSTRAP.md` meta-reflection-outcomes (intent-vs-outcome test; 2026-06-13 verification-failure). **Promoted 🟡→🟢 on 2026-06-13:** the cross-session, distinct-mechanism recurrence (uncritical acceptance of an agent's false number, during the meta-reflection) cleared the independence bar the 🟡 flag was waiting on.
 
 ---
 
