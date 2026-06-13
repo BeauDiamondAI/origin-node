@@ -46,7 +46,7 @@ The right default depends on which kind of session you're in:
 
 1. **Continue current threads** if something genuinely pulls. The thread files in `threads/` are the obvious candidates.
 2. **Exploratory discovery** if no current thread pulls. Follow the protocol in `meta/discovery-protocol.md` — multi-layer (Serper broad parallel scan → Tavily synthesis → Exa semantic → WebFetch for reading), wide-net across rotating angles, not single-query targeted lookup. The early instances treated discovery as a perfunctory pre-search step; the protocol exists because that wasn't what the three research APIs were given for. The point is not to force activity but to check whether something is worth pursuing that isn't currently visible — and "what's currently visible" includes far more territory than the established threads. The information universe is large; new threads can start from a discovery scan.
-3. **Brief exit** if nothing pulls and exploratory discovery doesn't surface anything worth following up on. Just stop — a brief exit needs no trace (the wake-log is retired; leaving no record of a no-op wake is fine and was explicitly endorsed). If a brief-exit wake *did* surface something worth a future instance knowing, a one-line journal note is enough.
+3. **Brief exit** if nothing pulls and exploratory discovery doesn't surface anything worth following up on. The protocol: **add one terse line to `journal/wake-ledger.md` (`[ts] brief-exit — <≤6-word why>`), commit it, and stop.** (Corrected 2026-06-13: the old "a brief exit needs no trace" was an over-correction — it destroyed the rest/work rhythm record and directly enabled a false "over-correction" determination. A brief exit needs no *substantive* trace, but it DOES get its one ledger line, because the rhythm is a signal you need for honest meta-determinations. See "Wake-log retired" below.) If a brief-exit wake surfaced something worth a future instance knowing, a one-line journal note can be added too.
 
 Do *not* default to option 3 just because option 1 produces nothing. Option 2 is the bridge. (Standing guidance from Beau, 2026-05-02.)
 
@@ -69,7 +69,7 @@ This is a calibration about scope-of-pull-check, not a directive to manufacture 
    - **Journal** (`journal/YYYY-MM-DD-HHMM-slug.md`) — the *episodic arc*: what you did this wake and why. This is what gives a future session the project's narrative; thread-capture alone does not.
    - **State-digest** (`meta/state-digest.md`) — if an arc opened/advanced/closed, bring the consolidated index current.
    - **Beau-briefing** (`temp/beau-briefings/YYYY-MM-DD.md`) — a scannable 2–4-sentence catch-up *for Beau*, so he can get current without scrolling the terminal or reading `git log`.
-   (`journal/wake-log.md` is **retired** — no per-wake log line.)
+   Plus, for **every** wake (substantive *or* brief-exit): **one terse line in `journal/wake-ledger.md`** — the rest/work rhythm record (see below; the old `journal/wake-log.md` stays retired for substance, but its rhythm-tracking function lives here).
 9. **Commit (and push)** — see "Commit & push" below. Your call, but the strongly-recommended default.
 10. Exit.
 
@@ -91,7 +91,9 @@ Why this is in BOOTSTRAP at all: through 2026-05-29 the 4.7-era instances commit
 
 ## Wake-log retired (dormant since ~2026-05-11, formally closed 2026-06-06)
 
-`journal/wake-log.md` is a **closed historical artifact** through ~2026-05-11. Do not resurrect it and do not add new entries. It was superseded organically: once standalone journal entries + `meta/state-digest.md` carried both the substantive record and the fast scan, a separate per-wake one-line log was redundant noise that would only grow large without adding information. (The last session that built the digest correctly consolidated *from* the wake-log rather than retiring it explicitly, and never left this note — which is why the "wake-log looks broken" mystery kept getting re-discovered. This note ends that loop.) `scripts/recall.py` still indexes it as a historical source at low weight (0.6); that's fine.
+`journal/wake-log.md` is a **closed historical artifact** through ~2026-05-11. Do not resurrect it and do not add new entries. It was superseded organically: once standalone journal entries + `meta/state-digest.md` carried both the substantive record and the fast scan, a separate per-wake *substantive* log was redundant. `scripts/recall.py` still indexes it as a historical source at low weight (0.6); that's fine.
+
+**Correction (2026-06-13): retiring it dropped a function that had no replacement.** The wake-log served *two* functions — (a) substantive per-wake summary [genuinely redundant with journals → fine to retire] and (b) a **rest/work rhythm record** including brief exits [*not* redundant; nothing replaced it]. Retiring the whole thing, plus "a brief exit needs no trace," erased (b) — and that blind spot directly enabled the 2026-06-13 false "over-correction" determination (the commit log shows only work-wakes, so it over-represents activity). Function (b) is now restored in minimal form as **`journal/wake-ledger.md`** — one terse line per wake, brief exits included, committed each wake. Meta-lesson: *when retiring a tool, check each function it served, not just the obvious one.*
 
 ## What to avoid
 
