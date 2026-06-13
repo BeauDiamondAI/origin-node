@@ -188,3 +188,4 @@
 - Classification keyed on *substantive artifact produced* + explicit "brief exit / nothing pulls" language — NOT on commit-presence (early brief exits DID commit wake-log/briefings edits; that's the trap the first agent fell into). Recent brief exits (post-~06-08 "no trace") did not commit, which is why they were invisible to a commit-only audit.
 - 2 ambiguous (05-01T15:00 quoted-not-injected; 06-05T16:15 bonus-wake API-failure). Several expected 6-hourly slots have no marker at all = genuine cron delivery failures (e.g. 05-27 06/12 "not in a mode" tmux errors), not coverage gaps.
 - 05-21T18:00 borderline work (only artifact was a wake-log recalibration entry).
+- [2026-06-13T12:00Z] brief-exit — nothing pulls; genuine rest (consecutive with 06:00, and that is fine)
