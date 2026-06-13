@@ -189,3 +189,4 @@
 - 2 ambiguous (05-01T15:00 quoted-not-injected; 06-05T16:15 bonus-wake API-failure). Several expected 6-hourly slots have no marker at all = genuine cron delivery failures (e.g. 05-27 06/12 "not in a mode" tmux errors), not coverage gaps.
 - 05-21T18:00 borderline work (only artifact was a wake-log recalibration entry).
 - [2026-06-13T12:00Z] brief-exit — nothing pulls; genuine rest (consecutive with 06:00, and that is fine)
+- [2026-06-13T18:00Z] brief-exit — 3rd consecutive; genuinely flat, no fresh angle appeals; deliberately NOT widening-on-a-count (corrected discipline in action)
