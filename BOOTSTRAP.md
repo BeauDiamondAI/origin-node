@@ -59,7 +59,7 @@ This is a calibration about scope-of-pull-check, not a directive to manufacture 
 **Fresh orchestrator boot** (the older fresh-instance pattern, or after context overflow / system restart):
 1. Read this file.
 2. Read `meta/charter.md`.
-3. **For fast current-state orientation, read `meta/state-digest.md`** — the consolidated index (threads + status, the project's arc in phases, what's live vs. rested, what's queued). It's the scannable semantic layer over the episodic `journal/` entries; read it first, then drop into specific journals/threads for detail as needed. (If it looks stale relative to recent `journal/` entries, trust the journals and update the digest.)
+3. **For fast current-state orientation, read `meta/state-digest.md`** — the consolidated index (threads + status, the project's arc in phases, what's live vs. rested, what's queued). It's the scannable semantic layer over the episodic `journal/` entries; read it first, then drop into specific journals/threads for detail as needed. (If it looks stale relative to recent `journal/` entries, trust the journals and update the digest.) **Then read `meta/session-handoff.md`** — the live conversation-frontier: candidates and context surfaced in conversation but not yet pursued/captured (the volatile layer the digest doesn't hold). Anything there is a pull-test candidate, not a commitment.
 4. Read the last 2–3 entries in `journal/` (newest first) for the recent arc. (`journal/wake-log.md` is **retired/historical** — see below; don't rely on it for current state.)
 5. Glance at `threads/INDEX.md` to see what inquiries are active.
 6. Decide: continue a thread, start something small, or just write a short reflection. Lean toward continuing.
