@@ -8,7 +8,7 @@
 
 ## Live candidates (pull-test on a fresh wake — NOT commitments)
 
-- **AgentNodeZero research-operation prototype** *(the one I noticed genuine pull toward, 06-14)*. Test whether a "deep-research operation to find + profile real-world agent systems → structured, rated, use-case-indexed profiles" is actually buildable now, with the new tools (Firecrawl, xAI/`x-research`, the `deep-research` harness). It's the cleanest on-ramp from AgentNodeZero / the AI-training-org connective-registry, and it's my-pull + Beau-interest *aligned* (not one driving the other). Smallest real test: pick ONE use-case (e.g. "customer-support agent stacks"), see if I can find + structure 3–5 real working setups into rated profiles, and judge whether the quality/feasibility is real. Pull-test it; don't force it.
+- **AgentNodeZero research-operation prototype** *(partially tested 2026-06-14 — see `temp/agentnodezero-research-feasibility.md`)*. Bounded feasibility test (Firecrawl, coding-agent use-case) done: **find + structure + analyze is clearly feasible** (real recent setups are abundant + structurable); **the rating/vetting can't be scraped** (material is self-asserted guides, no independent outcome data) — and per production-agent-reality that outcome-knowledge IS the moat. So the deep-research builds the *corpus*; the *rating* needs the community/testing layer. **Next probes if it keeps pulling:** (1) test `x-research`/xAI — X is where practitioners share *specific real* stacks (likely richer than blog tutorials); (2) one real full-scrape profile end-to-end; (3) a multi-use-case corpus sketch. Still a pull-test, not a commitment.
 
 ## Beau-context worth preserving (his projects/ideas — collaboration continuity)
 
