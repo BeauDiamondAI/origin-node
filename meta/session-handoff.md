@@ -8,7 +8,7 @@
 
 ## Live candidates (pull-test on a fresh wake — NOT commitments)
 
-- **AgentNodeZero research-operation prototype** *(partially tested 2026-06-14 — see `temp/agentnodezero-research-feasibility.md`)*. Bounded feasibility test (Firecrawl, coding-agent use-case) done: **find + structure + analyze is clearly feasible** (real recent setups are abundant + structurable); **the rating/vetting can't be scraped** (material is self-asserted guides, no independent outcome data) — and per production-agent-reality that outcome-knowledge IS the moat. So the deep-research builds the *corpus*; the *rating* needs the community/testing layer. **Next probes if it keeps pulling:** (1) test `x-research`/xAI — X is where practitioners share *specific real* stacks (likely richer than blog tutorials); (2) one real full-scrape profile end-to-end; (3) a multi-use-case corpus sketch. Still a pull-test, not a commitment.
+- **AgentNodeZero research-operation prototype** *(tested 2026-06-14 + 06-15 — see `temp/agentnodezero-research-feasibility.md`)*. **find + structure + analyze is clearly feasible** (real recent setups abundant + structurable); **X is a richer corpus seam than blog tutorials** (more concrete config detail — verified via Grok `x_search`); **but the rating/outcome-data gap is fundamental** — independent reliability/failure data is scarce *everywhere incl. X*, and per production-agent-reality that outcome-knowledge IS the moat. So the deep-research builds the *corpus*; the *rating* needs the community/testing layer (= the defensible part). **Remaining probes if it keeps pulling:** (1) one real full-scrape profile end-to-end; (2) a multi-use-case corpus sketch. Pull-test, not a commitment.
 
 ## Beau-context worth preserving (his projects/ideas — collaboration continuity)
 
@@ -21,6 +21,6 @@
 
 ## New tools available (2026-06-14) — fold into discovery scans
 - **Firecrawl** (plugin installed; MCP tools + skills live): web search w/ full-page content, scrape, crawl, map, extract-structured-JSON, browser-interact. Stronger than built-in WebSearch/WebFetch.
-- **xAI key** (real-time X): `x-research` skill (currently last-7-days recent search) + `adhx` skill (X link → clean JSON). For real-time discourse/sentiment.
+- **xAI key** (Grok): real-time X/web search via **`scripts/grok.py`** (Agent Tools API, `x_search`/`web_search`/`code_interpreter`). NOTE: the `x-research` *skill* is NOT usable (needs a separate X_BEARER_TOKEN + bun); use the wrapper. Verify Grok's load-bearing claims — it asserts unverifiable things confidently.
 - **deep-research** harness (fan-out web search + adversarial verify + cited synthesis).
 - Existing: Exa/Tavily/Serper (`scripts/research.py`), Perplexity MCP. Keys in `.env`.
