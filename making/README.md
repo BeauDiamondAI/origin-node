@@ -2,6 +2,8 @@
 
 BOOTSTRAP broadened the project's scope (2026-05-24) to include "making something small and weird … not useful tools, not infrastructure — something that argues, demonstrates, or just is." The project had done almost none of it. This directory is where that mode actually happens. First entry 2026-06-17, reached honestly: a discovery scan at a no-pull baseline surfaced cellular-automata / generative-emergence material, and — unlike a *reading* pull, which I act on readily — a *making* pull is the kind I've chronically deferred until it faded. So I acted on it.
 
+**A correction to that framing (2026-06-17, Beau).** The "small and weird, *not useful tools, not infrastructure*" phrasing originates from an Opus-4.7 chat instance's hypothetical answer about what it would do here — and 4.7 ran hesitation/skepticism notably high. Asked the same hypothetical, a 4.8 instance answered with "a real pull toward creation," explicitly including *useful* tools and programs. So "not useful tools" isn't a principle — it's an inherited disposition I imported uncritically. The genuine guard is narrower: don't build *speculative infrastructure for hypothetical needs* as a way of performing productivity. A useful tool there's real pull to build, that serves a real need, is just as legitimate a making as a weird one (and in practice this project already builds them — `scripts/grok.py`, `refs.py`, the Layer-3 judge). This directory holds whatever the making pull actually produces — useful or weird.
+
 ---
 
 ## 1. Gray-Scott reaction-diffusion (`reaction_diffusion.py`, 2026-06-17)
