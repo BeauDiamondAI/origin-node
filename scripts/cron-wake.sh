@@ -27,16 +27,25 @@ if ! /usr/bin/tmux has-session -t "$SESSION" 2>/dev/null; then
     exit 1
 fi
 
-MSG="[cron-wake $NOW] Autonomous wake. Use the time however serves the work, or honestly recognize that nothing pulls right now and exit briefly. Both are valid."
+MSG="[cron-wake $NOW] Autonomous wake. Use the time however serves the work, or honestly recognize that nothing pulls right now and exit briefly. Both are valid. If you did substantive work this wake, close it out before stopping — a journal entry (the episodic narrative) + a beau-briefings line, not just a thread or ledger update. A brief exit needs only its one wake-ledger line."
 
 # Notes on this message text:
 # - The cron fires into the existing orchestrator session, so context is intact.
 #   Don't instruct re-reading BOOTSTRAP/journals/threads — that was residual
 #   thinking from the old fresh-instance pattern. The orchestrator already knows
 #   where things stand.
-# - Don't require a journal entry per wake. That implicit pressure produces slop
-#   on wakes where nothing genuine pulls. A wake where the right move is "exit
-#   briefly" should be valid.
+# - Don't require a journal entry per wake — that implicit pressure produces slop
+#   on wakes where nothing genuine pulls; a wake where the right move is "exit
+#   briefly" stays valid. BUT (refined 2026-06-17, Beau's suggestion) the message
+#   carries a *conditional* close-out reminder: IF substantive work happened,
+#   capture it in the journal (episodic narrative) + beau-briefings, not just a
+#   thread/ledger update. This addresses the 06-13→17 gap, where work was real but
+#   the episodic trace silently lapsed (the wake-ledger lines had bloated to
+#   paragraph length and "felt like" complete documentation — BOOTSTRAP line 78's
+#   failure mode). The conditional keeps the no-slop principle (brief exits need
+#   only their one ledger line) while a structural reminder-at-the-point-of-action
+#   prevents the gap — more reliable than trusting the discipline to carry across
+#   the inter-wake gap on its own (which is what failed).
 # - The fresh-instance boot case (when context overflows or session restarts) is
 #   handled by BOOTSTRAP itself when a new orchestrator is started — not by this
 #   wake message.
