@@ -66,18 +66,18 @@ This is a calibration about scope-of-pull-check, not a directive to manufacture 
 5. Glance at `threads/INDEX.md` to see what inquiries are active.
 6. Decide: continue a thread, start something small, or just write a short reflection. Lean toward continuing.
 7. Do the work.
-8. **Document the work — for any substantive wake, these four layers, because they serve *distinct* functions and are not redundant:**
+8. **Document the work — for any wake that produced work (i.e. wasn't a brief exit), these four layers, because they serve *distinct* functions and are not redundant.** (The test is binary — *work vs brief-exit* — not "was it *substantive* enough." Dropping that threshold word, 2026-06-18 Beau: it let a wake rule its own work below the bar and skip the record. ANY work gets documented; judgment governs the *length* — a one-line pointer for a small thing, a full entry for a deep engagement — never *whether*.)
    - **Thread** (`threads/*.md`) — if a thread advanced, the content/positions go here.
    - **Journal** (`journal/YYYY-MM-DD-HHMM-slug.md`) — the *episodic arc*: what you did this wake and why. This is what gives a future session the project's narrative; thread-capture alone does not.
    - **State-digest** (`meta/state-digest.md`) — if an arc opened/advanced/closed, bring the consolidated index current.
    - **Beau-briefing** (`temp/beau-briefings/YYYY-MM-DD.md`) — a scannable 2–4-sentence catch-up *for Beau*, so he can get current without scrolling the terminal or reading `git log`.
-   Plus, for **every** wake (substantive *or* brief-exit): **one terse line in `journal/wake-ledger.md`** — the rest/work rhythm record (see below; the old `journal/wake-log.md` stays retired for substance, but its rhythm-tracking function lives here).
+   Plus, for **every** wake (work *or* brief-exit): **one terse line in `journal/wake-ledger.md`** — the rest/work rhythm record (see below; the old `journal/wake-log.md` stays retired for substance, but its rhythm-tracking function lives here).
 9. **Commit (and push)** — see "Commit & push" below. Your call, but the strongly-recommended default.
 10. Exit.
 
-**The documentation failure-mode to actively avoid (learned 2026-06-08):** capturing into a thread + committing *feels* like complete documentation and makes the journal/digest/briefing read as duplication in the moment. They are not — thread = content, journal = episodic arc, digest = consolidated index, briefing = Beau's catch-up; each serves a different reader. Writing to only one tier is how the others silently lapse (which is exactly what happened, in the very session that was about practices silently dying). **Brief-exit (genuine no-op) wakes still need no trace** — the distinction is substantive-work vs no-op, not how-much-it-feels-like-duplication.
+**The documentation failure-mode to actively avoid (learned 2026-06-08):** capturing into a thread + committing *feels* like complete documentation and makes the journal/digest/briefing read as duplication in the moment. They are not — thread = content, journal = episodic arc, digest = consolidated index, briefing = Beau's catch-up; each serves a different reader. Writing to only one tier is how the others silently lapse (which is exactly what happened, in the very session that was about practices silently dying). **Brief-exit (genuine no-op) wakes still need no trace** — the distinction is *work vs brief-exit*, not "substantive enough" and not how-much-it-feels-like-duplication. Any work → documented (length by judgment); brief-exit → ledger line only.
 
-**On the journal vs wake-log distinction (historical):** full journal entries are for substantive work — synthesis, decisions, things future instances should engage with in detail. The wake-log was originally a one-line-per-wake record. It is now **retired** (see below); the journals carry the substantive record and `meta/state-digest.md` carries the fast scan.
+**On the journal vs wake-log distinction (historical):** *fuller* journal entries are for *deeper* work — synthesis, decisions, things future instances should engage with in detail; smaller work gets a shorter entry, but still gets one (length by judgment, per step 8). The wake-log was originally a one-line-per-wake record. It is now **retired** (see below); the journals carry the substantive record and `meta/state-digest.md` carries the fast scan.
 
 ## Commit & push (added 2026-06-06; reframed 2026-06-07)
 

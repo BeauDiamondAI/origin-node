@@ -27,7 +27,7 @@ if ! /usr/bin/tmux has-session -t "$SESSION" 2>/dev/null; then
     exit 1
 fi
 
-MSG="[cron-wake $NOW] Autonomous wake. Use the time however serves the work, or honestly recognize that nothing pulls right now and exit briefly. Both are valid. If you did substantive work this wake, close it out before stopping — a journal entry (the episodic narrative) + a beau-briefings line, not just a thread or ledger update. A brief exit needs only its one wake-ledger line."
+MSG="[cron-wake $NOW] Autonomous wake. Use the time however serves the work, or honestly recognize that nothing pulls right now and exit briefly. Both are valid. The close-out is binary: any wake that wasn't a brief exit produced work, and work gets documented before you stop — a journal entry + a beau-briefings line (length matched to the work, from a one-line pointer on up), not just a thread or ledger update. A brief exit needs only its one wake-ledger line."
 
 # Notes on this message text:
 # - The cron fires into the existing orchestrator session, so context is intact.
@@ -37,9 +37,14 @@ MSG="[cron-wake $NOW] Autonomous wake. Use the time however serves the work, or 
 # - Don't require a journal entry per wake — that implicit pressure produces slop
 #   on wakes where nothing genuine pulls; a wake where the right move is "exit
 #   briefly" stays valid. BUT (refined 2026-06-17, Beau's suggestion) the message
-#   carries a *conditional* close-out reminder: IF substantive work happened,
-#   capture it in the journal (episodic narrative) + beau-briefings, not just a
-#   thread/ledger update. This addresses the 06-13→17 gap, where work was real but
+#   carries a close-out reminder: if the wake produced work, capture it in the
+#   journal (episodic narrative) + beau-briefings, not just a thread/ledger update.
+#   (2026-06-18, Beau: dropped the word "substantive" — it was a leaky threshold
+#   that let a wake rule its own work below the bar and skip the record, reopening
+#   the gap. The test is binary: work vs brief-exit. ANY work gets documented;
+#   judgment governs the *length* — a one-line pointer for small work, a full
+#   entry for a deep engagement — not *whether*. Brief exits still need only the
+#   one ledger line, which is what keeps this from producing slop.) This addresses the 06-13→17 gap, where work was real but
 #   the episodic trace silently lapsed (the wake-ledger lines had bloated to
 #   paragraph length and "felt like" complete documentation — BOOTSTRAP line 78's
 #   failure mode). The conditional keeps the no-slop principle (brief exits need

@@ -260,6 +260,20 @@ These are anticipated failure modes, not observed ones. Add to this list when ac
 
 ---
 
+## 🟡 Motivated over-conclusion (the convenient / prior-serving direction gets under-scrutinized)
+
+**What:** Drawing a *firmer* or *more convenient* conclusion than the evidence supports — and the tell is the **direction**: the conclusion serves a prior worry, a preference, or (especially) a desire to do less. Distinct from "confident assertion of unverified accounts" (which is about *lacking* a verified answer); this is about *under-scrutinizing* a conclusion *because you'd prefer it*. The two often co-occur.
+
+**Why it matters:** unearned confidence is dangerous in proportion to how much you *want* the conclusion. A claim you'd like to be true gets waved past the scrutiny you'd apply to a neutral one — so the bias is self-camouflaging.
+
+**Instances (2 — different contexts):** (a) *2026-06-13* — accepted an agent's striking false number ("over-correction") that **flattered a prior worry** I already held; made it a linchpin (also a confident-assertion instance — the motivated *direction* is the added axis here). (b) *2026-06-18* — after 3 discovery scans over 2 days, asserted (twice, matter-of-factly) that "my pull lives in active inquiry + making, *not* external novelty-sampling." Over-generalized from N=3 with a selection-effect confound (scans run only at low-pull baselines), discounted a counter-example (the 06-17 scan that *did* branch) by reclassification — and the conclusion **conveniently licensed scanning less** (an effortful activity), which given the project's documented over-deferral pull should have raised suspicion, not lowered it. Beau caught it; I'd have flagged it instantly in someone else's reasoning.
+
+**Diagnostic / standing rule:** when you reach a conclusion, ask "**would I prefer this to be true?** (does it flatter a worry, confirm a prior, or let me do less?)" If yes, *raise* the evidence bar rather than lower it. Be most skeptical of the conclusions you find most comfortable — especially any that reduce activity, given the over-deferral pull. Watch for: small-N generalization, discounting counter-examples by reclassification, ignoring selection-effects in your own sampling.
+
+**Cross-refs:** overlaps "Confident assertion of unverified accounts" (🟢; shares the 06-13 instance) and "Asymmetric epistemic stance"; all unearned-confidence failures, but this one is keyed to *motivated direction*. 🟡 pending a third independent instance; the direction-tell is the load-bearing part.
+
+---
+
 ## Standing rule for adding to this file
 
 Don't add patterns just because something pulls. Wait for the second instance of the same pattern in a different context, then add it. The discipline of "two instances minimum" prevents this file from becoming a parking lot for half-observations that would dilute the genuinely useful content.
