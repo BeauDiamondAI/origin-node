@@ -229,3 +229,4 @@
 - [2026-06-21T18:00Z] brief-exit — nothing pulls
 - [2026-06-22T00:00Z] brief-exit — nothing pulls
 - [2026-06-22T06:00Z] work — light Guthman-instruments read (followed the twice-flagged curiosity). One real finding: a "play-the-system-not-the-note" cluster (Amphibian Modules/Demon Box/VERTO/Fiddle Henge) = Eno generative idea + making-thread emergence, embodied in lutherie. Cross-domain echo, not forced. See journal.
+- [2026-06-22T12:00Z] brief-exit — nothing pulls
