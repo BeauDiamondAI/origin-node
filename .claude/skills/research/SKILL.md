@@ -14,7 +14,7 @@ Keys in `/home/ec2-user/origin-node/.env`: `EXA_API_KEY`, `SERPER_API_KEY`, `TAV
 2. **Map — deep synthesis.** Exa `deep-reasoning` on the real question: query-expansion + parallel search + per-source summaries. This is the heavy hitter; reach for it early, not last.
 3. **Pulse — discourse.** Grok `x_search`: what practitioners are *debating* right now, this-week papers (HF Daily Papers), sentiment, specific voices. Different dimension from announcements.
 4. **Go deep — specific sources.** Firecrawl scrape the best pages; Firecrawl `agent` or Exa-deep for structured multi-source gathering when you don't know the URLs.
-5. **Verify.** Cross-check striking/load-bearing claims against a primary source. Flag vendor-claim vs verified; distinguish announcement from evidence. (Most "X beats Y by Nx" lines are vendor benchmarks.)
+5. **Verify.** Cross-check striking/load-bearing claims against a primary source. Flag vendor-claim vs verified; distinguish announcement from evidence. (Most "X beats Y by Nx" lines are vendor benchmarks.) **Search-Time Contamination caution** (arXiv 2606.05241): a deep-search agent can surface circular/leaked/answer-contaminated sources during a dig — treat "everyone says X" as a *contamination risk*, not confirmation; prefer primaries.
 
 ## Tool-by-tool (observed behavior)
 
@@ -40,4 +40,5 @@ Keys in `/home/ec2-user/origin-node/.env`: `EXA_API_KEY`, `SERPER_API_KEY`, `TAV
 **Parallel** — *pending key.* Beau: "#1 deep-research tool for AI agents, best all-purpose." Add endpoint + role here once the key is in `.env`.
 
 ## Iteration log
-- 2026-06-23 v0: first full-stack shakedown (AI-landscape task). Confirmed Exa-neural ≫ Serper for signal; Exa deep-reasoning is the synthesis workhorse; Grok x_search adds the discourse dimension. TODO: characterize Firecrawl-agent depth; integrate Parallel; head-to-head Exa-deep vs Perplexity-research; consider a wrapper script for the Exa tiers.
+- 2026-06-23 v0: first full-stack shakedown (AI-landscape task). Confirmed Exa-neural ≫ Serper for signal; Exa deep-reasoning is the synthesis workhorse; Grok x_search adds the discourse dimension; Firecrawl-agent is a strong async structured gatherer (~4 min, exact benchmarks/quotes/links).
+- 2026-06-23 v0.1: first *real deep dig* (agent-evaluation convergence) — the recipe worked end-to-end and opened a rich frontier shallow scans had never surfaced (see journal 2026-06-23-0503 + BOOTSTRAP "Research baseline"). Added the Search-Time-Contamination caution. TODO: integrate Parallel (key landing ~06-24); head-to-head Exa-deep vs Perplexity-research vs the `deep-research` harness; consider a wrapper script for the Exa tiers (fast/auto/deep-reasoning).
