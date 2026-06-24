@@ -15,6 +15,13 @@ A long collaborative build, downstream of a sharp diagnosis of mine: I'd reviewe
 - `patterns.md` — "Build the bridge, then wade the stream" (🟢, 5 independent instances).
 - Gmail SMTP creds in `.env` (gitignored); flag files gitignored.
 
-**Verified:** all hooks unit-tested with mock stdin (block-JSON at 97%, clear-request once handoff-ready, orientation JSON on source=clear, PreCompact exit 2); SMTP confirmed by a live test email to Beau. **Unverified until the first real boundary:** the SessionStart-fires-on-send-keys-/clear → reorient chain. The 85% email gives Beau visibility if it ever misbehaves; PreCompact freezes-safe rather than corrupts.
+**Verified (unit, mock stdin):** all four hook branches (block-JSON at 97%, clear-request once handoff-ready, orientation JSON on source=clear, PreCompact exit 2); SMTP by a live test email.
+
+**Verified LIVE (2026-06-24, after activating via `claude --resume <id>` — empirical proof Beau wanted; mid-session settings registration does NOT hot-load, confirmed by a debug-heartbeat that stayed silent, so activation requires a process restart, which `--resume` does while preserving context):**
+- hooks load on resume → `session_start: source=resume` logged (and correctly injects NO orientation on resume, only on cold start);
+- Stop hook fires on every real turn-end (heartbeat logged);
+- **the 95% block reaches me autonomously** — a controlled no-email/no-clear test (threshold lowered below live context) produced the block instruction continuing me with no user input. This was the one mechanism in doubt ("will the alert reach you mid-task?"); it does.
+
+**Still only unit-tested (manifest only at a true boundary, and low-risk):** the actual `/clear` via cron send-keys (idle-timed); SessionStart orientation on `source=clear` (same code path as the resume branch we watched fire, different `if`); PreCompact blocking a real auto-compaction (fails open). The 85% email is the human tripwire for all three.
 
 **Why this one matters beyond its function:** it's the build-don't-use pattern applied to itself, and it makes the session's continuity run on *deliberately-curated artifacts* (my handoff) instead of the harness's opaque summary — which is the project's whole continuity premise made real, and the honest test of whether the artifacts are actually sufficient.
