@@ -40,8 +40,12 @@ def do_task(question, processor="pro"):
     from parallel import Parallel
     client = Parallel()
     run = client.task_run.create(input=question, processor=processor)
-    print(f"[parallel task: run_id={run.run_id} processor={processor} — blocking for result...]", file=sys.stderr, flush=True)
-    result = client.task_run.result(run.run_id, api_timeout=3600)
+    # pro ~<10min (blocking fine); ultra/ultra8x up to ~2hr -> ALWAYS run this via Bash
+    # run_in_background with a long timeout. (Webhooks are the "official" ultra path but need a
+    # public endpoint; this long-poll works for our use. If it times out, refine to a poll loop.)
+    timeout = 7800 if processor.startswith("ultra") else 3600
+    print(f"[parallel task: run_id={run.run_id} processor={processor} — waiting up to {timeout}s for result...]", file=sys.stderr, flush=True)
+    result = client.task_run.result(run.run_id, api_timeout=timeout)
     out = result.output
     print(getattr(out, "content", ""))
     basis = getattr(out, "basis", None) or []

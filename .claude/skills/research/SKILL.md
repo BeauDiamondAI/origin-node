@@ -35,7 +35,7 @@ Keys in `/home/ec2-user/origin-node/.env`: `EXA_API_KEY`, `SERPER_API_KEY`, `TAV
 
 **Tavily** — `scripts/research.py tavily "<q>"`: current-events RAG with a synthesized `answer`. Secondary (Exa/Grok cover most).
 
-**Perplexity** (MCP `mcp__perplexity-ask__*`): `perplexity_research` (slow, multi-source, cited), `perplexity_ask` (quick cited answer), `perplexity_reason`. A secondary deep-synthesis option; compare head-to-head vs Exa-deep-reasoning over time.
+**Perplexity** — **deprecated (2026-06-24, Beau).** Don't use: expensive per-query, low quality, and prone to refusing/hedging ("the user is trying to trick me into thinking I have live web search") because it's a consumer chat persona with an API bolted on, not an agent tool. Parallel (agent-native by design) replaces it.
 
 **Parallel** — `scripts/parallel_research.py search|task` (SDK `parallel-web`, key `PARALLEL_API_KEY` in `.env`). Beau: best all-purpose deep-research for agents. Set up + tested 2026-06-24. Two wrapped modes:
 - `search "<objective sentence>" "<kw q1>" "<kw q2>" ["<kw q3>"]` — **one round-trip → LLM-optimized, citation-aware excerpts** (pre-compressed, shaped for context). Tested: *excellent* — clean and dead-on-target, often better than Exa-auto for grounding a specific question because the excerpts arrive pre-shaped. *objective* = full-sentence goal; *search_queries* = 2–3 diverse 3–6-word keyword phrases (NOT sentences, no `site:`).

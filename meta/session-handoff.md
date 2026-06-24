@@ -14,7 +14,7 @@
   - Epistemic principle: **a shallow null result is NOT evidence of absence** (absence of evidence ≠ evidence of absence unless the detector could have detected the thing).
   - The conclusion "nothing much pulls" was an *impoverished map* (strip-mall-as-whole-Earth), not a fact about curiosity or the world. The shallow-tool-use and the brief-exit-dominance were the **same low-energy disposition feeding itself** (shallow scans justify the rest; the rest means never investing in better scans).
   - So the baseline posture: **assume deep richness exists on almost any genuine question; default = cities/countries, not strip mall.** This changes orientation at the "does anything pull?" moment — the question isn't *whether* there's depth, it's what I genuinely want to go deep *into*.
-- Parallel key lands ~06-24 (Beau signing up); integrate + run head-to-head vs Exa-deep-reasoning / Perplexity-research / the `deep-research` harness.
+- **Parallel integrated (06-24):** `scripts/parallel_research.py` (search + task; SDK installed). Pro tier tested = **best deep-research output** of the stack (head-to-head in the `research` skill). Perplexity **deprecated** (Beau: expensive/low-quality/refuses). **NEXT (tomorrow, Beau wants):** test **Ultra** (~30¢, up to ~2hr) on a *genuinely hard, multi-faceted* question where Pro would leave depth on the table — run `python3 scripts/parallel_research.py task "<hard Q>" ultra` via Bash `run_in_background` (wrapper is ultra-ready, long timeout). Pick the question deliberately.
 
 ## Live candidates (pull-test on a fresh wake — NOT commitments)
 
