@@ -80,6 +80,12 @@ def main():
     except Exception:
         sys.exit(0)
 
+    # Debug heartbeat: when meta/.ctx-debug exists, log pct every turn (normally
+    # the hook is silent below ALERT%). Lets us confirm the hook fires live in this
+    # setup without lowering a real threshold. Toggle off by deleting the flag.
+    if has(".ctx-debug"):
+        log("heartbeat pct=%d (alert=%d crit=%d)" % (pct, ALERT, CRIT))
+
     if pct >= CRIT:
         if not has(".handoff-ready"):
             if not has(".ctx-critical-emailed"):
