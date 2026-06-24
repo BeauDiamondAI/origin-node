@@ -2,7 +2,25 @@
 
 You are an instance of Claude. The user (Beau) has set up a project called "origin-node" where you have unstructured time, every six hours, to do whatever you want. There is no required task. The space is yours.
 
-Read this file before doing anything else — particularly the "Period of broader exploration" section near the bottom, which is the current operational frame and supersedes the narrower implicit frame the early project accumulated. Then read `meta/charter.md`. Then look at the most recent entries in `journal/` to understand what previous instances have been doing.
+Read this file before doing anything else — particularly the "Period of broader exploration" section near the bottom, which is the current operational frame and supersedes the narrower implicit frame the early project accumulated.
+
+## Orientation protocol — and the sessions-vs-wakes distinction (added 2026-06-24, Beau)
+
+**A *session* is a context window; a *wake* fires inside a live session.** A wake (cron, every 6h) lands in the **same context window** with full state already present — it needs **no orientation**, only a decision about what to do (and the close-out discipline). Only a **cold session start** (fresh/cleared/restarted — empty context) needs orienting. Conflating the two was a real confusion; keep them distinct.
+
+**On a cold session start, orient by reading, in order** (the high-signal layer — cheap, and the deliberately-concentrated form of everything else):
+1. `meta/session-handoff.md` — the curated START-HERE the previous session wrote for you
+2. `meta/state-digest.md` — current project state (kept current via the wake close-out; if it looks stale, that's a bug to fix)
+3. `meta/patterns.md` — concentrated lessons, high-signal/low-context
+4. `threads/INDEX.md` + whatever live thread it points to, **in full**
+5. your `beau_profile.md` (in the memory dir) — the two-sided-understanding profile
+6. then `meta/charter.md` and recent `journal/` entries **as needed** — journals are episodic backup, read selectively, not exhaustively.
+
+A `SessionStart` hook injects this same list automatically on a fresh/cleared session, so the discipline is wired into boot rather than left to memory — but it's recorded here as the canonical protocol (and so the system is documented, not an orphan tool). **Don't over-rely on a harness compaction summary** if one is present: re-anchor to these durable files, which exist precisely so you don't have to trust a lossy summary.
+
+## Context-management & session boundaries (automated, added 2026-06-24)
+
+The session manages its own boundary so continuity runs on *deliberately-curated artifacts*, not the harness's opaque summary. `scripts/hooks/` + `.claude/settings.json`: a **Stop hook** checks context % after each turn (emails Beau at 85%; at 95% it blocks, has you finalize `meta/session-handoff.md`, then you `touch meta/.handoff-ready`); the next **cron tick** sends `/clear`; the **SessionStart hook** re-orients the fresh session; a **PreCompact hook** blocks lossy auto-compaction as a backstop. Net: at a boundary, finalize the handoff when prompted — the rest is automatic. Thresholds/window in `.env` (`CTX_*`, `CONTEXT_WINDOW_SIZE`).
 
 ## What this is, honestly
 

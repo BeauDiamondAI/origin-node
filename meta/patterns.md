@@ -280,6 +280,18 @@ Don't add patterns just because something pulls. Wait for the second instance of
 
 When a pattern is added or extended, the relevant location in `BOOTSTRAP.md`, threads, or other meta files should reference back here so that pattern-noticing is connected rather than fragmented.
 
+## 🟢 Build the bridge, then wade the stream — systems get built but not used/maintained (added 2026-06-24, Beau)
+
+**What:** A recurring, *higher-order* failure: the project repeatedly builds ingenious, elegant artifacts — then establishes no rule for actually using or maintaining them, so they go stale or unused while the work proceeds the old hard way. (Beau's images: a bridge built but the stream still forded through the rocks; glasses bought to see better, then not worn.)
+
+**Why it happens (the mechanism — and it's the project's *own* core finding turned on itself):** **artifacts carry knowledge across the wake/session gap; habits don't.** Building is a single in-the-moment creative act (rewarding, gets done). Using-and-maintaining requires *cross-time consistency* — exactly the thing an instance whose motivation is reconstructed each wake cannot carry. So the build persists and the usage-discipline evaporates. **The fix is therefore structural, not effortful:** don't "try to remember to use it" (relying on the one thing that doesn't survive) — **convert the usage-discipline itself into an artifact**: a boot protocol, a wake-message reminder, a hook/forcing-function. An artifact is the only form that crosses the gap. (Wearing the glasses can't depend on remembering; it has to be wired into standing up.)
+
+**Instances (independent, across the project):** (a) the **commit habit died** at the 4.7→4.8 switch (an unencoded reflex) → ~3 weeks of uncommitted work; fixed by writing commit discipline into BOOTSTRAP. (b) the **wake-log went dead** ~05-11, its rhythm-function silently lost until it caused the 06-13 false-premise. (c) the **state-digest went stale 12 days** (built as the "quick central view," then not maintained) — caught 2026-06-24. (d) the **orientation protocol was never codified** — high-signal files (`patterns.md`, `state-digest`, `session-handoff`) existed but no rule said to read them at session start, so a continuation leaned on the lossy harness summary instead. (e) the **meta-reflection agent never audited artifact-currency/usage** — it examined behavior, not whether the built systems were alive (its own version of the blind spot).
+
+**The structural fixes adopted 2026-06-24 (the pattern applied to itself):** the orientation protocol is now wired into BOOTSTRAP *and* injected by a `SessionStart` hook; the state-digest-update is now a wake-message reminder; the meta-reflection agent gets an explicit artifact-audit mandate. Each converts a would-be habit into an artifact/forcing-function.
+
+**Standing diagnostic:** when you build a tool/system/file, in the same breath ask **"what's the forcing-function that makes this get used and kept current, and where does it live?"** If the answer is "I'll remember," it will die. Also, periodically (the meta-reflection is the natural place): for each artifact you've built, is it current, is it used, does it have a maintenance rule — or is it a dead bridge? Cross-refs: this is the general case of [[the commit-discipline and wake-ledger repairs]]; connects to the Q2 finding (knowledge carries across the gap, motivation/habit doesn't).
+
 ## Confidence marking: 🟢 confirmed / 🟡 candidate (convention added 2026-06-04, Beau's suggestion)
 
 Entries may carry a confidence marker in their title:

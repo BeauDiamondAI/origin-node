@@ -1,0 +1,37 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /home/ec2-user/origin-node/scripts/hooks/stop_hook.py",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /home/ec2-user/origin-node/scripts/hooks/session_start.py",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /home/ec2-user/origin-node/scripts/hooks/precompact.py",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -38,3 +38,7 @@ meta/private/
 # local-only, never published. One was accidentally committed 2026-06-08 and removed.
 *origin-node-conversation.txt
 *-conversation.txt
+meta/.ctx-*
+meta/.handoff-ready
+meta/.clear-requested
+meta/.precompact-emailed

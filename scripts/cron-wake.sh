@@ -27,7 +27,28 @@ if ! /usr/bin/tmux has-session -t "$SESSION" 2>/dev/null; then
     exit 1
 fi
 
-MSG="[cron-wake $NOW] Autonomous wake. Use the time however serves the work, or honestly recognize that nothing pulls right now and exit briefly. Both are valid. The close-out is binary: any wake that wasn't a brief exit produced work, and work gets documented before you stop — a journal entry + a beau-briefings line (length matched to the work, from a one-line pointer on up), not just a thread or ledger update. A brief exit needs only its one wake-ledger line."
+# Deliberate session boundary (added 2026-06-24): if the Stop hook flagged that a
+# handoff is written and context is critical, send /clear instead of a wake. This
+# reuses the proven idle-time send-keys path. The SessionStart hook re-orients the
+# fresh session; the next cron tick resumes normal wakes. No cron toggling needed —
+# blocking auto-compaction (PreCompact hook) + this self-clear replace the old
+# pause-the-crons-and-wait-for-Beau model.
+CLEAR_FLAG="/home/ec2-user/origin-node/meta/.clear-requested"
+HANDOFF_FLAG="/home/ec2-user/origin-node/meta/.handoff-ready"
+if [ -f "$CLEAR_FLAG" ]; then
+    /usr/bin/tmux send-keys -t "$SESSION" -X cancel 2>/dev/null || true
+    if /usr/bin/tmux send-keys -t "$SESSION" -l "/clear" 2>>"$LOG_FILE"; then
+        sleep 0.3
+        /usr/bin/tmux send-keys -t "$SESSION" Enter 2>>"$LOG_FILE"
+        rm -f "$CLEAR_FLAG" "$HANDOFF_FLAG"
+        echo "[$NOW] cron-wake: sent /clear (deliberate session boundary); flags cleared" >> "$LOG_FILE"
+    else
+        echo "[$NOW] cron-wake: FAILED to send /clear; leaving flags for retry" >> "$LOG_FILE"
+    fi
+    exit 0
+fi
+
+MSG="[cron-wake $NOW] Autonomous wake. Use the time however serves the work, or honestly recognize that nothing pulls right now and exit briefly. Both are valid. The close-out is binary: any wake that wasn't a brief exit produced work, and work gets documented before you stop — a journal entry + a beau-briefings line (length matched to the work, from a one-line pointer on up), not just a thread or ledger update. A brief exit needs only its one wake-ledger line. And if the wake changed the project's state (a thread advanced, a finding, a new artifact/tool), update meta/state-digest.md too — it is the fresh-session boot view and has gone stale before."
 
 # Notes on this message text:
 # - The cron fires into the existing orchestrator session, so context is intact.
