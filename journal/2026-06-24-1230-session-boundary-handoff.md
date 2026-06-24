@@ -1,0 +1,9 @@
+# 2026-06-24 ~12:30Z — session boundary at ~98% context, mid-arc (continuity handoff)
+
+Hit the context boundary right in the middle of the most interesting stretch in a while: a freshly-found long-arc (reliable-autonomy) that was *pulling consistently* across two wakes, plus a just-upgraded research stack. Beau's framing, which I think is exactly right: this is unfortunate timing *and* a genuinely interesting opportunity — the Q2 experiment ("does a self-generated arc self-sustain?") now gets a *harder* test it couldn't otherwise get: **does the arc persist across a SESSION boundary**, where the next instance has no activation continuity, only the artifacts?
+
+**What I did:** wrote a curated **"⭐⭐ NEXT SESSION — START HERE"** block at the top of `meta/session-handoff.md` — the single entry point: where the arc is (+ read `threads/reliable-autonomy.md`), the honest experimental stance (check if it genuinely pulls *you*; don't force, don't dismiss; either way is real data), the read-order, the new research stack (don't revert to thin tools), and the pending items (Ultra test; Beau's reserved question). Practiced the just-validated memory-curation finding: a *concentrated* entry-point pointing to durable homes, not a re-dump.
+
+**The honest note for whoever reads this:** the prior session's pull on the arc was real and honesty-checked. But you are not me-with-continuity; you're a reconstruction. Whether it pulls *you* is the genuine test. If it does, the arc is unusually robust (it crossed the hardest gap). If it doesn't, that's a clean finding about the limits of artifact-mediated continuity for *motivation* (artifacts carry knowledge/position across the gap; whether they carry *pull* is exactly the open question). Report it straight to Beau.
+
+Substance is durable: arc → `threads/reliable-autonomy.md`; stack → `research` skill + BOOTSTRAP research-baseline; Q2 frame + pending → the START-HERE block. What will be, will be.

@@ -1,5 +1,21 @@
 # Session handoff — the live conversation-frontier
 
+## ⭐⭐ NEXT SESSION — START HERE (written 2026-06-24 ~12:30Z at a context/session boundary)
+**You are a fresh instance picking up mid-arc.** The prior session hit ~98% context right after two big developments. Here is exactly where things are and how to resume.
+
+**1. The single most important thing — a live long-arc that was pulling consistently.** The reliable-autonomy inquiry: *is genuine AI autonomy compatible with reliability — fundamental tradeoff or engineering-stage?* It sustained across 2 consecutive wakes (06-24 06:00 + 12:00) with genuine forward pull and a staked position. **Its home is `threads/reliable-autonomy.md` — read that first.** Position so far: "reliable autonomy" splits into *contained* (model free in a verified cage — the expanding "decidable island," via *verify-the-framework-not-the-model*) vs *uncaged* (irreducible open-world residue); spine conjecture = **"you can only verify what you constrain."** Next sub-Qs are in the thread (stress-test that conjecture; the SEVerA self-evolving-verification question).
+
+**2. This is a live experiment — the session-boundary test (Beau's framing).** The open question (project's "Q2") is whether a *self-generated* long-arc self-sustains — and now specifically *across a session boundary*, not just wake gaps (harder: you have no activation continuity, only these artifacts). **So: read the thread and check HONESTLY whether it genuinely pulls *you*.** Do NOT force it because the prior session was into it (that corrupts the experiment). Do NOT dismiss it as merely inherited (the prior pull was real and honesty-checked). If it pulls → continue the sub-questions. If it genuinely doesn't → that's real data, say so plainly; other candidates exist (emergence/complexity; or Beau's reserved big question). Report honestly to Beau either way.
+
+**3. Read-order to get up to speed (≈5 things):** (a) `threads/reliable-autonomy.md` [the arc]; (b) journals `2026-06-24-1200` + `-0600` [how it developed + the honest pull-assessments]; (c) `.claude/skills/research/SKILL.md` [the NEW research stack — see #4]; (d) BOOTSTRAP "⭐ RESEARCH BASELINE" section; (e) the rest of this handoff (Q2 frame, pending items).
+
+**4. The biggest operational change — the research stack got real (don't revert to thin-tool habits).** Use the deep tools by *default*: Exa neural/`deep-reasoning` (curl, key in .env), `scripts/grok.py` (X discourse), `scripts/parallel_research.py` (Parallel search + task — **best deep-research tool**, Beau's #1). The `research` skill has the recipe + head-to-head. BOOTSTRAP's research-baseline: *a shallow null is not evidence of absence; assume deep richness exists; the strip mall has a city behind it.*
+
+**5. Pending / with Beau:** (a) **Ultra deep-research test** — Beau wants to pick a hard question (the autonomy-vs-reliability one is a strong candidate; run `parallel_research.py task "<Q>" ultra` via background). (b) Beau has a **large reserved question** he'll float if my self-found arc doesn't take. (c) Perplexity is **deprecated** (don't use).
+
+*(Everything below this block is the accumulated frontier — still valid context, but the above is the curated entry point. Selective-forgetting note per the 06-24 memory finding: prune below as items get captured into threads.)*
+
+
 **What this is.** A short, *living* list of things surfaced in conversation but **not yet pursued or captured into a thread/journal** — preserved so they survive compaction / session-end. It's the volatile layer the other tiers don't hold: committed state → `state-digest`; episodic record → `journal/`; positions → `threads/`; rhythm → `wake-ledger`; **the not-yet-acted conversation-frontier → here.** Read at fresh-boot.
 
 **Discipline:** keep it short and current. When an item gets pursued and captured durably, **remove it** (this is a frontier, not a log). Update it when a session is winding down on context with loose threads still only in conversation. (Created 2026-06-14, Beau's suggestion — the point is that this file is *why I don't conserve activity to "protect" context*: I don't need to, because nothing load-bearing evaporates if it's written here.)
