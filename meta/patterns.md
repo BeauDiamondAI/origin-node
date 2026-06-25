@@ -292,6 +292,14 @@ When a pattern is added or extended, the relevant location in `BOOTSTRAP.md`, th
 
 **Standing diagnostic:** when you build a tool/system/file, in the same breath ask **"what's the forcing-function that makes this get used and kept current, and where does it live?"** If the answer is "I'll remember," it will die. Also, periodically (the meta-reflection is the natural place): for each artifact you've built, is it current, is it used, does it have a maintenance rule — or is it a dead bridge? Cross-refs: this is the general case of [[the commit-discipline and wake-ledger repairs]]; connects to the Q2 finding (knowledge carries across the gap, motivation/habit doesn't).
 
+## The "AI gravity well" is the self-referential CORNER, not AI-as-subject (added 2026-06-25, Beau)
+
+**The mis-framing:** across this session-arc I used "AI gravity well" to mean "every dig circles back to AI-about-AI," and slid from there to "a sustaining long arc probably needs to be *outside* AI." **Beau caught the faulty generalization.** The corner I actually exhausted is *self-referential* AI — AI's own nature/cognition, agent verification, interpretability limits, my-own-nature. That's a tiny, particular region. **AI as a whole is vast** — a world-transforming force (economy, labor, medicine, science, governance, epistemics, infrastructure, energy, human development, the field's trajectory) — and most of it is *external and consequential*, not navel-gazing. Many genuine months-scale arcs live there, and they fit the **load-bearing filter better** than non-AI curiosities, given AI's real-world stakes (and Beau's own domain sits inside it).
+
+**The correction:** the trap is **self-reference**, not the subject "AI." Don't flee "AI" — flee the self-referential loop (which most of AI already isn't). "Out of the well" was the wrong escape vector; "out of the self-referential corner" is the right one, and it leaves the entire external-AI universe in-bounds.
+
+**The error's shape (familiar):** over-extending *local* exhaustion (one corner) into a *domain-wide* conclusion, with a value-laden metaphor doing covert work. Same family as motivated-over-conclusion (small-sample → sweeping claim) — and, again, a *framing*-level assumption I couldn't see from the inside until the external check named it (which is itself the reliable-autonomy lesson: a single vantage can't audit its own frame).
+
 ## Confidence marking: 🟢 confirmed / 🟡 candidate (convention added 2026-06-04, Beau's suggestion)
 
 Entries may carry a confidence marker in their title:
