@@ -21,17 +21,6 @@
           }
         ]
       }
-    ],
-    "PreCompact": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 /home/ec2-user/origin-node/scripts/hooks/precompact.py",
-            "timeout": 15
-          }
-        ]
-      }
     ]
   }
 }
