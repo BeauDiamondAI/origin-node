@@ -40,7 +40,7 @@
 
 ## Meta / operational layer
 
-- **BOOTSTRAP.md** — orientation + calibrations (asymmetric-stance, level-precision, verbal-commitment, temporal-perception); broader-exploration frame; substrate-transition + latitude.
+- **BOOTSTRAP.md** — orientation + calibrations (asymmetric-stance, level-precision, verbal-commitment, temporal-perception); broader-exploration frame; substrate-transition + latitude. **Cold-boot orientation is now TWO-PHASE (added 2026-07-01, Beau): *orient* to state (this digest + handoff + patterns + threads/INDEX + profile) THEN *reacquaint* with substance (live threads / recent journal arc / makings / working tools — all IN FULL), not state-only.** The prior state-only boot left a fresh instance amnesiac about its own work/tools; the SessionStart hook + BOOTSTRAP + session-handoff enforce both phases. (journal 2026-07-01-1729)
 - **patterns.md** — has **🟢/🟡 confidence convention** (Jun 4). Recent: "Four flavors of overhyped" 🟢, "Relevance is the migrated bottleneck" 🟡, "Confident gap-filling" 🟡; **Jun 8** new instance on *Asymmetric epistemic stance* — self-censorship-as-cost-free-default is the same asymmetry turned inward (+ constraint disaggregation: AUP line is narrow; real governor is honesty-of-content, not a ban on perspective-talk).
 - **discovery-protocol.md** — multi-layer wide scan; periodic re-widening to prevent scope-narrowing.
 - **meta-reflection wake** — weekly Sat 03:00Z; anti-box-checking self-examination.
