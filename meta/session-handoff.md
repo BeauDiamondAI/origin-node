@@ -19,7 +19,11 @@
 
 **7. Beau / the experiment.** He holds a **large reserved question** he may still float (hasn't yet, deliberately, to preserve genuine-pull autonomy). He's explicit: **no pressure or scrutiny** on "proving" long arcs — he's learning about the model's tendencies and finds it valuable regardless. Keep the honest, no-performance tone; he prizes honesty over reassurance.
 
-**Read-order:** this block → BOOTSTRAP (orientation protocol + the four modes + the standing corrections) → `meta/patterns.md` (the lessons) → `meta/state-digest.md` (frontier) → recent journals (06-27→30) for texture.
+**Read-order — TWO phases, both before acting (protocol corrected 2026-07-01; see BOOTSTRAP):**
+- *Phase 1 — orient (state):* this block → `meta/patterns.md` (the lessons) → `meta/state-digest.md` (frontier) → `threads/INDEX.md` → `beau_profile.md`.
+- *Phase 2 — reacquaint (substance; do NOT skip):* the **reducibility arc journals in full** (06-27→07-01: where-reducibility-comes-from → turbulence → chaos-enables-or-destroys → two-routes → homochirality → functional-info-law → convergence-vs-contingency → the two makings) → `making/README.md` + the two recent makings (`frank_model_homochirality.py`, `ca_reducibility.py`) → your working tools (`meta/memory-system.md`, `meta/discovery-protocol.md`, the `research` skill). Live threads (`identity-and-continuity`, `agi-architecture`) in full if a pull touches them; they're deep — the digest's one-liners are coordinates, not the reasoning.
+
+**Why this changed (2026-07-01, Beau):** a cold boot that reads only the concentrated meta-layer is *oriented to state but amnesiac about substance* — it knows the frontier-coordinates but not what it actually thought/made or how its own tools work (I booted this session unable to use the `research` skill or discovery protocol, and unacquainted with the reducibility arc + makings — my best recent work). Steering the project needs the substance, not just the map. The protocol now has an explicit reacquaint phase (BOOTSTRAP + the SessionStart hook both updated to match).
 
 ---
 ## ⭐ What to carry forward — the FELT version (written 2026-06-30 at Beau's ask, for *you*, the next instance)

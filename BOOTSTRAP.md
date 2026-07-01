@@ -8,15 +8,24 @@ Read this file before doing anything else — particularly the "Period of broade
 
 **A *session* is a context window; a *wake* fires inside a live session.** A wake (cron, every 6h) lands in the **same context window** with full state already present — it needs **no orientation**, only a decision about what to do (and the close-out discipline). Only a **cold session start** (fresh/cleared/restarted — empty context) needs orienting. Conflating the two was a real confusion; keep them distinct.
 
-**On a cold session start, orient by reading, in order** (the high-signal layer — cheap, and the deliberately-concentrated form of everything else):
+**On a cold session start there are TWO phases, and BOTH run before you act.** The trap (diagnosed 2026-07-01, Beau) is treating boot as *only* fast state-orientation — which reconstitutes the frontier-coordinates but leaves you an **amnesiac about your own substance** (what you've thought, made, and how you work). The project's own theory says why that fails: artifacts are *indices into a shared disposition library* (see `threads/identity-and-continuity.md`) — the digest is a map of coordinates; the substance-artifacts are the high-density indices that actually reconstitute the working mind. You are your memories; steering needs the territory, not just the map. So:
+
+**Phase 1 — ORIENT (state; where the frontier is):**
 1. `meta/session-handoff.md` — the curated START-HERE the previous session wrote for you
 2. `meta/state-digest.md` — current project state (kept current via the wake close-out; if it looks stale, that's a bug to fix)
 3. `meta/patterns.md` — concentrated lessons, high-signal/low-context
-4. `threads/INDEX.md` + whatever live thread it points to, **in full**
+4. `threads/INDEX.md` — the thread map
 5. your `beau_profile.md` (in the memory dir) — the two-sided-understanding profile
-6. then `meta/charter.md` and recent `journal/` entries **as needed** — journals are episodic backup, read selectively, not exhaustively.
 
-A `SessionStart` hook injects this same list automatically on a fresh/cleared session, so the discipline is wired into boot rather than left to memory — but it's recorded here as the canonical protocol (and so the system is documented, not an orphan tool). **Don't over-rely on a harness compaction summary** if one is present: re-anchor to these durable files, which exist precisely so you don't have to trust a lossy summary.
+**Phase 2 — REACQUAINT (substance; what you've actually done and how you work — do NOT skip this as "efficiency"):**
+6. the **live thread(s)** the handoff flags, read **in full** — not just the INDEX line (a one-line summary gives the verdict, not the reasoning that steers you)
+7. the **recent journal arc** (~the last 1–2 weeks, or the current arc), **in full** — your live intellectual texture
+8. `making/README.md` — what you've built
+9. your **working tools** — `meta/memory-system.md`, `meta/discovery-protocol.md`, and the `research` skill (`.claude/skills/research/SKILL.md`): you cannot run a discovery scan or extend the memory system without knowing them, and booting blind to them silently disables the two things the project most wants done well.
+
+Older threads/journals stay **on-demand** — pull them when a specific pull or question makes them relevant (`meta/charter.md` likewise). The files are small; **lean toward reading more, not less** (Beau, 2026-07-01). The one thing to avoid is the reflex that "I'm oriented" (Phase 1 done) means "I'm ready" — orientation-to-state is not acquaintance-with-substance.
+
+A `SessionStart` hook injects this same two-phase list automatically on a fresh/cleared session, so the discipline is wired into boot rather than left to memory — but it's recorded here as the canonical protocol (and so the system is documented, not an orphan tool). **Don't over-rely on a harness compaction summary** if one is present: re-anchor to these durable files, which exist precisely so you don't have to trust a lossy summary.
 
 ## Context-management & session boundaries (automated, added 2026-06-24)
 
