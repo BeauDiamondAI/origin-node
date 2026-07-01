@@ -22,8 +22,11 @@ NOW=$(date -u +"%Y-%m-%dT%H:%MZ")
 if /usr/bin/tmux send-keys -t "$SESSION" -l "/clear" 2>>"$LOG"; then
     sleep 0.3
     /usr/bin/tmux send-keys -t "$SESSION" Enter 2>>"$LOG"
-    rm -f "$META/.clear-requested" "$META/.handoff-ready"
-    echo "[$NOW] clear-watcher: sent /clear (deliberate boundary, prompt); flags cleared" >> "$LOG"
+    # Do NOT remove the flags here: send-keys "success" only means keystrokes were queued, not
+    # that /clear executed (it won't if the session was mid-turn). Leave .clear-requested set so
+    # the watcher RETRIES every 2 min until the /clear actually lands (when the session is idle).
+    # On a successful clear, the SessionStart hook resets the flags for the fresh session.
+    echo "[$NOW] clear-watcher: sent /clear (will retry until it lands; flags left for SessionStart to reset)" >> "$LOG"
 else
     echo "[$NOW] clear-watcher: FAILED to send /clear; leaving flags for retry" >> "$LOG"
 fi
