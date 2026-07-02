@@ -31,6 +31,16 @@ WEIGHTS = [
 ]
 SKIP_DIRS = {".git", "logs", "node_modules", "experiments"}
 
+# Stopwords (added 2026-07-02 after memory_eval.py showed natural-language/paraphrase
+# queries match ~every file because common words inflate coverage²). Filtered from
+# query terms so ranking keys on content words, not "how/to/is/a". Falls back to the
+# raw terms if filtering would empty the query.
+STOP = {"the","a","an","of","to","in","on","is","are","was","were","be","been","being",
+        "and","or","but","if","then","for","with","as","by","at","from","into","that",
+        "this","these","those","it","its","i","you","we","they","he","she","do","does",
+        "did","can","could","would","should","will","how","what","why","when","where",
+        "which","who","whom","only","not","no","yes","so","than","up","down","out","own"}
+
 def weight_for(rel):
     best, blen = 1.0, -1
     for prefix, w in WEIGHTS:
@@ -38,17 +48,21 @@ def weight_for(rel):
             best, blen = w, len(prefix)
     return best
 
-def main():
-    terms = [t.lower() for t in sys.argv[1:] if t.strip()]
-    if not terms:
-        print("usage: recall.py <query terms...>"); return
+def rank(terms, root=ROOT):
+    """Core relevance ranking. Returns list of (score, rel, present, hits, text),
+    sorted best-first. Factored out (2026-07-02) so memory_eval.py and future
+    semantic variants can import the same scoring instead of re-implementing it."""
+    terms = [t.lower() for t in terms if t and t.strip()]
+    content = [t for t in terms if t not in STOP]
+    if content:                     # keep raw terms only if all were stopwords
+        terms = content
     results = []
-    for dirpath, dirnames, filenames in os.walk(ROOT):
+    for dirpath, dirnames, filenames in os.walk(root):
         dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
         for fn in filenames:
             if not fn.endswith(".md"): continue
             full = os.path.join(dirpath, fn)
-            rel = os.path.relpath(full, ROOT)
+            rel = os.path.relpath(full, root)
             try:
                 text = open(full, encoding="utf-8", errors="ignore").read()
             except Exception:
@@ -62,6 +76,13 @@ def main():
             score = weight_for(rel) * (present ** 2) * (1 + math.log1p(density))
             results.append((score, rel, present, hits, text))
     results.sort(reverse=True, key=lambda r: r[0])
+    return results
+
+def main():
+    terms = [t.lower() for t in sys.argv[1:] if t.strip()]
+    if not terms:
+        print("usage: recall.py <query terms...>"); return
+    results = rank(terms)
     print(f"\n=== recall: {' '.join(terms)} ===  ({len(results)} files matched)\n")
     for score, rel, present, hits, text in results[:8]:
         print(f"[{score:6.1f}] {rel}  (terms {present}/{len(terms)}, {hits} hits)")
