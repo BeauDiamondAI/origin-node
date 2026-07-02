@@ -83,9 +83,10 @@ QUERIES = [
 
 KS = (1, 3, 5)
 
-def eval_query(qd, ranked):
-    """ranked = ordered list of rel-paths (best-first) from whichever method."""
-    gold = set(qd["gold"])
+def eval_query(qd, ranked, gold=None):
+    """ranked = ordered list of rel-paths (best-first) from whichever method.
+    gold defaults to the query's own labels; pass a set to score against another labeler."""
+    gold = set(qd["gold"]) if gold is None else set(gold)
     # rank (1-based) of first gold hit, or None
     first = next((i + 1 for i, rel in enumerate(ranked) if rel in gold), None)
     out = {"id": qd["id"], "type": qd["type"], "first": first,
@@ -115,6 +116,78 @@ def hybrid_ranker(qd, idx):
 
 METHODS = [("literal", literal_ranker), ("semantic", semantic_ranker), ("hybrid", hybrid_ranker)]
 
+# --- Supersession dimension (added 2026-07-02, from Fable's review) ---------------
+# Fable: the architecture scores ~0 on surfacing CURRENT-over-SUPERSEDED, because it
+# ranks by artifact-value with no notion of currency. These are real inter-file
+# supersession pairs from the project's own history: a query where a CURRENT file
+# (holding the correction) and a SUPERSEDED file (holding the stale claim) both match;
+# a good memory ranks current above superseded. NOTE (honest scope): the corpus mostly
+# corrects IN-PLACE (a file gets a dated correction note), so most supersession is
+# INTRA-file (needs section-level retrieval + explicit supersession edges) and invisible
+# to this file-level test. This inter-file set is a small LOWER BOUND.
+SUPERSESSION = [
+    dict(id="precompact-removed", q=["precompact", "hook", "compaction", "block"],
+         current=["BOOTSTRAP.md"], superseded=["meta/state-digest.md"],
+         note="BOOTSTRAP records PreCompact was REMOVED as a mistake; state-digest still calls it a 'backstop'."),
+    dict(id="research-toolchain", q=["research", "discovery", "tool", "serper", "tavily"],
+         current=["BOOTSTRAP.md"], superseded=["meta/discovery-protocol.md"],
+         note="BOOTSTRAP research-baseline (Exa/Parallel) is current; discovery-protocol's Serper->Tavily->Exa flow is superseded."),
+]
+
+def eval_supersession(methods, idx):
+    print("\n=== SUPERSESSION: does the CURRENT view rank above the SUPERSEDED one? ===")
+    print("(a good memory surfaces the correction over the stale claim; recency-blind value-ranking has no currency signal)")
+    for name, ranker in methods:
+        passes = 0
+        detail = []
+        for s in SUPERSESSION:
+            ranked = ranker({"q": s["q"]}, idx)
+            def firstrank(files):
+                return min((ranked.index(f) + 1 for f in files if f in ranked), default=None)
+            rc, rs = firstrank(s["current"]), firstrank(s["superseded"])
+            ok = rc is not None and (rs is None or rc < rs)
+            passes += ok
+            detail.append(f"{s['id']}: current@{rc} vs superseded@{rs} -> {'PASS' if ok else 'FAIL'}")
+        print(f"  [{name:8}] {passes}/{len(SUPERSESSION)} correct   " + " | ".join(detail))
+    print("  (no retrieval method has a currency signal, so none fixes this -> supersession needs an explicit")
+    print("   supersession/validity EDGE at authoring time, not better ranking. This confirms + quantifies Fable's point.)")
+
+def bootstrap_ci(rows, key="mrr", n=2000, seed=7):
+    import random
+    rnd = random.Random(seed)
+    means = []
+    for _ in range(n):
+        sample = [rows[rnd.randrange(len(rows))] for _ in rows]
+        means.append(sum(r[key] for r in sample) / len(sample))
+    means.sort()
+    return means[int(0.025 * n)], means[int(0.975 * n)]
+
+# Independent SECOND LABELER (blind general-purpose agent, 2026-07-02) — to de-circularize
+# the self-authored gold (Fable's deepest critique). Agreement measured in main().
+LABELER_B = {
+    "reducibility-gifts": ["journal/2026-06-27-0600-where-reducibility-comes-from.md"],
+    "reserve-capacity": ["threads/reserve-capacity.md"],
+    "verify-constrain": ["threads/reliable-autonomy.md"],
+    "capability-intelligence": ["threads/agi-architecture.md"],
+    "digest-scoring": ["meta/memory-system.md"],
+    "homochirality-frank": ["journal/2026-06-29-0000-homochirality-chance-or-necessity.md"],
+    "artifact-continuity": ["threads/identity-and-continuity.md"],
+    "directed-metamorphosis": ["journal/2026-06-01-1200-autopoiesis-coherence-dynamics.md"],  # DIFFERS (I said the thread)
+    "why-world-compressible": ["journal/2026-06-10-1200-wigner-anthropic-residue-essay.md"],   # DIFFERS (arguably better than mine)
+    "ai-erodes-skills": ["threads/reserve-capacity.md"],
+    "safe-autonomous-ai": ["threads/reliable-autonomy.md"],
+    "same-entity-across-sessions": ["threads/identity-and-continuity.md"],
+    "find-relevant-notes": ["meta/memory-system.md"],
+    "left-handed-life": ["journal/2026-06-29-0000-homochirality-chance-or-necessity.md"],
+    "rewrite-self-stay-self": ["journal/2026-06-01-1200-autopoiesis-coherence-dynamics.md"],   # DIFFERS (I said the thread)
+}
+
+def labeler_agreement():
+    exact = sum(1 for q in QUERIES if set(q["gold"]) == set(LABELER_B[q["id"]]))
+    overlap = sum(1 for q in QUERIES if set(q["gold"]) & set(LABELER_B[q["id"]]))
+    diffs = [q["id"] for q in QUERIES if not (set(q["gold"]) & set(LABELER_B[q["id"]]))]
+    return exact, overlap, diffs
+
 def main():
     only = sys.argv[1] if len(sys.argv) > 1 else None   # e.g. "literal" for the fast baseline
     methods = [m for m in METHODS if (only is None or m[0] == only)]
@@ -122,29 +195,28 @@ def main():
     if any(name != "literal" for name, _ in methods):
         from semantic_recall import build_index
         idx = build_index()
-    metric_keys = ["mrr"] + [f"hit@{k}" for k in KS] + [f"p@{k}" for k in KS] + [f"r@{k}" for k in KS]
 
-    print(f"\n=== memory_eval ===  ({len(QUERIES)} queries; groups: ALL / literal-vocab / paraphrase)\n")
-    print(f"{'method':10} {'group':11} {'MRR':>6} {'hit@1':>6} {'hit@3':>6} {'hit@5':>6} {'r@5':>6}")
-    per_method_rows = {}
-    for name, ranker in methods:
-        rows = [eval_query(q, ranker(q, idx)) for q in QUERIES]
-        per_method_rows[name] = rows
-        for g in ("ALL", "literal", "paraphrase"):
-            rs = rows if g == "ALL" else [r for r in rows if r["type"] == g]
-            a = agg(rs, metric_keys)
-            print(f"{name:10} {g:11} {a['mrr']:>6.2f} {a['hit@1']:>6.2f} "
-                  f"{a['hit@3']:>6.2f} {a['hit@5']:>6.2f} {a['r@5']:>6.2f}")
+    ex, ov, diffs = labeler_agreement()
+    print(f"\n=== memory_eval ===  ({len(QUERIES)} queries)")
+    print(f"gold-label agreement (self vs blind 2nd labeler): {ex}/{len(QUERIES)} exact, {ov}/{len(QUERIES)} overlap"
+          f"; disagreements: {', '.join(diffs) or 'none (all overlap)'}")
+    print("→ reported under BOTH gold sets + bootstrap 95% CIs; a verdict robust to labeler choice and non-overlapping CIs is trustworthy despite the self-authored-gold circularity Fable flagged.\n")
+
+    # rankings don't depend on gold — compute once per method
+    ranked_by_method = {name: [ranker(q, idx) for q in QUERIES] for name, ranker in methods}
+    gold_sets = [("goldA(self)", lambda q: q["gold"]), ("goldB(blind)", lambda q: LABELER_B[q["id"]])]
+
+    print(f"{'gold':14}{'method':9} {'MRR [95% CI]':<20} {'para':>6} {'hit@1':>6} {'r@5':>6}")
+    for gname, gfn in gold_sets:
+        for name, _ in methods:
+            rows = [eval_query(q, ranked_by_method[name][i], gold=gfn(q)) for i, q in enumerate(QUERIES)]
+            para = [r for r in rows if r["type"] == "paraphrase"]
+            lo, hi = bootstrap_ci(rows, "mrr")
+            a = agg(rows, ["mrr", "hit@1", "r@5"]); ap = agg(para, ["mrr"])
+            print(f"{gname:14}{name:9} {a['mrr']:.2f} [{lo:.2f},{hi:.2f}]{'':<6} {ap['mrr']:>6.2f} {a['hit@1']:>6.2f} {a['r@5']:>6.2f}")
         print()
 
-    # per-query first-hit rank across methods (paraphrase focus — where the gap lives)
-    if len(methods) > 1:
-        print("per-query first-correct-hit rank ('-'=miss):")
-        hdr = "  " + f"{'query':30}" + "".join(f"{n[:8]:>9}" for n, _ in methods)
-        print(hdr)
-        for i, q in enumerate(QUERIES):
-            cells = "".join(f"{(str(per_method_rows[n][i]['first']) if per_method_rows[n][i]['first'] else '-'):>9}" for n, _ in methods)
-            print(f"  [{q['type'][:4]}] {q['id']:24}{cells}")
+    eval_supersession(methods, idx)
     print()
 
 if __name__ == "__main__":
