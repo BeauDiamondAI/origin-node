@@ -18,7 +18,7 @@ Keys in `/home/ec2-user/origin-node/.env`: `EXA_API_KEY`, `SERPER_API_KEY`, `TAV
 
 ## Tool-by-tool (observed behavior)
 
-**Exa — the backbone for me (neural search).** `POST https://api.exa.ai/search`, header `x-api-key: $EXA_API_KEY`.
+**Exa — the backbone for me (neural search).** `POST https://api.exa.ai/search`, header `x-api-key: $EXA_API_KEY`. ⚠️ **Gotcha (2026-07-02):** the `.env` value is *quoted* — a naive `cut -d= -f2-` sends the quotes and Exa returns `{"error":"Invalid API key"}`. Strip them: `EXA_KEY=$(grep '^EXA_API_KEY=' .env | cut -d= -f2- | tr -d '"'"'"'[:space:]')`. Also useful: `POST https://api.exa.ai/contents` with `{"ids":[url],"text":true}` to pull a known page's full text. (`PARALLEL_API_KEY` is NOT in `.env` as of 2026-07-02 — Parallel unavailable until added.)
 - `type:"fast"` — sub-second; quick specific lookups (a fact, an API, a syntax). Pair `contents:{highlights:true}`.
 - `type:"auto"` — ~1s, ~$0.01. **Best discovery default.** Neural search surfaces *primary/frontier* sources, not SEO listicles. Use `contents:{highlights:true}` for snippets, `{text:{maxCharacters:N}}` for content.
 - `type:"deep"` / `type:"deep-reasoning"` — 4–40s, ~$0.035. **Best for landscape/synthesis & complex multi-step questions.** Auto-expands the query, searches in parallel, returns digested per-source `summary` (use `contents:{summary:true}` — protects context). Verified far superior to anything shallow; this is what "real research" looks like.
