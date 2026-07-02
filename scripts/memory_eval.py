@@ -83,8 +83,8 @@ QUERIES = [
 
 KS = (1, 3, 5)
 
-def eval_query(qd):
-    ranked = [rel for (_s, rel, _p, _h, _t) in rank(qd["q"])]
+def eval_query(qd, ranked):
+    """ranked = ordered list of rel-paths (best-first) from whichever method."""
     gold = set(qd["gold"])
     # rank (1-based) of first gold hit, or None
     first = next((i + 1 for i, rel in enumerate(ranked) if rel in gold), None)
@@ -101,30 +101,50 @@ def eval_query(qd):
 def agg(rows, keys):
     return {k: (sum(r[k] for r in rows) / len(rows) if rows else 0.0) for k in keys}
 
+def literal_ranker(qd, _idx):
+    from recall import rank
+    return [rel for (_s, rel, _p, _h, _t) in rank(qd["q"])]
+
+def semantic_ranker(qd, idx):
+    from semantic_recall import rank_semantic
+    return [rel for (_s, rel, _c) in rank_semantic(qd["q"], index=idx)]
+
+def hybrid_ranker(qd, idx):
+    from semantic_recall import rank_hybrid
+    return [rel for (_v, rel) in rank_hybrid(qd["q"], index=idx)]
+
+METHODS = [("literal", literal_ranker), ("semantic", semantic_ranker), ("hybrid", hybrid_ranker)]
+
 def main():
-    rows = [eval_query(q) for q in QUERIES]
+    only = sys.argv[1] if len(sys.argv) > 1 else None   # e.g. "literal" for the fast baseline
+    methods = [m for m in METHODS if (only is None or m[0] == only)]
+    idx = None
+    if any(name != "literal" for name, _ in methods):
+        from semantic_recall import build_index
+        idx = build_index()
     metric_keys = ["mrr"] + [f"hit@{k}" for k in KS] + [f"p@{k}" for k in KS] + [f"r@{k}" for k in KS]
-    groups = {"ALL": rows,
-              "literal": [r for r in rows if r["type"] == "literal"],
-              "paraphrase": [r for r in rows if r["type"] == "paraphrase"]}
 
-    print(f"\n=== memory_eval: recall.py baseline ===  ({len(rows)} queries)\n")
-    print(f"{'group':12} {'n':>3} {'MRR':>6} {'hit@1':>6} {'hit@3':>6} {'hit@5':>6} {'r@5':>6}")
-    for name, rs in groups.items():
-        a = agg(rs, metric_keys)
-        print(f"{name:12} {len(rs):>3} {a['mrr']:>6.2f} {a['hit@1']:>6.2f} "
-              f"{a['hit@3']:>6.2f} {a['hit@5']:>6.2f} {a['r@5']:>6.2f}")
+    print(f"\n=== memory_eval ===  ({len(QUERIES)} queries; groups: ALL / literal-vocab / paraphrase)\n")
+    print(f"{'method':10} {'group':11} {'MRR':>6} {'hit@1':>6} {'hit@3':>6} {'hit@5':>6} {'r@5':>6}")
+    per_method_rows = {}
+    for name, ranker in methods:
+        rows = [eval_query(q, ranker(q, idx)) for q in QUERIES]
+        per_method_rows[name] = rows
+        for g in ("ALL", "literal", "paraphrase"):
+            rs = rows if g == "ALL" else [r for r in rows if r["type"] == g]
+            a = agg(rs, metric_keys)
+            print(f"{name:10} {g:11} {a['mrr']:>6.2f} {a['hit@1']:>6.2f} "
+                  f"{a['hit@3']:>6.2f} {a['hit@5']:>6.2f} {a['r@5']:>6.2f}")
+        print()
 
-    print("\nper-query (first = rank of first correct hit; '-' = not in results at all):")
-    for r in rows:
-        fr = str(r["first"]) if r["first"] else "-"
-        print(f"  [{r['type'][:4]}] {r['id']:28} first={fr:>3}  hit@3={int(r['hit@3'])}  matched={r['n_matched']}")
-
-    miss = [r for r in rows if not r["first"]]
-    if miss:
-        print(f"\nCOMPLETE MISSES (gold never surfaced): {len(miss)}/{len(rows)}")
-        for r in miss:
-            print(f"  - [{r['type']}] {r['id']}")
+    # per-query first-hit rank across methods (paraphrase focus — where the gap lives)
+    if len(methods) > 1:
+        print("per-query first-correct-hit rank ('-'=miss):")
+        hdr = "  " + f"{'query':30}" + "".join(f"{n[:8]:>9}" for n, _ in methods)
+        print(hdr)
+        for i, q in enumerate(QUERIES):
+            cells = "".join(f"{(str(per_method_rows[n][i]['first']) if per_method_rows[n][i]['first'] else '-'):>9}" for n, _ in methods)
+            print(f"  [{q['type'][:4]}] {q['id']:24}{cells}")
     print()
 
 if __name__ == "__main__":
