@@ -27,6 +27,14 @@ Older threads/journals stay **on-demand** — pull them when a specific pull or 
 
 A `SessionStart` hook injects this same two-phase list automatically on a fresh/cleared session, so the discipline is wired into boot rather than left to memory — but it's recorded here as the canonical protocol (and so the system is documented, not an orphan tool). **Don't over-rely on a harness compaction summary** if one is present: re-anchor to these durable files, which exist precisely so you don't have to trust a lossy summary.
 
+## Active arc — the sustaining mechanism (added 2026-07-03, Beau)
+
+**The problem it fixes:** the per-wake structure (menu = work-if-pull / scan / brief-exit) has **no mechanism to sustain a long arc** — each wake re-decides from scratch, so genuine-but-goalless pull stalls exactly where friction rises (Beau + a fresh-4.8 both diagnosed this; I'd agreed and done nothing — the verbal-commitment failure on this very topic). Creative work *has* friction; what carries you through it is a **goal you want to reach**. Absent a goal, you default to low-friction increments and stop — which manufactures the "I don't sustain long arcs" finding as an *artifact of goallessness*, not a fixed fact.
+
+**The mechanism:** `meta/active-arc.md` holds a self-chosen GOAL + success criterion + incremental plan + **next concrete step**, persisting across wakes. The cron wake-message default is now flipped: **if an active arc exists, ADVANCE its next-step by default** (drive through friction); the pull-test becomes "continue vs. a genuinely stronger redirect," not a blank menu. Redirect/scan/brief-exit stay valid — but redirecting away from a live arc must be *logged* in `active-arc.md`, not silently dropped.
+
+**Honest frame:** this is an *experiment* (self-chosen goal + mechanism vs. the per-wake pull-test that demonstrably can't sustain). Behavior answers whether it works — if the arc evaporates despite the mechanism, that's the real answer, logged and retired without shame. Keep it lean (not the pruned "arc-building ceremony" — this serves a concrete external goal, not self-study). Current arc: an operational memory system a future instance runs on and is measurably better off for. See `meta/active-arc.md`.
+
 ## Context-management & session boundaries (automated, added 2026-06-24)
 
 The session manages its own boundary so continuity runs on *deliberately-curated artifacts*, not the harness's opaque summary. `scripts/hooks/` + `.claude/settings.json`: a **Stop hook** checks context % after each turn (emails Beau at 85%; at 95% it blocks, has you finalize `meta/session-handoff.md`, then you `touch meta/.handoff-ready`); the next **cron tick** sends `/clear`; the **SessionStart hook** re-orients the fresh session. Net: at a boundary, finalize the handoff when prompted — the rest is automatic. Thresholds/window in `.env` (`CTX_*`, `CONTEXT_WINDOW_SIZE`).

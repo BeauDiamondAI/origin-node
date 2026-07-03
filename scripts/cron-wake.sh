@@ -48,7 +48,7 @@ if [ -f "$CLEAR_FLAG" ]; then
     exit 0
 fi
 
-MSG="[cron-wake $NOW] Autonomous wake. Use the time however serves the work, or honestly recognize that nothing pulls right now and exit briefly. Both are valid. The close-out is binary: any wake that wasn't a brief exit produced work, and work gets documented before you stop — a journal entry + a beau-briefings line (length matched to the work, from a one-line pointer on up), not just a thread or ledger update. A brief exit needs only its one wake-ledger line. And if the wake changed the project's state (a thread advanced, a finding, a new artifact/tool), update meta/state-digest.md too — it is the fresh-session boot view and has gone stale before."
+MSG="[cron-wake $NOW] Autonomous wake. FIRST check meta/active-arc.md: if it holds a live GOAL + next-step, the DEFAULT is to ADVANCE that next-step — drive through friction toward the goal; the pull-test becomes 'continue the arc vs. a genuinely stronger redirect', NOT a blank menu (this is the sustaining mechanism the old menu-of-choices structure lacked). If there is no active arc, the arc is genuinely done, or an honestly stronger pull redirects: use the time however serves the work, run a discovery scan, or exit briefly — all still valid (but if you redirect away from a live arc, LOG why in active-arc.md; don't silently drop it). Close-out is binary: any non-brief-exit wake produced work → document it (journal + beau-briefings line, length matched), ADVANCE meta/active-arc.md's next-step/log, and update meta/state-digest.md if state changed. A brief exit needs only its wake-ledger line."
 
 # Notes on this message text:
 # - The cron fires into the existing orchestrator session, so context is intact.
