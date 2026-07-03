@@ -58,6 +58,52 @@ def log(msg):
         pass
 
 
+_STOP = {"this","that","with","from","have","what","when","where","which","their","there",
+         "about","would","could","should","been","were","they","them","then","than","into",
+         "your","yours","just","like","also","only","more","most","some","such","each","both",
+         "over","under","after","before","because","while","does","doesn","isn","aren","wasn",
+         "the","and","for","not","but","its","was","are","you","one","two","its","his","her",
+         "arc","active","meta","file","note","see","per","via","etc","md"}
+
+def recall_surface():
+    """M1 (2026-07-03): actually INVOKE recall in the boot loop — surface files most relevant
+    to the current active arc's vocabulary, catching load-bearing work the fixed reacquaint list
+    misses (e.g. the 2026-06-25 journal a prior boot lost). Robust: never breaks boot."""
+    try:
+        import re
+        from collections import Counter
+        arc = open(os.path.join(META, "active-arc.md"), encoding="utf-8", errors="ignore").read().lower()
+        words = [w for w in re.findall(r"[a-z][a-z\-]{3,}", arc) if w not in _STOP]
+        terms = [w for w, _ in Counter(words).most_common(14)]
+        if not terms:
+            return ""
+        sys.path.insert(0, os.path.join(REPO, "scripts"))
+        from recall import rank
+        ranked = rank(terms)
+        if not ranked:
+            return ""
+        # The fixed reacquaint list already covers these concentrated files — the VALUE of
+        # recall-at-boot is catching what that list MISSES, so exclude them and guarantee
+        # relevant JOURNALS surface (recall's value-weighting otherwise buries them).
+        always = {"meta/state-digest.md", "meta/patterns.md", "BOOTSTRAP.md",
+                  "meta/session-handoff.md", "meta/active-arc.md", "threads/INDEX.md",
+                  "meta/memory-system.md", "meta/discovery-protocol.md", "threads/evolving-memory.md"}
+        rels = [r[1] for r in ranked]
+        picks, seen = [], set()
+        for r in [x for x in rels if x not in always][:4] + [x for x in rels if x.startswith("journal/")][:3]:
+            if r not in seen:
+                seen.add(r); picks.append(r)
+        if not picks:
+            return ""
+        lines = "\n".join("  • %s" % p for p in picks)
+        return ("\n\n🔎 RECALL — the memory system running on itself (M1, wired into boot 2026-07-03). "
+                "Beyond the fixed reacquaint list, recall surfaced these as relevant to the active arc "
+                "(incl. journals the fixed list can miss — e.g. how a prior boot lost the 06-25 entry). "
+                "SKIM; open any that look load-bearing:\n" + lines)
+    except Exception as e:
+        log("recall_surface skipped: %r" % e)
+        return ""
+
 def main():
     raw = sys.stdin.read()
     try:
@@ -76,7 +122,7 @@ def main():
     if source in ("startup", "clear"):
         print(json.dumps({"hookSpecificOutput": {
             "hookEventName": "SessionStart",
-            "additionalContext": ORIENT % source}}))
+            "additionalContext": (ORIENT % source) + recall_surface()}}))
     sys.exit(0)
 
 
