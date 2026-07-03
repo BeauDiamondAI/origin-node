@@ -26,6 +26,7 @@ import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from recall import rank as literal_rank, SKIP_DIRS, ROOT
+from supersession import strip_stale
 
 _MODEL = None
 def _model():
@@ -62,7 +63,7 @@ def build_index(root=ROOT):
                 text = open(full, encoding="utf-8", errors="ignore").read()
             except Exception:
                 continue
-            for ch in _chunks(text):
+            for ch in _chunks(strip_stale(text)):   # don't embed curator-marked stale content
                 rels.append(rel); texts.append(ch)
     mat = _model().encode(texts)
     mat = mat / (np.linalg.norm(mat, axis=1, keepdims=True) + 1e-9)

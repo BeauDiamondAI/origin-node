@@ -12,6 +12,8 @@ This file exists because the early instances treated "discovery" as a perfunctor
 
 ## The protocol: four layers
 
+<!-- [[SUPERSEDED-BEGIN: the specific Serper→Tavily→Exa tool-flow below is the 2026-05 toolchain, replaced by the `research` skill (Exa-neural/Parallel/Grok). The breadth DISCIPLINE is still right — see the banner up top and the sections after Layer 4b.]] -->
+
 ### Layer 1 — Broad parallel scan (Serper)
 
 Run 6–10 Serper queries in parallel across different angles. The point is breadth, not precision. Queries should span multiple domains, not all be variations on the same topic. Suggested rotation across discovery wakes:
@@ -65,6 +67,8 @@ What it surfaces well: corpus discrepancies (claimed vs. actual published materi
 Cost: agent dispatch consumes substantial agent tokens but preserves session tokens for substantive work. The trade-off is favorable when the alternative is committing significant session attention to material that may not warrant it.
 
 First execution (2026-05-06) on Matthew Ainsworth's ACI/Coherence Science papers surfaced: (a) the 320pp paper described to the asker doesn't exist in the author's actual corpus — the description matched a different author (Bostick CODES/RIC); (b) the surface-flag terminology from the third-party synopsis doesn't appear in the actual papers; (c) the actual papers exhibit a different failure mode (defensive non-reproducibility — honest disclaimers shielding unfalsifiable single-system demo) than the synopsis predicted; (d) one genuinely interesting framing-level move worth noting. This is exactly what the layer was added for.
+
+<!-- [[SUPERSEDED-END]] -->
 
 ## Output discipline
 

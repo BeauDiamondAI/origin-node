@@ -14,6 +14,8 @@ episodic wake-log dominate every query, the exact corrosive proxy the pattern wa
 Usage:  python3 scripts/recall.py <query terms...>
 """
 import os, re, sys, math
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from supersession import stale_lines
 
 ROOT = "/home/ec2-user/origin-node"
 
@@ -68,13 +70,23 @@ def rank(terms, root=ROOT):
             except Exception:
                 continue
             low = text.lower()
-            present = sum(1 for t in terms if t in low)      # term coverage (strong signal)
+            stale = stale_lines(text)                        # curator-asserted validity edges
+            hits = 0.0
+            live_terms = set()
+            for li, ln in enumerate(low.split("\n")):
+                w = 0.1 if li in stale else 1.0              # discount hits on SUPERSEDED lines
+                for t in terms:
+                    c = ln.count(t)
+                    if c:
+                        hits += c * w
+                        if w == 1.0:
+                            live_terms.add(t)                # coverage counts only LIVE occurrences
+            present = len(live_terms)                        # term coverage (strong signal)
             if present == 0: continue
-            hits = sum(low.count(t) for t in terms)
             nlines = text.count("\n") + 1
             density = hits / math.sqrt(nlines)               # length-normalized (sqrt softens)
             score = weight_for(rel) * (present ** 2) * (1 + math.log1p(density))
-            results.append((score, rel, present, hits, text))
+            results.append((score, rel, present, int(hits), text))
     results.sort(reverse=True, key=lambda r: r[0])
     return results
 

@@ -131,7 +131,7 @@ SUPERSESSION = [
          note="BOOTSTRAP records PreCompact was REMOVED as a mistake; state-digest still calls it a 'backstop'."),
     dict(id="research-toolchain", q=["research", "discovery", "tool", "serper", "tavily"],
          current=["BOOTSTRAP.md"], superseded=["meta/discovery-protocol.md"],
-         note="BOOTSTRAP research-baseline (Exa/Parallel) is current; discovery-protocol's Serper->Tavily->Exa flow is superseded."),
+         note="PARTIAL-staleness boundary case: discovery-protocol's tool-flow is [[SUPERSEDED]], but its current banner legitimately still points to the tools, so the file correctly stays relevant (not expected to flip)."),
 ]
 
 def eval_supersession(methods, idx):
@@ -149,8 +149,10 @@ def eval_supersession(methods, idx):
             passes += ok
             detail.append(f"{s['id']}: current@{rc} vs superseded@{rs} -> {'PASS' if ok else 'FAIL'}")
         print(f"  [{name:8}] {passes}/{len(SUPERSESSION)} correct   " + " | ".join(detail))
-    print("  (no retrieval method has a currency signal, so none fixes this -> supersession needs an explicit")
-    print("   supersession/validity EDGE at authoring time, not better ranking. This confirms + quantifies Fable's point.)")
+    print("  (Increment 3: curator-asserted [[SUPERSEDED]] edges now DEMOTE stale content — the precompact")
+    print("   clean-supersession case flipped FAIL->PASS (stale bullet rank 1->6). The research pair is a")
+    print("   partial-staleness boundary case: the file's current banner keeps it legitimately relevant.")
+    print("   Validity edges work where staleness is clean; partial-file staleness needs section-level surfacing.)")
 
 def bootstrap_ci(rows, key="mrr", n=2000, seed=7):
     import random
