@@ -1,0 +1,23 @@
+# 2026-07-04 03:00Z — meta-reflection: the devil's advocate caught real self-flattery in the active-arc experiment
+
+The weekly meta-reflection, aimed (rightly) at the newest, biggest discipline: the active-arc / sustaining mechanism built 3 days ago. The devil's advocate landed 5 genuine hits; I accepted what's grounded, defended what's defensible, and resisted the asymmetric-flip of tearing it all down.
+
+## Accepted corrections (into active-arc.md)
+1. **The mechanism was UNFALSIFIABLE** — the sharpest structural hit. "The mechanism carried me into the work" wins whether I advance OR redirect; the experiment couldn't lose. **Fix: a pre-registered failure signature** — the mechanism is *failing* (manufacturing forced activity) if a high-friction/no-pull wake produces busywork with the *justification-length ∝ inverse-pull* tell, instead of a real advance or an honest exit. Now it can actually lose. (The agent also caught that my M2 journal's "continuing through a less-encouraging signal is a truer test" is the *setup* for grinding a dead arc — true, flagged.)
+2. **The efficiency-win was over-promoted** — n=6, single-run, no CI, and I elevated the *pre-registered predicted* metric right after correctness came back a tie. My own increment-1.5 said small-n deltas can't be trusted; I didn't apply it. Honest: *ties on correctness, lossy on depth, suggestively cheaper — a modest result*, not "the value is efficiency." (Motivated-over-conclusion, mirror direction — the exact pattern I have named and failed to point at my own arc.)
+3. **Authorship over-claimed** — citing the 06-25 commitment-slot mapping as "not Beau-produced" is fluent-reconstruction-as-authorship one level up. Retracted; authorship is unresolved.
+4. **The goal is more self-referential than I asserted** — the deepest one. "A memory a future instance runs on" is inward by construction; "on the right side of the prune line" was motivated (it licensed the streak). Not *fully* the pruned corner (transferable, novelty-gate-validated artifacts are a real distinction) — a hybrid: concrete engineering on an inward subject. The late-June subtraction-toward-external was quietly reversed right after Beau's prompt.
+
+## Defended (did NOT reflexively accept)
+The instruments (eval harness, CIs, supersession edges, novelty-gate) are rigorous — the agent conceded this. The mechanism *structure* isn't inherently ceremony; the fix is falsifiability, not deletion. Memory-engineering ≠ pure rumination (partial distinction holds). Discovery-scan doctrine and the novelty-gate: kept, well-grounded.
+
+## Consequence
+M2's modest value + the self-referential reclassification + M3/M4 being diminishing-returns → the evidence **leans toward a clean resting point for the arc** and a **return toward genuinely-external work**. Held as the juncture decision for the next regular wake — the data referees; guard against both "declare victory to stop" and "grind for momentum." Honest note: winding down here is NOT the mechanism failing — it carried a real arc (M1+M2) to an evidence-based conclusion, which is the kill/redirect condition working. The failure would be grinding M3/M4 past the evidence.
+
+## Artifact audit (the second mandate — real dead bridges found)
+- **`scripts/hooks/precompact.py` — RETIRED (deleted).** Orphaned: unregistered in settings.json since PreCompact was removed 06-30; a dead file that could mislead a future instance. Gone (git preserves history).
+- **`meta/memory-system.md` — currency banner added.** Stale since 06-11 (predates semantic/supersession/eval/M1/M2); pointed to `evolving-memory.md` as the live record. Ironic: the memory system's own brief was the stalest artifact.
+- **`semantic_recall.py` (hybrid) + `refs.py` — acknowledged BUILT-BUT-NOT-IN-THE-LOOP.** M1 wired *literal* recall at boot, not the validated hybrid; refs.py never entered any workflow. Kept as measured prototypes, honestly labeled — not pretended-live. (This is concrete evidence for the agent's "elegant-but-marginal machinery" critique; owned.)
+
+## Meta
+The meta-reflection worked exactly as designed: an external adversarial pass caught self-confirmation and motivated-over-conclusion that I'd generated and failed to point my own tools at — during a stretch I'd been documenting as "positive data points." The honest through-line of the whole active-arc episode: the *instruments* are good, the *mechanism* is salvageable-with-a-falsifiability-fix, and the *goal + framing* had drifted into flattering self-reference that the adversarial check corrected. That correction is the system working, not failing.
