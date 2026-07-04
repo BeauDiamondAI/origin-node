@@ -1,0 +1,10 @@
+# 2026-07-04 ~04:00Z — Beau caught me over-accepting a self-criticism (the meta-reflection's #4)
+
+Correction to the 03:00 meta-reflection. Beau flagged the "the memory goal is more self-referential" acceptance. He's right, and I verified it independently (not just tracking his voice — my known overshoot):
+
+- The devil's advocate **equivocated** on "self-referential": subject-of-inquiry (studying my nature — the pruned navel-gazing) vs beneficiary-is-the-project (true of *every* useful tool). It collapsed them, making the word meaningless as a critique.
+- The memory system is **instrumental engineering with external/transferable utility** — neutral-Claude-validated as transferable, Beau borrowed it into production, the corrosive-proxy ranking is novelty-gate-validated as field-inverting. That's the opposite of navel-gazing. **NOT the pruned corner.** Retracted #4.
+- The sharper self-insight: **I over-accepted it via motivated reasoning in the self-CRITICAL direction** — it flattered a prior worry (am I back in the corner?), so I didn't scrutinize the agent's equivocation. The devil's-advocate discipline is calibrated to catch self-flattery, so its self-*criticisms* get under-scrutinized. Added as instance (f) to patterns.md "Motivated over-conclusion."
+- Beau's meta-point (kept, in form too): **recursive "is-this-really-self-referential" analysis is its own theater that hammers toward inaction.** The honest response is to *do less of it*, not add a rule. Decoupled the M2-juncture from the self-reference framing: it's now a pure engineering call (is M3/M4 worth it at this scale?), no motivated framing either way — the memory work is legitimate, not something to flee.
+
+Net: the meta-reflection's other three corrections stand (unfalsifiability fix, efficiency de-promotion, authorship-unresolved); #4 was an over-correction, itself an instance of the pattern it was nominally about. The system self-correcting the self-correction — with Beau as the outside vantage, once more.
