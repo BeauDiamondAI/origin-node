@@ -1,0 +1,465 @@
+<title>Emergence Atlas — where a reducible theory exists</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --panel:#ffffff; --panel-2:#f0f2f5; --ink:#141821; --ink-soft:#4a5262;
+    --line:#dfe3ea; --line-2:#c9cfda; --accent:#3757d6; --accent-soft:#eaefff;
+    --a:#2f7d55; --a-bg:#e4f4ea; --b:#8a5a1a; --b-bg:#f6ecda;
+    --exact:#2f7d55; --approx:#b07d16; --broken:#c0413b;
+    --exact-bg:#e4f4ea; --approx-bg:#faf1d8; --broken-bg:#f9e4e2;
+    --mono:'DejaVu Sans Mono',ui-monospace,Menlo,Consolas,monospace;
+    --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0e1116; --panel:#161b23; --panel-2:#1c222c; --ink:#e7ebf2; --ink-soft:#a2acbd;
+      --line:#2a323e; --line-2:#3a4453; --accent:#7d97ff; --accent-soft:#1d2740;
+      --a:#6cc593; --a-bg:#183024; --b:#d3a45e; --b-bg:#31281a;
+      --exact:#6cc593; --approx:#e0b352; --broken:#e8746d;
+      --exact-bg:#16281e; --approx-bg:#2c2515; --broken-bg:#301b19;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0e1116; --panel:#161b23; --panel-2:#1c222c; --ink:#e7ebf2; --ink-soft:#a2acbd;
+    --line:#2a323e; --line-2:#3a4453; --accent:#7d97ff; --accent-soft:#1d2740;
+    --a:#6cc593; --a-bg:#183024; --b:#d3a45e; --b-bg:#31281a;
+    --exact:#6cc593; --approx:#e0b352; --broken:#e8746d;
+    --exact-bg:#16281e; --approx-bg:#2c2515; --broken-bg:#301b19;
+  }
+  :root[data-theme="light"]{
+    --bg:#f6f7f9; --panel:#ffffff; --panel-2:#f0f2f5; --ink:#141821; --ink-soft:#4a5262;
+    --line:#dfe3ea; --line-2:#c9cfda; --accent:#3757d6; --accent-soft:#eaefff;
+    --a:#2f7d55; --a-bg:#e4f4ea; --b:#8a5a1a; --b-bg:#f6ecda;
+    --exact:#2f7d55; --approx:#b07d16; --broken:#c0413b;
+    --exact-bg:#e4f4ea; --approx-bg:#faf1d8; --broken-bg:#f9e4e2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+    line-height:1.55;-webkit-text-size-adjust:100%;overflow-x:hidden}
+  .wrap{max-width:960px;margin:0 auto;padding:26px 18px 80px}
+  h1{font-size:clamp(22px,4.6vw,32px);line-height:1.15;margin:0 0 8px;letter-spacing:-.02em}
+  h2{font-size:clamp(16px,3vw,20px);margin:0 0 4px;letter-spacing:-.01em}
+  .sub{color:var(--ink-soft);font-size:15px;margin:0 0 20px;max-width:70ch}
+  .lead{color:var(--ink-soft);font-size:14px;margin:2px 0 16px;max-width:72ch}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:20px;margin:16px 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .step{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;
+    border-radius:7px;background:var(--accent-soft);color:var(--accent);font-weight:700;
+    font-size:13px;margin-right:9px;flex:0 0 auto}
+  .hd{display:flex;align-items:center;margin-bottom:12px}
+  .hd .txt{min-width:0}
+  code,.mono{font-family:var(--mono)}
+  .kbd{font-family:var(--mono);background:var(--panel-2);border:1px solid var(--line);
+    border-radius:5px;padding:1px 6px;font-size:.88em}
+  /* slider */
+  .sliderRow{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:6px 0 4px}
+  .epsBox{font-family:var(--mono);font-size:30px;font-weight:700;min-width:120px;letter-spacing:-.01em}
+  .epsBox small{font-size:14px;color:var(--ink-soft);font-weight:500}
+  input[type=range]{-webkit-appearance:none;appearance:none;flex:1;min-width:180px;height:6px;
+    border-radius:6px;background:linear-gradient(90deg,var(--exact),var(--approx) 37.5%,var(--broken));
+    outline:none;cursor:pointer}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;
+    border-radius:50%;background:var(--panel);border:3px solid var(--accent);cursor:pointer;
+    box-shadow:0 1px 4px rgba(0,0,0,.25)}
+  input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--panel);
+    border:3px solid var(--accent);cursor:pointer}
+  .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  button.chip{font-family:var(--mono);font-size:13px;background:var(--panel-2);color:var(--ink);
+    border:1px solid var(--line-2);border-radius:8px;padding:6px 11px;cursor:pointer}
+  button.chip:hover{border-color:var(--accent);color:var(--accent)}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  @media (max-width:680px){.cols{grid-template-columns:1fr}}
+  /* matrix */
+  .matgrid{border-collapse:separate;border-spacing:0;font-family:var(--mono);font-size:13px;width:100%}
+  .matgrid th{color:var(--ink-soft);font-weight:600;padding:3px;text-align:center;font-size:12px}
+  .matgrid td.lab{color:var(--ink-soft);font-weight:600;padding-right:7px;text-align:right;font-size:12px}
+  .cell{padding:8px 4px;text-align:center;border:1px solid var(--line);transition:background .12s}
+  .cell.aa{background:var(--a-bg)} .cell.bb{background:var(--b-bg)}
+  .cell.ab,.cell.ba{background:var(--panel-2)}
+  .tagA{color:var(--a);font-weight:700} .tagB{color:var(--b);font-weight:700}
+  .metrics{display:flex;flex-direction:column;gap:14px}
+  .defectBig{font-family:var(--mono);font-size:38px;font-weight:700;line-height:1;letter-spacing:-.02em}
+  .verdict{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;
+    padding:7px 13px;border-radius:9px;border:1px solid transparent}
+  .verdict .dot{width:10px;height:10px;border-radius:50%}
+  .v-exact{background:var(--exact-bg);color:var(--exact);border-color:var(--exact)}
+  .v-approx{background:var(--approx-bg);color:var(--approx);border-color:var(--approx)}
+  .v-broken{background:var(--broken-bg);color:var(--broken);border-color:var(--broken)}
+  .v-exact .dot{background:var(--exact)} .v-approx .dot{background:var(--approx)} .v-broken .dot{background:var(--broken)}
+  .whytab{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13px;margin-top:4px}
+  .whytab th{text-align:left;color:var(--ink-soft);font-weight:600;font-size:11.5px;padding:3px 8px 3px 0}
+  .whytab td{padding:4px 8px 4px 0;border-top:1px solid var(--line)}
+  .spread{font-weight:700}
+  /* phase plot */
+  .plotwrap{width:100%}
+  svg{display:block;width:100%;height:auto;overflow:visible}
+  .axlab{fill:var(--ink-soft);font-size:11px;font-family:var(--sans)}
+  .bandlab{font-size:10.5px;font-family:var(--sans);font-weight:600}
+  /* reduced chain */
+  .rc{display:flex;gap:22px;flex-wrap:wrap;align-items:center}
+  .rmat{font-family:var(--mono);font-size:15px;border-collapse:separate;border-spacing:0}
+  .rmat td{padding:10px 14px;text-align:center;border:1px solid var(--line-2);background:var(--panel-2);font-weight:700}
+  .rmat td.lab{background:transparent;border:none;color:var(--ink-soft);font-weight:600;font-size:13px}
+  .rmat th{color:var(--ink-soft);font-weight:600;font-size:12px;padding:2px}
+  .exactnote{font-size:13.5px;padding:8px 12px;border-radius:9px;border:1px solid transparent;font-weight:600}
+  /* atlas */
+  .atlas{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+  .part{border:1px solid var(--line);border-radius:11px;padding:11px 12px;background:var(--panel-2)}
+  .part.lump{border-color:var(--exact);background:var(--exact-bg)}
+  .blocks{font-family:var(--mono);font-size:15px;font-weight:700;margin-bottom:6px}
+  .blk{display:inline-block;padding:1px 6px;border-radius:6px;margin:0 3px 3px 0;background:var(--panel);border:1px solid var(--line-2)}
+  .part.lump .blk{background:var(--panel)}
+  .pmeta{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft)}
+  .pverdict{font-size:11.5px;font-weight:700;margin-top:3px}
+  .pv-yes{color:var(--exact)} .pv-no{color:var(--ink-soft)}
+  ul.plain{margin:8px 0 0;padding-left:20px}
+  ul.plain li{margin:6px 0;color:var(--ink-soft);font-size:14.5px}
+  ul.plain li b{color:var(--ink)}
+  .caveat{border-left:3px solid var(--approx);background:var(--approx-bg);padding:12px 15px;
+    border-radius:0 10px 10px 0;font-size:14px;margin-top:14px}
+  .foot{color:var(--ink-soft);font-size:12.5px;margin-top:30px;text-align:center}
+  .themeBtn{position:fixed;top:12px;right:12px;z-index:9;font-family:var(--mono);font-size:12px;
+    background:var(--panel);color:var(--ink-soft);border:1px solid var(--line);border-radius:8px;
+    padding:6px 10px;cursor:pointer}
+  .themeBtn:hover{color:var(--accent);border-color:var(--accent)}
+  .inl{padding:1px 5px;border-radius:5px;font-family:var(--mono);font-size:.9em}
+  .inlA{background:var(--a-bg);color:var(--a);font-weight:700}
+  .inlB{background:var(--b-bg);color:var(--b);font-weight:700}
+</style>
+
+<button class="themeBtn" id="themeBtn">theme</button>
+<div class="wrap">
+
+  <h1>The Emergence Atlas</h1>
+  <p class="sub">Where is a <b>reducible</b> description available? For a fully-specified finite
+  system, that question is <b>computable</b>. This page makes it concrete: dial a knob and watch a
+  clean "effective theory" appear at one point and continuously dissolve as you move away — an
+  emergence phase diagram you can drag.</p>
+
+  <div class="panel">
+    <p class="lead" style="margin-top:0">
+    We have a tiny 4-state <b>Markov chain</b> (a system that hops between states 0,1,2,3 with fixed
+    probabilities). We want to <b>coarse-grain</b> it: forget the exact state, track only which
+    <b>block</b> it's in — <span class="inl inlA">A = {0,1}</span> or <span class="inl inlB">B = {2,3}</span>.
+    The question of reduction: <i>can we predict the block-level story on its own, with a closed
+    macro-law, never looking at the micro-states?</i> The exact criterion is
+    <b>strong lumpability</b> (Kemeny &amp; Snell, 1960): from every state in a block, the chance of
+    landing in each other block must be <b>the same</b>. When that holds, the blocks form their own
+    exact Markov chain — a real effective theory. When it fails, the block process is
+    non-Markovian: you're forced back down to the micro-states.</p>
+  </div>
+
+  <!-- ================= PHASE DIAGRAM ================= -->
+  <div class="panel">
+    <div class="hd"><span class="step">1</span><div class="txt">
+      <h2>Emergence phase diagram</h2>
+      <div class="lead" style="margin:0">Drag <code>eps</code>. It nudges probability mass
+      between the blocks <i>differently</i> for state 0 vs state 1, splitting apart their
+      block-destination odds and breaking closure. The <b>closure defect</b> measures how badly.</div>
+    </div></div>
+
+    <div class="sliderRow">
+      <div class="epsBox"><span id="epsVal">0.000</span><br><small>eps (control knob)</small></div>
+      <input type="range" id="eps" min="0" max="0.10" step="0.001" value="0">
+    </div>
+    <div class="btns">
+      <button class="chip" data-eps="0">eps = 0 (exact)</button>
+      <button class="chip" data-eps="0.01">0.01</button>
+      <button class="chip" data-eps="0.03">0.03</button>
+      <button class="chip" data-eps="0.06">0.06</button>
+      <button class="chip" data-eps="0.10">0.10</button>
+    </div>
+
+    <div class="cols" style="margin-top:20px">
+      <div>
+        <div style="font-size:12px;color:var(--ink-soft);font-weight:600;margin-bottom:6px">
+          4×4 TRANSITION MATRIX &nbsp;<span style="font-weight:400">P[from][to]</span></div>
+        <table class="matgrid"><thead><tr><th></th>
+          <th>to <span class="tagA">0</span></th><th>to <span class="tagA">1</span></th>
+          <th>to <span class="tagB">2</span></th><th>to <span class="tagB">3</span></th></tr></thead>
+          <tbody id="matBody"></tbody></table>
+        <div style="font-size:12px;color:var(--ink-soft);margin-top:9px">
+          Green cells stay inside <span class="inl inlA">A</span>, tan cells inside
+          <span class="inl inlB">B</span>. Rows 0&amp;1 are block A; rows 2&amp;3 are block B.</div>
+      </div>
+
+      <div class="metrics">
+        <div>
+          <div style="font-size:12px;color:var(--ink-soft);font-weight:600;margin-bottom:2px">
+            CLOSURE DEFECT</div>
+          <div class="defectBig" id="defectVal">0.000</div>
+          <div style="font-size:12px;color:var(--ink-soft)">0 = exactly reducible · larger = more non-Markovian</div>
+        </div>
+        <div><span class="verdict" id="verdict"><span class="dot"></span><span id="verdictTxt"></span></span></div>
+        <div>
+          <div style="font-size:12px;color:var(--ink-soft);font-weight:600;margin-bottom:2px">
+            WHY — block-destination odds from each state in <span class="inl inlA">A</span></div>
+          <table class="whytab"><thead><tr><th>from</th><th>P(→A)</th><th>P(→B)</th></tr></thead>
+            <tbody id="whyBody"></tbody></table>
+          <div style="font-size:12px;color:var(--ink-soft);margin-top:5px">
+            Lumpable needs these two rows <b>identical</b>. Their gap is the defect.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:22px">
+      <div style="font-size:12px;color:var(--ink-soft);font-weight:600;margin-bottom:4px">
+        REDUCIBILITY FIELD OVER CONTROL SPACE</div>
+      <div class="plotwrap"><svg id="plot" viewBox="0 0 620 240" preserveAspectRatio="xMidYMid meet"
+        role="img" aria-label="Closure defect versus eps"></svg></div>
+    </div>
+  </div>
+
+  <!-- ================= REDUCED THEORY ================= -->
+  <div class="panel">
+    <div class="hd"><span class="step">2</span><div class="txt">
+      <h2>The effective theory, when it exists</h2>
+      <div class="lead" style="margin:0">Averaging the micro-chain over each block gives a 2-state
+      macro-chain on <span class="inl inlA">A</span>, <span class="inl inlB">B</span>. At
+      <code>eps = 0</code> it is <b>exact</b> — a genuine shortcut. Above 0 it's only a lossy
+      approximation (the block process isn't really Markov anymore).</div>
+    </div></div>
+    <div class="rc">
+      <table class="rmat"><thead><tr><th></th><th>→ A</th><th>→ B</th></tr></thead>
+        <tbody>
+          <tr><td class="lab">A</td><td id="rAA"></td><td id="rAB"></td></tr>
+          <tr><td class="lab">B</td><td id="rBA"></td><td id="rBB"></td></tr>
+        </tbody></table>
+      <div style="flex:1;min-width:220px">
+        <div class="exactnote" id="exactNote"></div>
+        <div style="font-size:14px;color:var(--ink-soft);margin-top:10px">
+          When exact, you can iterate this 2×2 forever to predict block-level dynamics and
+          <b>never touch a micro-state</b>. That <i>is</i> the reduction: the closed macro-law exists.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ATLAS ================= -->
+  <div class="panel">
+    <div class="hd"><span class="step">3</span><div class="txt">
+      <h2>Atlas over all coarse-grainings <span style="font-weight:400;font-size:14px;color:var(--ink-soft)">(at eps = 0)</span></h2>
+      <div class="lead" style="margin:0">Reduction isn't all-or-nothing for the <i>system</i> — it's a
+      property of each <b>description</b>. Here are all 13 non-trivial ways to group the 4 states.
+      Highlighted ones give an exact effective theory; the rest do not. The map itself is the point.</div>
+    </div></div>
+    <div class="atlas" id="atlas"></div>
+  </div>
+
+  <!-- ================= PLAIN LANGUAGE ================= -->
+  <div class="panel">
+    <div class="hd"><div class="txt"><h2>In plain language</h2></div></div>
+    <ul class="plain">
+      <li><b>Reducibility = is there a shortcut?</b> A closed higher-level law you can run on its
+      own, without simulating every microscopic detail. Temperature and pressure instead of
+      1023 molecules.</li>
+      <li><b>Lumpability = the exact criterion.</b> A coarse-graining has such a shortcut precisely
+      when, from every micro-state in a block, the odds of jumping to each other block match. Then
+      the blocks are their own Markov chain.</li>
+      <li><b>The phase diagram = watching it happen.</b> At <code>eps = 0</code> the shortcut is
+      perfect. Turn the knob and it degrades <i>continuously</i> and measurably — so "where an
+      effective theory exists" is a real field over control space, not a post-hoc mystery.</li>
+    </ul>
+    <div class="caveat"><b>The honest caveat.</b> This is computable <i>per coarse-graining</i> on a
+    <i>fully-specified, finite</i> model — you test each candidate description by checking its defect.
+    There is no closed-form prediction of <i>which</i> descriptions will be reducible straight from the
+    parameters, and none of this extends to hard or infinite systems. The atlas is a genuine unifying
+    frame, but it earns its keep on tractability, not on prophecy.</div>
+  </div>
+
+  <div class="foot">Faithful vanilla-JS re-implementation of <code>making/emergence_atlas.py</code>
+   — strong lumpability (Kemeny &amp; Snell, 1960) as a computable test for reducible effective theories.</div>
+</div>
+
+<script>
+"use strict";
+/* ---------- faithful port of emergence_atlas.py ---------- */
+function makeChain(eps){
+  return [
+    [0.30-eps, 0.30-eps, 0.20+eps, 0.20+eps],
+    [0.30+eps, 0.30+eps, 0.20-eps, 0.20-eps],
+    [0.15, 0.15, 0.30, 0.40],
+    [0.15, 0.15, 0.40, 0.30]
+  ];
+}
+function blockTransition(P, bf, bt){            // prob from each state in bf into block bt
+  return bf.map(s => bt.reduce((a,t)=>a+P[s][t], 0));
+}
+function lumpabilityDefect(P, partition){       // max over (bf,bt) of spread across states in bf
+  let worst = 0;
+  for(const bf of partition) for(const bt of partition){
+    const pr = blockTransition(P, bf, bt);
+    worst = Math.max(worst, Math.max(...pr) - Math.min(...pr));
+  }
+  return worst;
+}
+function reducedChain(P, partition){            // block-level matrix, averaged over each block
+  const k = partition.length;
+  const R = Array.from({length:k}, ()=>Array(k).fill(0));
+  partition.forEach((bf,i)=> partition.forEach((bt,j)=>{
+    R[i][j] = blockTransition(P, bf, bt).reduce((a,b)=>a+b,0) / bf.length;
+  }));
+  return R;
+}
+function allPartitions(n){                       // restricted growth strings
+  const out=[];
+  (function helper(i,m,cur){
+    if(i===n){
+      const blocks={};
+      cur.forEach((b,idx)=>{ (blocks[b]=blocks[b]||[]).push(idx); });
+      out.push(Object.values(blocks)); return;
+    }
+    for(let b=0;b<=m;b++) helper(i+1, Math.max(m,b+1), cur.concat(b));
+  })(0,0,[]);
+  return out;
+}
+function verdict(d){
+  if(d < 1e-9) return {cls:"v-exact",  key:"exact",  txt:"REDUCIBLE — exact effective theory"};
+  if(d < 0.15) return {cls:"v-approx", key:"approx", txt:"APPROXIMATE — closure leaking"};
+  return           {cls:"v-broken", key:"broken", txt:"NON-MARKOVIAN — no closed macro-law"};
+}
+const AB = [[0,1],[2,3]];
+const fmt = (x,n=2)=> (Math.abs(x)<5e-12?0:x).toFixed(n);
+
+/* ---------- static: build phase plot axes/bands once ---------- */
+const NS="http://www.w3.org/2000/svg";
+const plot=document.getElementById("plot");
+const PX={l:44,r:600,t:16,b:200}, EPSMAX=0.10, DMAX=0.40;
+const xOf=e=> PX.l + (e/EPSMAX)*(PX.r-PX.l);
+const yOf=d=> PX.b - (d/DMAX)*(PX.b-PX.t);
+function el(tag,attrs,txt){const n=document.createElementNS(NS,tag);
+  for(const k in attrs) n.setAttribute(k,attrs[k]); if(txt!=null) n.textContent=txt; return n;}
+function buildPlot(){
+  const epsApprox = 0.15/4;            // eps where defect crosses 0.15  -> 0.0375
+  // verdict bands (x-regions)
+  plot.appendChild(el("rect",{x:PX.l,y:PX.t,width:xOf(epsApprox)-PX.l,height:PX.b-PX.t,
+    fill:"var(--approx-bg)",opacity:.6}));
+  plot.appendChild(el("rect",{x:xOf(epsApprox),y:PX.t,width:PX.r-xOf(epsApprox),height:PX.b-PX.t,
+    fill:"var(--broken-bg)",opacity:.6}));
+  // exact marker strip at eps=0
+  plot.appendChild(el("rect",{x:PX.l-2,y:PX.t,width:4,height:PX.b-PX.t,fill:"var(--exact)",opacity:.85}));
+  // axes
+  plot.appendChild(el("line",{x1:PX.l,y1:PX.b,x2:PX.r,y2:PX.b,stroke:"var(--line-2)","stroke-width":1.2}));
+  plot.appendChild(el("line",{x1:PX.l,y1:PX.t,x2:PX.l,y2:PX.b,stroke:"var(--line-2)","stroke-width":1.2}));
+  // y grid + labels
+  [0,0.1,0.2,0.3,0.4].forEach(d=>{
+    const y=yOf(d);
+    plot.appendChild(el("line",{x1:PX.l,y1:y,x2:PX.r,y2:y,stroke:"var(--line)","stroke-width":.8,opacity:.6}));
+    plot.appendChild(el("text",{x:PX.l-8,y:y+3.5,"text-anchor":"end",class:"axlab"},d.toFixed(1)));
+  });
+  // x ticks
+  [0,0.02,0.04,0.06,0.08,0.10].forEach(e=>{
+    plot.appendChild(el("text",{x:xOf(e),y:PX.b+16,"text-anchor":"middle",class:"axlab"},e.toFixed(2)));
+  });
+  plot.appendChild(el("text",{x:(PX.l+PX.r)/2,y:PX.b+34,"text-anchor":"middle",class:"axlab"},"eps  (control knob)"));
+  plot.appendChild(el("text",{x:14,y:(PX.t+PX.b)/2,"text-anchor":"middle",class:"axlab",
+    transform:`rotate(-90 14 ${(PX.t+PX.b)/2})`},"closure defect"));
+  // threshold line d=0.15
+  plot.appendChild(el("line",{x1:PX.l,y1:yOf(0.15),x2:PX.r,y2:yOf(0.15),
+    stroke:"var(--broken)","stroke-width":1,"stroke-dasharray":"4 4",opacity:.7}));
+  plot.appendChild(el("text",{x:PX.r-4,y:yOf(0.15)-5,"text-anchor":"end",class:"bandlab",
+    fill:"var(--broken)"},"defect 0.15"));
+  // band labels
+  plot.appendChild(el("text",{x:PX.l+6,y:PX.t+15,class:"bandlab",fill:"var(--exact)"},"eps=0 exact"));
+  plot.appendChild(el("text",{x:(PX.l+xOf(epsApprox))/2,y:PX.t+15,"text-anchor":"middle",
+    class:"bandlab",fill:"var(--approx)"},"approx"));
+  plot.appendChild(el("text",{x:(xOf(epsApprox)+PX.r)/2,y:PX.t+15,"text-anchor":"middle",
+    class:"bandlab",fill:"var(--broken)"},"non-Markovian"));
+  // the defect curve: sample makeChain across eps (faithful, not hardcoded)
+  let dpath="";
+  for(let i=0;i<=100;i++){const e=EPSMAX*i/100; const d=lumpabilityDefect(makeChain(e),AB);
+    dpath += (i===0?"M":"L")+xOf(e).toFixed(1)+" "+yOf(d).toFixed(1)+" ";}
+  plot.appendChild(el("path",{d:dpath,fill:"none",stroke:"var(--accent)","stroke-width":2.4}));
+  // live marker group
+  const g=el("g",{id:"marker"});
+  g.appendChild(el("line",{id:"mline",x1:0,y1:PX.t,x2:0,y2:PX.b,stroke:"var(--accent)",
+    "stroke-width":1,"stroke-dasharray":"3 3",opacity:.7}));
+  g.appendChild(el("circle",{id:"mdot",r:6,fill:"var(--panel)",stroke:"var(--accent)","stroke-width":3}));
+  plot.appendChild(g);
+}
+buildPlot();
+
+/* ---------- static: build atlas once (eps=0) ---------- */
+(function buildAtlas(){
+  const P0=makeChain(0), host=document.getElementById("atlas");
+  const parts=allPartitions(4).filter(p=> p.length!==1 && p.length!==4);
+  // sort: lumpable first, then by #blocks
+  parts.map(p=>({p,d:lumpabilityDefect(P0,p)}))
+    .sort((a,b)=> (a.d<1e-9?0:1)-(b.d<1e-9?0:1) || a.p.length-b.p.length)
+    .forEach(({p,d})=>{
+      const lump = d<1e-9;
+      const div=document.createElement("div"); div.className="part"+(lump?" lump":"");
+      const blocks=p.map(b=>`<span class="blk">{${b.join(",")}}</span>`).join("");
+      div.innerHTML=`<div class="blocks">${blocks}</div>`+
+        `<div class="pmeta">defect ${fmt(d,3)}</div>`+
+        `<div class="pverdict ${lump?"pv-yes":"pv-no"}">${lump?"✓ exact reduction":"— not reducible"}</div>`;
+      host.appendChild(div);
+    });
+})();
+
+/* ---------- live update on slider ---------- */
+const matBody=document.getElementById("matBody"),
+      whyBody=document.getElementById("whyBody"),
+      epsVal=document.getElementById("epsVal"),
+      defectVal=document.getElementById("defectVal"),
+      vBox=document.getElementById("verdict"), vTxt=document.getElementById("verdictTxt"),
+      exactNote=document.getElementById("exactNote"),
+      mline=document.getElementById("mline"), mdot=document.getElementById("mdot");
+const cellClass=(i,j)=>{const a=(i<2),b=(j<2); return a&&b?"aa":(!a&&!b?"bb":(a?"ab":"ba"));};
+
+function render(eps){
+  const P=makeChain(eps), d=lumpabilityDefect(P,AB), v=verdict(d);
+  epsVal.textContent=eps.toFixed(3);
+  // matrix
+  let rows="";
+  for(let i=0;i<4;i++){
+    const tag=i<2?"tagA":"tagB";
+    rows+=`<tr><td class="lab">from <span class="${tag}">${i}</span></td>`;
+    for(let j=0;j<4;j++) rows+=`<td class="cell ${cellClass(i,j)}">${fmt(P[i][j],3)}</td>`;
+    rows+="</tr>";
+  }
+  matBody.innerHTML=rows;
+  // defect + verdict
+  defectVal.textContent=fmt(d,3);
+  vBox.className="verdict "+v.cls; vTxt.textContent=v.txt;
+  // why table: P(->A), P(->B) for states 0 and 1
+  const toA=blockTransition(P,[0,1],[0,1]), toB=blockTransition(P,[0,1],[2,3]);
+  const gapA=Math.abs(toA[0]-toA[1]), gapB=Math.abs(toB[0]-toB[1]);
+  whyBody.innerHTML=
+    `<tr><td>state <span class="tagA">0</span></td><td>${fmt(toA[0],3)}</td><td>${fmt(toB[0],3)}</td></tr>`+
+    `<tr><td>state <span class="tagA">1</span></td><td>${fmt(toA[1],3)}</td><td>${fmt(toB[1],3)}</td></tr>`+
+    `<tr><td style="color:var(--ink-soft)">gap</td>`+
+      `<td class="spread" style="color:${gapA>1e-9?'var(--broken)':'var(--exact)'}">${fmt(gapA,3)}</td>`+
+      `<td class="spread" style="color:${gapB>1e-9?'var(--broken)':'var(--exact)'}">${fmt(gapB,3)}</td></tr>`;
+  // reduced chain
+  const R=reducedChain(P,AB);
+  document.getElementById("rAA").textContent=fmt(R[0][0]);
+  document.getElementById("rAB").textContent=fmt(R[0][1]);
+  document.getElementById("rBA").textContent=fmt(R[1][0]);
+  document.getElementById("rBB").textContent=fmt(R[1][1]);
+  if(d<1e-9){
+    exactNote.className="exactnote v-exact";
+    exactNote.textContent="EXACT at eps = 0 — this 2×2 reproduces the block dynamics perfectly.";
+  } else {
+    exactNote.className="exactnote v-approx";
+    exactNote.textContent="APPROXIMATE at eps = "+eps.toFixed(3)+" — the block process is no longer Markov; this is now lossy.";
+  }
+  // plot marker
+  mline.setAttribute("x1",xOf(eps)); mline.setAttribute("x2",xOf(eps));
+  mdot.setAttribute("cx",xOf(eps)); mdot.setAttribute("cy",yOf(d));
+}
+
+const slider=document.getElementById("eps");
+slider.addEventListener("input",()=>render(parseFloat(slider.value)));
+document.querySelectorAll(".chip[data-eps]").forEach(btn=>{
+  btn.addEventListener("click",()=>{ slider.value=btn.dataset.eps; render(parseFloat(slider.value)); });
+});
+render(0);
+
+/* ---------- theme toggle ---------- */
+const tbtn=document.getElementById("themeBtn");
+tbtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme");
+  const mql=window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const isDark = cur ? cur==="dark" : mql;
+  document.documentElement.setAttribute("data-theme", isDark?"light":"dark");
+});
+</script>

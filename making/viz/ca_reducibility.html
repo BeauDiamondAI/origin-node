@@ -1,0 +1,637 @@
+<title>A shortcut, or no shortcut — reducible vs irreducible cellular automata</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    /* light theme (default) */
+    --bg:#eaeef4;
+    --panel:#ffffff;
+    --panel-2:#f5f8fc;
+    --grid-bg:#f0f3f8;
+    --ink:#15202e;
+    --muted:#586778;
+    --faint:#8695a6;
+    --line:#d4ddea;
+    --line-strong:#c0cbdb;
+    --c90:#0d8ba3;        /* Rule 90 — order (cyan) */
+    --c90-soft:#0d8ba322;
+    --c30:#c07018;        /* Rule 30 — chaos (amber) */
+    --c30-soft:#c0701822;
+    --good:#1f9d6b;
+    --shadow:0 1px 2px rgba(20,35,55,.06),0 8px 30px rgba(20,35,55,.06);
+    --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,"Hoefler Text",Georgia,serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono","DejaVu Sans Mono",monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#080c14;
+      --panel:#111a27;
+      --panel-2:#0d1521;
+      --grid-bg:#0a121d;
+      --ink:#e7eef7;
+      --muted:#93a2b5;
+      --faint:#63748a;
+      --line:#213042;
+      --line-strong:#2c3e52;
+      --c90:#52d6e6;
+      --c90-soft:#52d6e61e;
+      --c30:#f2a94e;
+      --c30-soft:#f2a94e1e;
+      --good:#43c98d;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 40px rgba(0,0,0,.35);
+    }
+  }
+  /* explicit toggle wins in both directions */
+  :root[data-theme="light"]{
+    --bg:#eaeef4;--panel:#ffffff;--panel-2:#f5f8fc;--grid-bg:#f0f3f8;
+    --ink:#15202e;--muted:#586778;--faint:#8695a6;--line:#d4ddea;--line-strong:#c0cbdb;
+    --c90:#0d8ba3;--c90-soft:#0d8ba322;--c30:#c07018;--c30-soft:#c0701822;--good:#1f9d6b;
+    --shadow:0 1px 2px rgba(20,35,55,.06),0 8px 30px rgba(20,35,55,.06);
+  }
+  :root[data-theme="dark"]{
+    --bg:#080c14;--panel:#111a27;--panel-2:#0d1521;--grid-bg:#0a121d;
+    --ink:#e7eef7;--muted:#93a2b5;--faint:#63748a;--line:#213042;--line-strong:#2c3e52;
+    --c90:#52d6e6;--c90-soft:#52d6e61e;--c30:#f2a94e;--c30-soft:#f2a94e1e;--good:#43c98d;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 40px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--serif);line-height:1.65;
+    font-size:clamp(16px,1rem + .2vw,18px);
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(120% 90% at 50% -10%,var(--panel-2) 0%,transparent 55%);
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:clamp(22px,4vw,60px) clamp(18px,4vw,40px) 80px}
+
+  .eyebrow{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--faint);margin:0 0 14px;font-weight:600;
+  }
+  h1{
+    font-size:clamp(2rem,5.5vw,3.5rem);line-height:1.03;margin:0 0 .35em;font-weight:600;
+    letter-spacing:-.015em;text-wrap:balance;
+  }
+  h1 .b{color:var(--c90)}
+  h1 .w{color:var(--c30)}
+  .lede{font-size:clamp(1.05rem,2.4vw,1.3rem);color:var(--muted);max-width:60ch;margin:0;text-wrap:pretty}
+
+  h2{font-size:clamp(1.4rem,3vw,1.9rem);margin:0 0 .25em;font-weight:600;letter-spacing:-.01em;text-wrap:balance}
+  h3{font-size:1.05rem;margin:0;font-weight:600}
+  p{margin:0 0 1em;max-width:66ch}
+  a{color:var(--c90)}
+
+  section{margin-top:clamp(46px,7vw,86px)}
+  .sec-head{margin-bottom:26px}
+  .sec-head .eyebrow{margin-bottom:10px}
+  .sec-head p{color:var(--muted);margin:.5em 0 0}
+
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    box-shadow:var(--shadow);
+  }
+
+  /* ---- two triangles ---- */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media (max-width:720px){.duo{grid-template-columns:1fr}}
+  .ca{padding:18px 18px 20px;display:flex;flex-direction:column;gap:12px}
+  .ca-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .ca-title{display:flex;align-items:baseline;gap:10px}
+  .ca-title .rule{font-family:var(--mono);font-weight:700;font-size:1.05rem}
+  .tag{
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:700;padding:3px 8px;border-radius:999px;border:1px solid;
+  }
+  .tag.red{color:var(--c90);border-color:var(--c90);background:var(--c90-soft)}
+  .tag.irr{color:var(--c30);border-color:var(--c30);background:var(--c30-soft)}
+  .r90 .ca-title .rule{color:var(--c90)}
+  .r30 .ca-title .rule{color:var(--c30)}
+  .canvas-box{background:var(--grid-bg);border:1px solid var(--line);border-radius:8px;overflow:hidden;line-height:0}
+  canvas{display:block;width:100%;height:auto}
+  .cap{font-size:.9rem;color:var(--muted);margin:0;line-height:1.45}
+  .cap b{color:var(--ink);font-weight:600}
+
+  /* rule table mini-diagram */
+  .ruletable{display:flex;gap:7px;flex-wrap:wrap}
+  .rt{display:flex;flex-direction:column;align-items:center;gap:3px}
+  .rt .nb{display:flex;gap:2px}
+  .rt .cell{width:12px;height:12px;border-radius:2px;border:1px solid var(--line-strong)}
+  .rt .out{width:12px;height:12px;border-radius:2px;border:1px solid var(--line-strong)}
+  .rt .on90{background:var(--c90);border-color:var(--c90)}
+  .rt .on30{background:var(--c30);border-color:var(--c30)}
+  .rt .off{background:transparent}
+
+  /* controls */
+  .controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:2px}
+  button{
+    font-family:var(--mono);font-size:.82rem;font-weight:600;color:var(--ink);
+    background:var(--panel-2);border:1px solid var(--line-strong);border-radius:8px;
+    padding:8px 14px;cursor:pointer;transition:border-color .15s,background .15s,transform .05s;
+  }
+  button:hover{border-color:var(--c90)}
+  button:active{transform:translateY(1px)}
+  button:focus-visible,input:focus-visible{outline:2px solid var(--c90);outline-offset:2px}
+  .speed{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+
+  /* ---- shortcut demo ---- */
+  .demo{padding:clamp(20px,3vw,30px)}
+  .picker{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+  .picker label{font-family:var(--mono);font-size:.82rem;color:var(--muted);letter-spacing:.04em}
+  .picker input[type=range]{flex:1 1 220px;min-width:180px;accent-color:var(--c90)}
+  .tval{font-family:var(--mono);font-weight:700;font-size:1.6rem;color:var(--ink);min-width:3ch;text-align:right;font-variant-numeric:tabular-nums}
+  .num{width:6.5ch;font-family:var(--mono);font-size:.95rem;font-weight:700;text-align:center;
+    background:var(--panel-2);border:1px solid var(--line-strong);border-radius:7px;color:var(--ink);padding:6px 4px}
+
+  .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+  @media (max-width:720px){.demo-grid{grid-template-columns:1fr}}
+  .lane{border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--panel-2)}
+  .lane.l90{border-top:3px solid var(--c90)}
+  .lane.l30{border-top:3px solid var(--c30)}
+  .lane h3 .rn{font-family:var(--mono)}
+  .lane .method{font-size:.92rem;color:var(--muted);margin:0}
+  .stat{display:flex;gap:18px;flex-wrap:wrap}
+  .stat .kv{display:flex;flex-direction:column;gap:1px}
+  .stat .k{font-family:var(--mono);font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  .stat .v{font-family:var(--mono);font-size:1.15rem;font-weight:700;font-variant-numeric:tabular-nums}
+  .l90 .v.hero-num{color:var(--c90)}
+  .l30 .v.hero-num{color:var(--c30)}
+  .strip-box{background:var(--grid-bg);border:1px solid var(--line);border-radius:6px;overflow:hidden;line-height:0}
+  .verify{font-family:var(--mono);font-size:.8rem;display:flex;align-items:center;gap:7px;color:var(--good)}
+  .verify .dot{width:8px;height:8px;border-radius:50%;background:var(--good)}
+  .verdict{margin-top:22px;padding:16px 18px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);
+    font-size:.98rem;color:var(--ink)}
+  .verdict b.b{color:var(--c90)}
+  .verdict b.w{color:var(--c30)}
+
+  /* ---- prose explainer ---- */
+  .explain{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  @media (max-width:720px){.explain{grid-template-columns:1fr}}
+  .note{padding:22px 24px}
+  .note .eyebrow{margin-bottom:12px}
+  .note.b{border-left:3px solid var(--c90)}
+  .note.w{border-left:3px solid var(--c30)}
+  .mono-inline{font-family:var(--mono);font-size:.9em;background:var(--panel-2);padding:1px 6px;border-radius:5px;border:1px solid var(--line)}
+
+  /* ---- coarse grain ---- */
+  .coarse{padding:clamp(20px,3vw,30px);display:grid;grid-template-columns:1.1fr 1fr;gap:26px;align-items:center}
+  @media (max-width:720px){.coarse{grid-template-columns:1fr}}
+  .spark-box{background:var(--grid-bg);border:1px solid var(--line);border-radius:10px;padding:14px;line-height:0}
+  .spark-stats{display:flex;gap:22px;margin-top:12px;line-height:1.3}
+  .spark-stats .k{font-family:var(--mono);font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);display:block}
+  .spark-stats .v{font-family:var(--mono);font-size:1.15rem;font-weight:700;color:var(--c30)}
+
+  footer{margin-top:70px;padding-top:22px;border-top:1px solid var(--line);color:var(--faint);
+    font-family:var(--mono);font-size:.76rem;line-height:1.7}
+  footer a{color:var(--muted)}
+
+  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Elementary Cellular Automata &nbsp;·&nbsp; Reducible vs Irreducible</p>
+    <h1>A <span class="b">shortcut</span>,<br>or <span class="w">no shortcut</span>.</h1>
+    <p class="lede">Two rules from the same tiny family. Each cell just looks at its two neighbors.
+      Yet one lets you leap straight to any future row by formula — and the other forces you to
+      live through every single step to get there. That gap <em>is</em> what reducible and
+      irreducible mean.</p>
+  </header>
+
+  <!-- ============ THE TWO TRIANGLES ============ -->
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">1 · The contrast, drawn from one seed</p>
+      <h2>Same family. One local rule each. Grown from a single live cell.</h2>
+      <p>Both start from one lit cell in the middle and update every cell in parallel using an
+        8-entry lookup table (its three-cell neighborhood → its next state). Watch what falls out.</p>
+    </div>
+
+    <div class="duo">
+      <div class="card ca r90">
+        <div class="ca-head">
+          <div class="ca-title"><span class="rule">Rule 90</span></div>
+          <span class="tag red">Reducible</span>
+        </div>
+        <div class="ruletable" id="rt90" aria-hidden="true"></div>
+        <div class="canvas-box"><canvas id="cv90" aria-label="Rule 90 evolving into a Sierpinski triangle"></canvas></div>
+        <p class="cap"><b>The Sierpinski triangle</b> — Pascal's triangle mod 2. Nested, self-similar,
+          perfectly structured. This regularity is exactly why a shortcut exists.</p>
+      </div>
+
+      <div class="card ca r30">
+        <div class="ca-head">
+          <div class="ca-title"><span class="rule">Rule 30</span></div>
+          <span class="tag irr">Irreducible</span>
+        </div>
+        <div class="ruletable" id="rt30" aria-hidden="true"></div>
+        <div class="canvas-box"><canvas id="cv30" aria-label="Rule 30 evolving into a chaotic pattern"></canvas></div>
+        <p class="cap"><b>Chaos.</b> No repeating structure. Wolfram used its center column as a
+          pseudo-random number generator. No formula is known — you must simulate.</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="playBtn">Pause</button>
+      <button id="restartBtn">Restart</button>
+      <label class="speed">speed
+        <input id="speed" type="range" min="1" max="10" value="5" style="accent-color:var(--muted)">
+      </label>
+    </div>
+  </section>
+
+  <!-- ============ THE SHORTCUT DEMO ============ -->
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">2 · The shortcut, made concrete</p>
+      <h2>Pick any row. Then ask each rule to produce it.</h2>
+      <p>Rule 90 jumps straight there with a closed form — a live cell at row <span class="mono-inline">t</span>,
+        column <span class="mono-inline">k</span> exactly when <span class="mono-inline">(t &amp; k) == k</span>
+        (Lucas' theorem: that's when the binomial coefficient C(t,k) is odd). No earlier row is touched.
+        Rule 30 has no such formula, so it must simulate all <span class="mono-inline">t</span> rows to reach row <span class="mono-inline">t</span>.</p>
+    </div>
+
+    <div class="card demo">
+      <div class="picker">
+        <label for="tRange">Target row&nbsp;t</label>
+        <input id="tRange" type="range" min="1" max="1000" value="137">
+        <input id="tNum" class="num" type="number" min="1" max="1000" value="137">
+        <span class="tval" id="tShow">137</span>
+      </div>
+
+      <div class="demo-grid">
+        <div class="lane l90">
+          <h3><span class="rn">Rule 90</span> — reducible</h3>
+          <p class="method">Reached by <b>closed form</b>: live iff (t&nbsp;&amp;&nbsp;k)&nbsp;==&nbsp;k.</p>
+          <div class="strip-box"><canvas id="strip90" aria-label="Rule 90 row computed by formula"></canvas></div>
+          <div class="stat">
+            <div class="kv"><span class="k">Prior rows computed</span><span class="v hero-num" id="steps90">0</span></div>
+            <div class="kv"><span class="k">Live cells</span><span class="v" id="live90">—</span></div>
+            <div class="kv"><span class="k">Time</span><span class="v" id="time90">—</span></div>
+          </div>
+          <div class="verify"><span class="dot"></span><span id="verify90">formula matches full simulation</span></div>
+        </div>
+
+        <div class="lane l30">
+          <h3><span class="rn">Rule 30</span> — irreducible</h3>
+          <p class="method">Reached only by <b>simulating every step</b>. No shortcut is known.</p>
+          <div class="strip-box"><canvas id="strip30" aria-label="Rule 30 row computed by simulation"></canvas></div>
+          <div class="stat">
+            <div class="kv"><span class="k">Prior rows computed</span><span class="v hero-num" id="steps30">137</span></div>
+            <div class="kv"><span class="k">Live cells</span><span class="v" id="live30">—</span></div>
+            <div class="kv"><span class="k">Time</span><span class="v" id="time30">—</span></div>
+          </div>
+          <div class="verify" style="color:var(--muted)"><span class="dot" style="background:var(--c30)"></span><span>the only way is through</span></div>
+        </div>
+      </div>
+
+      <div class="verdict">
+        To reach row <b id="vt">137</b>, Rule 90 did <b class="b">0</b> prior rows of work; Rule 30 did
+        <b class="w" id="v30">137</b>. That collapse of the intermediate work — jumping past it —
+        is the whole meaning of <b class="b">reducible</b>. When no such jump exists, the system is
+        <b class="w">irreducible</b>: the fastest way to know the outcome is to run it.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPLAINER ============ -->
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">3 · What the two words mean</p>
+      <h2>Reducibility is the existence of a shortcut.</h2>
+    </div>
+    <div class="explain">
+      <div class="card note b">
+        <p class="eyebrow" style="color:var(--c90)">Reducible — Rule 90</p>
+        <p>A system is <b>reducible</b> when there's a shortcut past the step-by-step work: a closed
+          form that answers "what happens at step t?" without replaying steps 1 through t−1.</p>
+        <p>Rule 90 from a single seed is Pascal's triangle mod 2. By Lucas' theorem, cell (t,&nbsp;k)
+          is live exactly when <span class="mono-inline">(t &amp; k) == k</span>. That's a few bit
+          operations per cell — you can print row 100,000 without ever building the 99,999 rows
+          beneath it. The intermediate history is optional.</p>
+      </div>
+      <div class="card note w">
+        <p class="eyebrow" style="color:var(--c30)">Irreducible — Rule 30</p>
+        <p>A system is <b>computationally irreducible</b> (Wolfram's term) when no such shortcut
+          exists: to know the state at step t, you have to actually perform all t steps. The
+          computation <em>is</em> the answer; nothing summarizes it more cheaply.</p>
+        <p>Rule 30's center column is so shortcut-resistant that it served as a random-number
+          generator. Same neighborhood, same seed, same kind of rule as Rule 90 — but the history
+          is not optional. You cannot skip ahead.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COARSE-GRAIN BONUS ============ -->
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">4 · A twist worth keeping</p>
+      <h2>Irreducible up close, predictable from far away.</h2>
+      <p>Even though you can't shortcut Rule 30's individual cells, its <em>coarse</em> behavior is
+        tame. Blur the pattern into a single number per row — the density of live cells inside the
+        growing cone — and that number just sits near one half, row after row.</p>
+    </div>
+    <div class="card coarse">
+      <div>
+        <div class="spark-box"><canvas id="spark" aria-label="Rule 30 live-cell density staying near one half"></canvas></div>
+        <div class="spark-stats">
+          <div><span class="k">Mean density</span><span class="v" id="meanD">—</span></div>
+          <div><span class="k">Std dev</span><span class="v" id="stdD">—</span></div>
+          <div><span class="k">Rows measured</span><span class="v" id="nRows">—</span></div>
+        </div>
+      </div>
+      <div>
+        <p style="margin-top:0">The dashed line is 0.5. The wobble stays small and never drifts.
+          So the micro-scale is irreducible, yet a macro-observable is stable and predictable —
+          you can forecast the whole without shortcutting any of the parts.</p>
+        <p style="margin-bottom:0;color:var(--muted);font-size:.95rem">This is the Israeli–Goldenfeld
+          point: irreducibility at one scale can coexist with clean, reducible statistics at another.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Reimplemented in vanilla JavaScript from <span style="color:var(--ink)">making/ca_reducibility.py</span>
+    — 8-bit rule table, single central seed, zero boundaries.<br>
+    Rule 90 &rarr; Sierpinski = Pascal mod 2 (Lucas' theorem). Rule 30 &rarr; Wolfram's PRNG.
+    Coarse-graining &rarr; Israeli &amp; Goldenfeld.
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---------- faithful CA core (mirrors the Python) ----------
+  function ruleTable(rule){ var t=new Uint8Array(8); for(var i=0;i<8;i++) t[i]=(rule>>i)&1; return t; }
+
+  function simulate(rule,width,steps){
+    var table=ruleTable(rule);
+    var row=new Uint8Array(width); row[width>>1]=1;
+    var grid=[row.slice()];
+    for(var s=0;s<steps;s++){
+      var nxt=new Uint8Array(width);
+      for(var i=0;i<width;i++){
+        var l=i>0?row[i-1]:0, c=row[i], r=i<width-1?row[i+1]:0;
+        nxt[i]=table[(l<<2)|(c<<1)|r];
+      }
+      row=nxt; grid.push(row.slice());
+    }
+    return grid;
+  }
+  // return only the final row (cheaper for the demo)
+  function simulateLastRow(rule,width,steps){
+    var table=ruleTable(rule);
+    var row=new Uint8Array(width); row[width>>1]=1;
+    for(var s=0;s<steps;s++){
+      var nxt=new Uint8Array(width);
+      for(var i=0;i<width;i++){
+        var l=i>0?row[i-1]:0, c=row[i], r=i<width-1?row[i+1]:0;
+        nxt[i]=table[(l<<2)|(c<<1)|r];
+      }
+      row=nxt;
+    }
+    return row;
+  }
+  // REDUCIBLE shortcut — Lucas' theorem, no simulation of prior rows
+  function rule90DirectRow(t,width){
+    var row=new Uint8Array(width), center=width>>1;
+    for(var k=0;k<=t;k++){
+      if((t&k)===k){
+        var pos=center - t + 2*k;
+        if(pos>=0 && pos<width) row[pos]=1;
+      }
+    }
+    return row;
+  }
+
+  function css(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+  // ---------- rule mini-tables ----------
+  function buildRuleTable(el,rule,onClass){
+    el.innerHTML="";
+    var table=ruleTable(rule);
+    for(var i=7;i>=0;i--){
+      var l=(i>>2)&1,c=(i>>1)&1,r=i&1,out=table[i];
+      var g=document.createElement("div"); g.className="rt";
+      var nb=document.createElement("div"); nb.className="nb";
+      [l,c,r].forEach(function(v){
+        var d=document.createElement("div");
+        d.className="cell "+(v?onClass:"off"); nb.appendChild(d);
+      });
+      var o=document.createElement("div");
+      o.className="out "+(out?onClass:"off");
+      g.appendChild(nb); g.appendChild(o); el.appendChild(g);
+    }
+  }
+  buildRuleTable(document.getElementById("rt90"),90,"on90");
+  buildRuleTable(document.getElementById("rt30"),30,"on30");
+
+  // ---------- evolving triangles ----------
+  var ROWS=112, WIDTH=2*ROWS+1;              // cone reaches the edge exactly at the last row
+  var grid90=simulate(90,WIDTH,ROWS), grid30=simulate(30,WIDTH,ROWS);
+
+  function makeTri(canvasId,grid,colorVar,bgVar){
+    var canvas=document.getElementById(canvasId);
+    var ctx=canvas.getContext("2d");
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    var cssW=0, cell=0, cssH=0;
+    function layout(){
+      cssW=canvas.clientWidth||canvas.parentNode.clientWidth;
+      cell=cssW/WIDTH;
+      cssH=Math.round(cell*ROWS);
+      canvas.style.height=cssH+"px";
+      canvas.width=Math.round(cssW*dpr);
+      canvas.height=Math.round(cssH*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    function draw(upto){
+      ctx.fillStyle=css(bgVar); ctx.fillRect(0,0,cssW,cssH);
+      ctx.fillStyle=css(colorVar);
+      var n=Math.min(upto,ROWS);
+      for(var y=0;y<=n;y++){
+        var g=grid[y], yy=y*cell;
+        for(var x=0;x<WIDTH;x++){
+          if(g[x]) ctx.fillRect(x*cell, yy, cell+.7, cell+.7);
+        }
+      }
+    }
+    return {layout:layout,draw:draw,get rows(){return ROWS;}};
+  }
+  var tri90=makeTri("cv90",grid90,"--c90","--grid-bg");
+  var tri30=makeTri("cv30",grid30,"--c30","--grid-bg");
+
+  var progress=0, playing=!reduceMotion, lastT=0, speedEl=document.getElementById("speed");
+  function relayoutTris(){ tri90.layout(); tri30.layout(); tri90.draw(progress); tri30.draw(progress); }
+
+  function frame(ts){
+    if(!lastT) lastT=ts;
+    var dt=(ts-lastT)/1000; lastT=ts;
+    if(playing && progress<ROWS){
+      var rate=parseInt(speedEl.value,10)*6;      // rows per second
+      progress=Math.min(ROWS,progress+rate*dt);
+      tri90.draw(progress); tri30.draw(progress);
+      if(progress>=ROWS){ playing=false; playBtn.textContent="Replay"; }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  var playBtn=document.getElementById("playBtn");
+  playBtn.addEventListener("click",function(){
+    if(progress>=ROWS){ progress=0; playing=true; playBtn.textContent="Pause"; return; }
+    playing=!playing; playBtn.textContent=playing?"Pause":"Play";
+  });
+  document.getElementById("restartBtn").addEventListener("click",function(){
+    progress=0; playing=true; playBtn.textContent="Pause";
+  });
+
+  // ---------- shortcut demo ----------
+  var tRange=document.getElementById("tRange"),
+      tNum=document.getElementById("tNum"),
+      tShow=document.getElementById("tShow");
+
+  function makeStrip(canvasId){
+    var canvas=document.getElementById(canvasId), ctx=canvas.getContext("2d");
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    return function(row,colorVar){
+      var W=row.length;
+      var cssW=canvas.clientWidth||canvas.parentNode.clientWidth;
+      var cell=cssW/W;
+      var cssH=Math.max(26,Math.min(90,Math.round(cell*10)));
+      cssH=Math.max(26,Math.min(64,cssH));
+      canvas.style.height=cssH+"px";
+      canvas.width=Math.round(cssW*dpr); canvas.height=Math.round(cssH*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      ctx.fillStyle=css("--grid-bg"); ctx.fillRect(0,0,cssW,cssH);
+      ctx.fillStyle=css(colorVar);
+      for(var x=0;x<W;x++){ if(row[x]) ctx.fillRect(x*cell,0,cell+.7,cssH); }
+    };
+  }
+  var drawStrip90=makeStrip("strip90"), drawStrip30=makeStrip("strip30");
+  var lastRow90=null,lastRow30=null,curT=137;
+
+  function popcount(t){ var c=0; while(t){ c+=t&1; t>>=1; } return c; }
+
+  function runDemo(t){
+    curT=t;
+    var W=2*t+1;
+    // Rule 90 — closed form
+    var a=performance.now();
+    var row90=rule90DirectRow(t,W);
+    var b=performance.now();
+    // Rule 30 — must simulate all t rows
+    var row30=simulateLastRow(30,W,t);
+    var c=performance.now();
+    lastRow90=row90; lastRow30=row30;
+
+    drawStrip90(row90,"--c90");
+    drawStrip30(row30,"--c30");
+
+    var live90=0; for(var i=0;i<W;i++) live90+=row90[i];
+    var live30=0; for(var j=0;j<W;j++) live30+=row30[j];
+
+    document.getElementById("steps90").textContent="0";
+    document.getElementById("live90").textContent=live90.toLocaleString()+" (2^"+popcount(t)+")";
+    document.getElementById("time90").textContent=(b-a).toFixed(2)+" ms";
+
+    document.getElementById("steps30").textContent=t.toLocaleString();
+    document.getElementById("live30").textContent=live30.toLocaleString();
+    document.getElementById("time30").textContent=(c-b).toFixed(2)+" ms";
+
+    // verify the shortcut is exact against a full simulation
+    var simRow90=simulateLastRow(90,W,t), same=true;
+    for(var k=0;k<W;k++){ if(simRow90[k]!==row90[k]){ same=false; break; } }
+    var vEl=document.getElementById("verify90");
+    vEl.textContent = same ? "formula matches full simulation ✓" : "mismatch!";
+
+    document.getElementById("vt").textContent=t.toLocaleString();
+    document.getElementById("v30").textContent=t.toLocaleString();
+  }
+  function redrawDemo(){ if(lastRow90){ drawStrip90(lastRow90,"--c90"); drawStrip30(lastRow30,"--c30"); } }
+
+  function setT(t,fromRange){
+    t=Math.max(1,Math.min(1000,t|0));
+    tRange.value=t; tNum.value=t; tShow.textContent=t;
+    runDemo(t);
+  }
+  tRange.addEventListener("input",function(){ setT(parseInt(tRange.value,10)); });
+  tNum.addEventListener("change",function(){ setT(parseInt(tNum.value,10)); });
+  tNum.addEventListener("input",function(){ tShow.textContent=tNum.value; });
+
+  // ---------- coarse-grain sparkline ----------
+  var ROWS_C=170, WIDTH_C=2*ROWS_C+1;
+  var grid30c=simulate(30,WIDTH_C,ROWS_C);
+  function inConeDensity(row){
+    var lo=-1,hi=-1;
+    for(var i=0;i<row.length;i++){ if(row[i]){ if(lo<0)lo=i; hi=i; } }
+    if(lo<0) return 0;
+    var span=hi-lo+1, s=0;
+    for(var j=lo;j<=hi;j++) s+=row[j];
+    return s/span;
+  }
+  var startRow=20, dens=[];
+  for(var y=startRow;y<grid30c.length;y++) dens.push(inConeDensity(grid30c[y]));
+  var meanD=dens.reduce(function(a,b){return a+b;},0)/dens.length;
+  var varD=dens.reduce(function(a,b){return a+(b-meanD)*(b-meanD);},0)/dens.length;
+  var stdD=Math.sqrt(varD);
+  document.getElementById("meanD").textContent=meanD.toFixed(3);
+  document.getElementById("stdD").textContent=stdD.toFixed(3);
+  document.getElementById("nRows").textContent=dens.length;
+
+  function drawSpark(){
+    var canvas=document.getElementById("spark"), ctx=canvas.getContext("2d");
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    var cssW=canvas.clientWidth||canvas.parentNode.clientWidth;
+    var cssH=170;
+    canvas.style.height=cssH+"px";
+    canvas.width=Math.round(cssW*dpr); canvas.height=Math.round(cssH*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,cssW,cssH);
+    var padL=8,padR=8,padT=12,padB=16;
+    var w=cssW-padL-padR, h=cssH-padT-padB;
+    var yMin=0.2,yMax=0.8;
+    function X(i){ return padL + w*i/(dens.length-1); }
+    function Y(v){ return padT + h*(1-(v-yMin)/(yMax-yMin)); }
+    // faint gridlines
+    ctx.strokeStyle=css("--line"); ctx.lineWidth=1;
+    [0.3,0.4,0.6,0.7].forEach(function(gv){
+      ctx.beginPath(); ctx.moveTo(padL,Y(gv)); ctx.lineTo(cssW-padR,Y(gv)); ctx.stroke();
+    });
+    // 0.5 reference (dashed)
+    ctx.save(); ctx.setLineDash([4,4]); ctx.strokeStyle=css("--muted"); ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(padL,Y(0.5)); ctx.lineTo(cssW-padR,Y(0.5)); ctx.stroke(); ctx.restore();
+    // area fill
+    var col=css("--c30");
+    ctx.beginPath(); ctx.moveTo(X(0),Y(dens[0]));
+    for(var i=1;i<dens.length;i++) ctx.lineTo(X(i),Y(dens[i]));
+    ctx.lineTo(X(dens.length-1),padT+h); ctx.lineTo(X(0),padT+h); ctx.closePath();
+    ctx.fillStyle=css("--c30-soft"); ctx.fill();
+    // line
+    ctx.beginPath(); ctx.moveTo(X(0),Y(dens[0]));
+    for(var k=1;k<dens.length;k++) ctx.lineTo(X(k),Y(dens[k]));
+    ctx.strokeStyle=col; ctx.lineWidth=1.6; ctx.lineJoin="round"; ctx.stroke();
+    // endpoint dot
+    ctx.beginPath(); ctx.arc(X(dens.length-1),Y(dens[dens.length-1]),3,0,7); ctx.fillStyle=col; ctx.fill();
+    // 0.5 label
+    ctx.fillStyle=css("--muted"); ctx.font="11px "+css("--mono").replace(/"/g,"");
+    ctx.fillText("0.5",cssW-padR-22,Y(0.5)-4);
+  }
+
+  // ---------- resize + theme redraw ----------
+  var rT;
+  function relayoutAll(){ relayoutTris(); redrawDemo(); drawSpark(); }
+  window.addEventListener("resize",function(){ clearTimeout(rT); rT=setTimeout(relayoutAll,120); });
+  var mo=new MutationObserver(relayoutAll);
+  mo.observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",relayoutAll);
+
+  // ---------- boot ----------
+  relayoutTris();
+  if(reduceMotion){ progress=ROWS; tri90.draw(ROWS); tri30.draw(ROWS); playBtn.textContent="Replay"; }
+  setT(137);
+  drawSpark();
+  requestAnimationFrame(frame);
+})();
+</script>

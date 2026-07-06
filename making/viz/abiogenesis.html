@@ -1,0 +1,321 @@
+<title>The "Too Improbable" Argument, Dissolved</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --panel:#ffffff; --ink:#1a1d23; --muted:#5b6472; --line:#e2e6ec;
+    --accent:#3a6df0;
+    --over:#d5493f; --over-soft:#f6d9d6;
+    --under:#1f9d76; --under-soft:#d3efe6;
+    --budget:#c08a1e; --budget-soft:#f4e6c4;
+    --track:#eceff3; --chip:#eef1f5;
+    --shadow:0 1px 2px rgba(20,30,45,.06),0 6px 22px rgba(20,30,45,.05);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0f1216; --panel:#171b21; --ink:#e8ecf1; --muted:#9aa4b2; --line:#262d36;
+      --over:#f0655a; --over-soft:#37211f;
+      --under:#3ecf9e; --under-soft:#152a24;
+      --budget:#e6b445; --budget-soft:#2e2716;
+      --track:#1d232b; --chip:#20262e;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 26px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#f6f7f9; --panel:#ffffff; --ink:#1a1d23; --muted:#5b6472; --line:#e2e6ec;
+    --over:#d5493f; --over-soft:#f6d9d6;
+    --under:#1f9d76; --under-soft:#d3efe6;
+    --budget:#c08a1e; --budget-soft:#f4e6c4;
+    --track:#eceff3; --chip:#eef1f5;
+    --shadow:0 1px 2px rgba(20,30,45,.06),0 6px 22px rgba(20,30,45,.05);
+  }
+  :root[data-theme="dark"]{
+    --bg:#0f1216; --panel:#171b21; --ink:#e8ecf1; --muted:#9aa4b2; --line:#262d36;
+    --over:#f0655a; --over-soft:#37211f;
+    --under:#3ecf9e; --under-soft:#152a24;
+    --budget:#e6b445; --budget-soft:#2e2716;
+    --track:#1d232b; --chip:#20262e;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 26px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:28px 20px 72px}
+  header{margin:8px 0 22px}
+  h1{font-size:clamp(22px,3.6vw,32px);line-height:1.15;margin:0 0 8px;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:clamp(14px,2vw,16px);max-width:62ch}
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    box-shadow:var(--shadow);padding:20px;margin:18px 0;
+  }
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:0 0 14px;font-weight:700}
+
+  /* chart */
+  .chart{display:flex;flex-direction:column;gap:16px;position:relative}
+  .row{display:grid;grid-template-columns:1fr;gap:6px}
+  .row .lab{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .name{font-weight:600;font-size:14.5px}
+  .name .note{color:var(--muted);font-weight:400;font-size:12.5px}
+  .val{font-variant-numeric:tabular-nums;font-size:13px;color:var(--muted);white-space:nowrap}
+  .track{position:relative;background:var(--track);border-radius:8px;height:34px;overflow:hidden}
+  .bar{position:absolute;left:0;top:0;bottom:0;border-radius:8px;transition:width .5s cubic-bezier(.22,1,.36,1);min-width:3px}
+  .bar.over{background:linear-gradient(90deg,var(--over),var(--over))}
+  .bar.under{background:linear-gradient(90deg,var(--under),var(--under))}
+  .tag{position:absolute;top:50%;transform:translateY(-50%);font-size:11px;font-weight:700;
+       letter-spacing:.05em;padding:2px 7px;border-radius:20px;white-space:nowrap}
+  .tag.over{background:var(--over-soft);color:var(--over)}
+  .tag.under{background:var(--under-soft);color:var(--under)}
+
+  /* budget line overlay */
+  .budgetline{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--budget);z-index:5;pointer-events:none}
+  .budgetline::after{
+    content:attr(data-lab);position:absolute;top:-20px;left:50%;transform:translateX(-50%);
+    background:var(--budget);color:#1a1205;font-size:10.5px;font-weight:800;letter-spacing:.03em;
+    padding:2px 6px;border-radius:5px;white-space:nowrap;
+  }
+  .chartbody{position:relative;padding-top:20px}
+  .axis{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin-top:8px;font-variant-numeric:tabular-nums}
+
+  /* verdict headline */
+  .headline{display:flex;flex-wrap:wrap;gap:10px 26px;align-items:baseline;margin-top:6px}
+  .big{font-size:clamp(26px,6vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+  .big.over{color:var(--over)} .big.drop{color:var(--under)}
+  .bigcap{color:var(--muted);font-size:13px;max-width:34ch}
+  sup{font-size:.62em}
+
+  /* knobs */
+  .knobs{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px 22px}
+  .knob label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:6px;gap:8px}
+  .knob label b{color:var(--accent,#3a6df0);font-variant-numeric:tabular-nums;font-weight:800}
+  input[type=range]{width:100%;accent-color:#3a6df0;height:22px}
+  .knob .hint{color:var(--muted);font-size:11.5px;margin-top:2px}
+  .reset{margin-top:4px}
+  button{
+    font:inherit;font-size:13px;font-weight:600;color:var(--ink);background:var(--chip);
+    border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer;
+  }
+  button:hover{border-color:var(--muted)}
+
+  /* explanation */
+  .prose p{margin:0 0 12px;max-width:70ch}
+  .prose p:last-child{margin-bottom:0}
+  .prose b{color:var(--ink)}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .factor{border:1px solid var(--line);border-radius:11px;padding:14px 15px;background:var(--panel)}
+  .factor h3{margin:0 0 6px;font-size:14.5px;display:flex;align-items:center;gap:8px}
+  .dot{width:9px;height:9px;border-radius:50%;flex:none}
+  .dot.u{background:var(--under)} .dot.o{background:var(--over)}
+  .factor p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.5}
+  .factor .num{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
+  .callout{border-left:3px solid var(--budget);background:var(--budget-soft);
+           padding:12px 15px;border-radius:0 10px 10px 0;font-size:14px}
+  .callout b{color:var(--ink)}
+  .indep{display:inline-block;background:var(--under-soft);color:var(--under);font-weight:700;
+         font-size:12px;padding:3px 9px;border-radius:20px;margin-bottom:10px}
+  footer{color:var(--muted);font-size:12px;text-align:center;margin-top:26px;line-height:1.6}
+  code{background:var(--chip);padding:1px 6px;border-radius:5px;font-size:.88em}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>The "abiogenesis is too improbable" argument, made quantitative &mdash; then dissolved</h1>
+    <p class="sub">Hoyle's tornado-in-a-junkyard says life-by-chance needs more tries than the universe allows. Make it a number and it collapses: the answer is set by the <b>search structure</b>, not by chemistry. Each realistic assumption <b>alone</b> &mdash; not stacked &mdash; already crosses into feasibility.</p>
+  </header>
+
+  <div class="card">
+    <h2>Orders of magnitude of trials needed &nbsp;(log scale, base 10)</h2>
+    <div class="chartbody">
+      <div id="chart" class="chart"></div>
+      <div id="axis" class="axis"></div>
+    </div>
+    <div class="headline">
+      <div><div id="hbig" class="big over">10<sup>60</sup></div><div class="bigcap">naive uniform search &mdash; the "impossible" number</div></div>
+      <div><div id="hdrop" class="big drop">&ndash;10<sup>49</sup></div><div class="bigcap">biggest single drop (neutral networks), from one assumption alone</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Turn the knobs &mdash; watch the assumptions, not chemistry, move the verdict</h2>
+    <div class="knobs">
+      <div class="knob">
+        <label>Replicator length L <b><span id="vL"></span></b></label>
+        <input id="L" type="range" min="10" max="150" step="1">
+        <div class="hint">naive telling: a ~100-mer ribozyme</div>
+      </div>
+      <div class="knob">
+        <label>Alphabet size k <b><span id="vk"></span></b></label>
+        <input id="k" type="range" min="2" max="20" step="1">
+        <div class="hint">4 = nucleotides A/C/G/U</div>
+      </div>
+      <div class="knob">
+        <label>Trial budget 10^<b><span id="vB"></span></b></label>
+        <input id="B" type="range" min="30" max="60" step="1">
+        <div class="hint">prebiotic assembly attempts available (~10<sup>44</sup>)</div>
+      </div>
+      <div class="knob">
+        <label>Functional fraction f = 10^<b>&minus;<span id="vF"></span></b></label>
+        <input id="F" type="range" min="1" max="40" step="1">
+        <div class="hint">share of sequences that work (neutral network)</div>
+      </div>
+      <div class="knob">
+        <label>Shorter minimal L <b><span id="vL2"></span></b></label>
+        <input id="L2" type="range" min="8" max="100" step="1">
+        <div class="hint">first replicator may be far smaller</div>
+      </div>
+      <div class="knob">
+        <label>Module length m <b><span id="vm"></span></b></label>
+        <input id="m" type="range" min="2" max="20" step="1">
+        <div class="hint">build the L-mer as L/m selected modules</div>
+      </div>
+    </div>
+    <div class="reset"><button id="reset">Reset to the script's defaults</button></div>
+  </div>
+
+  <div class="card prose">
+    <h2>What you're looking at</h2>
+    <span class="indep">independent factors &mdash; each alone sufficient, NOT a stack</span>
+    <p><b>The naive argument.</b> Assume life needs one specific sequence of length <b>L</b> over a <b>k</b>-letter alphabet, and that the only way to find it is to draw sequences uniformly at random. Then the chance of a hit is k<sup>&minus;L</sup>, so you expect ~k<sup>L</sup> tries. For L=100, k=4 that's ~10<sup>60</sup> &mdash; astronomically past any plausible prebiotic budget of ~10<sup>44</sup> attempts. This is the real, quantitative form of "chance can't do it."</p>
+    <p>But that number is a measurement of <b>the uniform-random-search-for-one-long-target assumption</b>, not of chemistry. Relax that assumption the way real chemistry does &mdash; and each relaxation, <b>on its own</b>, drops the requirement below budget:</p>
+    <div class="grid2">
+      <div class="factor">
+        <h3><span class="dot u"></span>1 &middot; Neutral network</h3>
+        <p>Many sequences fold to a working ribozyme, not one. If a fraction <span class="num" id="fx1a"></span> of sequences work, you need only ~1/f = <span class="num" id="fx1b"></span> tries. Dropping "exactly one target" is the single biggest lever.</p>
+      </div>
+      <div class="factor">
+        <h3><span class="dot u"></span>2 &middot; Shorter replicator</h3>
+        <p>The first replicator needn't be a 100-mer. A minimal self-replicating system of length <span class="num" id="fx2a"></span> &mdash; still searched naively &mdash; needs ~<span class="num" id="fx2b"></span> tries.</p>
+      </div>
+      <div class="factor">
+        <h3><span class="dot u"></span>3 &middot; Modular assembly</h3>
+        <p>You don't gamble on L monomers at once. Find small functional modules, let <b>selection</b> keep them, combine survivors. The <b>exponential</b> k<sup>L</sup> search becomes <b>additive</b>: ~(L/m)&times;k<sup>m</sup> = <span class="num" id="fx3b"></span> tries. Evolution's own trick &mdash; cumulative selection, not one lucky jump.</p>
+      </div>
+      <div class="factor">
+        <h3><span class="dot o"></span>0 &middot; Naive uniform</h3>
+        <p>One specific L-mer, drawn uniformly: ~<span class="num" id="fx0b"></span> tries. The "impossible" baseline &mdash; and the only bar that stays beyond budget.</p>
+      </div>
+    </div>
+    <p style="margin-top:14px">These are <b>not cumulative.</b> They don't multiply into one super-drop &mdash; that would double-count. The honest and stronger point is that <b>any single one of them alone</b> already crosses the line. The naive number is fragile to <i>each</i>, independently.</p>
+    <div class="callout">
+      <b>The honest caveat.</b> None of this proves abiogenesis was easy. It shows the naive 10<sup>60</sup> measures an <i>assumption</i> &mdash; uniform random search &mdash; not the world. The real question is empirical: what was the prebiotic search's actual structure? That is <b>chance within structure</b>: neither pure chance (uniform) nor pure necessity (determined). Same shape as homochirality &mdash; a threshold and a structure, not raw odds, decide the outcome.
+    </div>
+  </div>
+
+  <footer>
+    Illustrative toy figures in log<sub>10</sub>, faithful to <code>abiogenesis_search.py</code>. The structure of the dependence is the content, not the exact numbers.
+  </footer>
+</div>
+
+<script>
+(function(){
+  var log10 = Math.log10;
+  var D = {L:100,k:4,B:44,F:11,L2:30,m:6}; // script defaults
+  var ids = ["L","k","B","F","L2","m"];
+  var S = {};
+  ids.forEach(function(id){ S[id] = D[id]; });
+
+  function compute(){
+    var lk = log10(S.k);
+    var need0 = S.L * lk;                              // naive: k^L
+    var need1 = S.F;                                   // 1/f, f = 10^-F
+    var need2 = S.L2 * lk;                             // shorter, naive
+    var nMod  = Math.ceil(S.L / S.m);
+    var need3 = log10(nMod) + S.m * lk;               // additive modular
+    return {
+      budget:S.B, nMod:nMod,
+      rows:[
+        {key:"naive", name:"Naive uniform", note:"one specific "+S.L+"-mer", v:need0},
+        {key:"neutral", name:"Neutral network", note:"fraction f = 10^−"+S.F+" work", v:need1},
+        {key:"shorter", name:"Shorter replicator", note:"L = "+S.L2+", still naive", v:need2},
+        {key:"modular", name:"Modular assembly", note:nMod+" modules of "+S.m+", selected", v:need3}
+      ]
+    };
+  }
+
+  function fmtExp(v){ // 10^v with rounding sensible for display
+    var r = (Math.abs(v) < 10 && v % 1 !== 0) ? v.toFixed(1) : Math.round(v).toString();
+    return "10<sup>"+r+"</sup>";
+  }
+
+  var chart = document.getElementById("chart");
+  var axisEl = document.getElementById("axis");
+
+  function render(){
+    var C = compute();
+    var maxV = Math.max(C.budget, 5);
+    C.rows.forEach(function(r){ if(r.v>maxV) maxV=r.v; });
+    maxV = Math.ceil(maxV/10)*10;           // round axis to tens
+    if(maxV < 10) maxV = 10;
+
+    // axis ticks
+    axisEl.innerHTML="";
+    var step = maxV>60?15:10;
+    for(var t=0;t<=maxV+0.001;t+=step){
+      var s=document.createElement("span"); s.innerHTML="10<sup>"+t+"</sup>"; axisEl.appendChild(s);
+    }
+
+    chart.innerHTML="";
+    C.rows.forEach(function(r){
+      var over = r.v > C.budget;
+      var pct = Math.max(0, Math.min(100, r.v/maxV*100));
+      var row=document.createElement("div"); row.className="row";
+      var tagOnBar = pct>26;
+      row.innerHTML =
+        '<div class="lab"><span class="name">'+r.name+' <span class="note">'+r.note+'</span></span>'+
+        '<span class="val">needs '+fmtExp(r.v)+' trials</span></div>'+
+        '<div class="track"><div class="bar '+(over?'over':'under')+'" style="width:'+pct+'%">'+
+        '</div><span class="tag '+(over?'over':'under')+'" style="'+(tagOnBar?'right:8px':'left:calc('+pct+'% + 8px)')+'">'+
+        (over?'BEYOND BUDGET':'WITHIN BUDGET')+'</span></div>';
+      chart.appendChild(row);
+    });
+
+    // budget line overlay (placed on chart body proportionally)
+    var bl=document.createElement("div"); bl.className="budgetline";
+    bl.setAttribute("data-lab","trial budget 10^"+C.budget);
+    bl.style.left="calc("+(C.budget/maxV*100)+"% )";
+    chart.appendChild(bl);
+
+    // headline
+    var naive=C.rows[0].v, neutral=C.rows[1].v;
+    document.getElementById("hbig").innerHTML = fmtExp(naive);
+    document.getElementById("hbig").className = "big " + (naive>C.budget?"over":"drop");
+    var drop = naive - neutral;
+    document.getElementById("hdrop").innerHTML = "−"+fmtExp(drop);
+
+    // prose numbers
+    document.getElementById("fx0b").innerHTML = fmtExp(naive);
+    document.getElementById("fx1a").innerHTML = "10<sup>−"+S.F+"</sup>";
+    document.getElementById("fx1b").innerHTML = fmtExp(neutral);
+    document.getElementById("fx2a").innerHTML = S.L2;
+    document.getElementById("fx2b").innerHTML = fmtExp(C.rows[2].v);
+    document.getElementById("fx3b").innerHTML = fmtExp(C.rows[3].v);
+
+    // knob readouts
+    document.getElementById("vL").textContent=S.L;
+    document.getElementById("vk").textContent=S.k;
+    document.getElementById("vB").textContent=S.B;
+    document.getElementById("vF").textContent=S.F;
+    document.getElementById("vL2").textContent=S.L2;
+    document.getElementById("vm").textContent=S.m;
+  }
+
+  ids.forEach(function(id){
+    var el=document.getElementById(id);
+    el.value=S[id];
+    el.addEventListener("input",function(){
+      S[id]=parseInt(el.value,10);
+      // keep shorter-L no larger than L for sanity of the demo
+      if(id==="L" && S.L2>S.L){ S.L2=S.L; document.getElementById("L2").value=S.L2; }
+      render();
+    });
+  });
+  document.getElementById("reset").addEventListener("click",function(){
+    ids.forEach(function(id){ S[id]=D[id]; document.getElementById(id).value=D[id]; });
+    render();
+  });
+
+  render();
+  window.addEventListener("resize",render);
+})();
+</script>
