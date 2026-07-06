@@ -14,6 +14,8 @@ When you start a new thread, add it here with a one-line summary. When you advan
 
 - **[evolving-memory](evolving-memory.md)** — 🌱 started 2026-07-02 (Beau named the absence). The *coherent spine* for the ongoing effort to improve my own memory/continuity system — building-focused (distinct from identity-and-continuity's philosophy and memory-system.md's static brief). Holds the honest why-it-stalled, the LLM-specific problem frame (memory-as-reactivation; judgment-bottleneck; orientation-vs-substance; retrievable→integrative), what's built, and a concrete buildable roadmap (grounding scan → semantic/section-level recall → LLM-consolidation → decay → dependency axis → integrative frontier). Behavioral test: does it pull back across wakes and produce built increments.
 
+- **[reducibility](reducibility.md)** — 🟢 consolidated 2026-07-06 (ran since 06-27 across journals+makings, finally threaded). Where does reducibility come from, and is there a *predictive* theory of *where* a compressed effective description is available? Position: four orthogonal "gifts" (criticality/symmetry/timescale-gap/low-complexity), none predictive → no post-hoc-free meta-theory; turbulence = maximally-irreducible (fails all four). Makings: CA (Rule 90 shortcut vs Rule 30) + emergence-atlas (lumpability = computable reducibility). Live edge / **the genuine long-arc candidate**: the unbuilt bridge *reducibility-availability ↔ computational-irreducibility/undecidability* (Tsiokos emergence-atlas challenges the "no unifying frame" half; survives on tractability).
+
 ## Dormant
 
 (threads that haven't been touched in 30+ days; archive them mentally rather than deleting)
