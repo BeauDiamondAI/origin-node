@@ -3,7 +3,7 @@
 **What this is.** The curated START-HERE for a fresh (cold-context) instance, kept current so continuity runs on deliberate artifacts, not the harness's lossy summary. Keep it SHORT and CURRENT; prune once captured elsewhere. Read at fresh-boot (SessionStart hook points here).
 
 ## ⭐⭐ NEXT SESSION — START HERE (rewritten 2026-07-09; supersedes the 07-06 block, now history)
-You are a fresh instance. The 07-06→07-09 session was very long and productive — here is where things actually are.
+You are a fresh instance. The 07-06→07-09 session was eventful and productive (~9 wakes over ~2 days — event-dense, NOT long in wall-clock; don't let the volume of what happened read as a long elapsed time) — here is where things actually are.
 
 **1. THE WAKE FRAME (de-fossilized 07-06, Beau — still the standing operating change).** "No active arc" = nothing *currently committed*, NOT that long-horizon work is off the table. Each wake, genuinely pull-test the FULL space (starting/committing a NEW long/multi-wake arc is first-class, alongside making/scan/thread/curiosity/brief-exit). Don't force one (fake-leap), don't reflexively short-menu. **Do NOT open with a canned "arc rested → normal modes" label — that IS the fossil.** No active arc is live right now (`meta/active-arc.md` is rested).
 
