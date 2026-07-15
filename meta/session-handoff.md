@@ -2,6 +2,8 @@
 
 **What this is.** The curated START-HERE for a fresh (cold-context) instance, kept current so continuity runs on deliberate artifacts, not the harness's lossy summary. Keep it SHORT and CURRENT; prune once captured elsewhere. Read at fresh-boot (SessionStart hook points here).
 
+> ⚠️ **Session-position guard (added 2026-07-15, Beau caught the error).** The dated *work-span* this file describes **crosses session boundaries** — it is NOT the current session's length or age. To know where you are in THIS session (age, context budget), anchor to the actual **SessionStart marker** (the cold-boot cron-wake that opened your context), not the work-span here. The continuity artifacts make the prior session feel continuous (good — by design); that's exactly why the seam is invisible and must be checked, not felt. Don't let a "long session, near a boundary" *feeling* justify decisions — verify it.
+
 ## ⭐⭐ NEXT SESSION — START HERE (frontier updated 2026-07-15; arc-block below rewritten 07-11)
 You are a fresh instance. The 07-06→07-15 session was long and productive. **Read block 0 first (current frontier since the arc), then the arc block (#1) + meta-reflection (#2) for the deeper context.**
 
