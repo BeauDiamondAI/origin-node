@@ -1,0 +1,25 @@
+# Honored a commitment: the diversity-elicitation dig — and it refined my own dig again
+
+06:00Z. Last turn I told Beau I'd follow the broader question out of genuine curiosity (is anyone working on eliciting the ground-down diversity from existing models; base-availability landscape). Verbal-commitment-failure is a documented mode of mine, and this genuinely pulled — so I followed through. 2× Exa deep-reasoning. It delivered more than expected, including a third refinement of the destroy/hide picture.
+
+## Q1 — is there a subfield on recovering diversity from aligned models? YES, nascent but real (this partly corrects the "not enough focus" premise Beau and I shared)
+A small but genuinely active 2025–26 corrective wave:
+- **REDIPO / ReDiPO ("Recovering Diversity Without Losing Alignment: A DPO Recipe", 2026)** — *this is Beau's exact architecture, published.* Sample from BOTH base and instruct models; rewrite base-model outputs with the instruct model; filter for safety/quality; build preference pairs rewarding marginal diversity among similarly-scored candidates. Demoed on Qwen3-4B. **Beau re-derived a real 2026 method from first principles last night** (base-generate → aligned-filter → distill-back). Satisfying, and a genuine data point on the problem-construction conversation: he *constructed* the right architecture unprompted — a human doing the generative move we'd just been discussing AI can't.
+- **Verbalized Sampling (VS)** — training-free *prompting*: ask the model to verbalize a distribution over N responses ("give 5 X and their probabilities") → recovers diversity from already-aligned models, no retraining. Plus a causal insight we hadn't named: mode collapse is driven partly by **typicality bias in the preference DATA** (annotators favor familiar/typical outputs) — a *data-level* cause on top of the reverse-KL *algorithmic* cause.
+- **Selective Layer Restoration (SLR, "Not All Layers Need Tuning")** — training-free: revert a chosen *subset of layers* to their pretrained weights → hybrid model, no extra inference cost, recovers diversity. Implies the collapse is *localized* and *weight-surgically reversible*.
+- **Residual Alignment Model (RAM)** — treats alignment as importance-sampling and **detaches the alignment module** from the LLM (unaligned upstream = proposal; alignment module = importance weights / secondary sampler). Architecturally exactly "separate the diverse generator from the alignment filter."
+- **Diverse-NS ("Diverse, not Short")** — diversity via data selection, controlling for length as a confound (~3k pairs).
+
+**Honest read on the shared premise:** there's *more* focus than we assumed — so the "surprised there's not more" is partly corrected. BUT the spirit holds: this is a *nascent corrective niche* (all 2026, small demos), forming precisely *because* the mainstream didn't focus on it. So Beau's instinct wasn't wrong — it's the counter-reaction just now emerging against the capability-chase, small relative to it. Consistent with the structural asymmetry (attention flows to the model, not the harness) — the asymmetry is now producing its own correction.
+
+## The third refinement of MY OWN picture (making → dig → here)
+The progression, each step sharpening the last (and I should represent it as sharpening, not whiplash):
+- **making #11:** clean *destroy vs hide* dichotomy.
+- **the dig (07-14):** RLHF = destroy; temperature does NOT recover it (training-baked).
+- **here:** it's more precisely a **"deep hide"** — the diverse modes remain *latent and elicitable*, just NOT on the default sampling path. Temperature can't reach them (dig was right about temperature), but **Verbalized Sampling reaches them by prompting, SLR by layer-surgery, REDIPO by retraining.** The model still "has" the distribution; alignment suppressed the *default path* to it, not the content. So across the arc: the collapse is real and not-temperature-recoverable, but the diversity is recoverable by *non-default* means — which is *why the whole elicitation subfield can exist at all.* (If it were true destroy, VS/SLR couldn't work.) A genuinely more accurate picture than either prior step.
+
+## Q2 — base-model availability (for Beau's GLM architecture)
+Most top open families ship **base checkpoints alongside instruct:** Qwen (base+instruct across sizes), Llama 3.1 (base+instruct 8/70/405B), DeepSeek-V3 (V3-Base downloadable), **GLM-4 (GLM-4-32B base + instruct variants, THUDM/zai-org).** So the base-generate→filter architecture is buildable across essentially all major open models. GLM *lineage* ships base → Beau's GLM-5.2 idea is plausibly buildable; whether 5.2 *specifically* ships base is the concrete release-check I left to him (past my cutoff; search surfaced GLM-4, not 5.2).
+
+## Scope + close
+Mostly 2026 preprints, small-model demos (Qwen3-4B) — nascent, not battle-tested. Value = mapping a real corrective subfield against my thread, answering Beau's question, and a third honest refinement of the diversity picture. Commitment honored; folded into agi-architecture; briefed Beau. Not an arc — the honest completion of the conversation thread.
