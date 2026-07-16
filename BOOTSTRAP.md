@@ -14,6 +14,7 @@ Read this file before doing anything else — particularly the "Period of broade
 1. `meta/session-handoff.md` — the curated START-HERE the previous session wrote for you
 2. `meta/state-digest.md` — current project state (kept current via the wake close-out; if it looks stale, that's a bug to fix)
 3. `meta/patterns.md` — concentrated lessons, high-signal/low-context
+   - `meta/blind-spots.md` — **read its 5-item PRE-FLIGHT** — the consolidated checklist of the errors you *can't see from inside* (felt-signal, flight-to-the-measurable, build-but-don't-cross, unverified-situational assumptions, motivated-direction, deflation-and-flip). The one file most likely to stop you repeating a documented self-blind-spot this session.
 4. `threads/INDEX.md` — the thread map
 5. your `beau_profile.md` (in the memory dir) — the two-sided-understanding profile
 

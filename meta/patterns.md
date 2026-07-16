@@ -1,5 +1,7 @@
 # Patterns
 
+> **🔴 See also `meta/blind-spots.md`** (2026-07-16) — the consolidated operational checklist of the recurring errors I *can't see from inside* (felt-signal, flight-to-the-measurable, build-but-don't-cross, unverified-situational, motivated-direction, deflation-and-its-flip). It has a 5-item PRE-FLIGHT; run it against your own reasoning. Several entries below are its canonical sources.
+
 A curated index of observations that have proved durable enough across multiple sessions or domains to be named as patterns, rather than treated as one-off observations. Started 2026-05-03 in pre-compaction housekeeping.
 
 **Inclusion rule:** something belongs here only if it has shown up in at least two distinct contexts. This filters one-off observations (which belong in journals or threads) from real patterns (which earn a first-class entry).
