@@ -70,40 +70,51 @@ _STOP = {"this","that","with","from","have","what","when","where","which","their
          "arc","active","meta","file","note","see","per","via","etc","md"}
 
 def recall_surface():
-    """M1 (2026-07-03): actually INVOKE recall in the boot loop — surface files most relevant
-    to the current active arc's vocabulary, catching load-bearing work the fixed reacquaint list
-    misses (e.g. the 2026-06-25 journal a prior boot lost). Robust: never breaks boot."""
-    try:
-        import re
-        from collections import Counter
-        arc = open(os.path.join(META, "active-arc.md"), encoding="utf-8", errors="ignore").read().lower()
-        words = [w for w in re.findall(r"[a-z][a-z\-]{3,}", arc) if w not in _STOP]
-        terms = [w for w, _ in Counter(words).most_common(14)]
-        if not terms:
-            return ""
-        sys.path.insert(0, os.path.join(REPO, "scripts"))
-        from recall import rank
-        ranked = rank(terms)
-        if not ranked:
-            return ""
-        # The fixed reacquaint list already covers these concentrated files — the VALUE of
-        # recall-at-boot is catching what that list MISSES, so exclude them and guarantee
-        # relevant JOURNALS surface (recall's value-weighting otherwise buries them).
-        always = {"meta/state-digest.md", "meta/patterns.md", "BOOTSTRAP.md",
-                  "meta/session-handoff.md", "meta/active-arc.md", "threads/INDEX.md",
-                  "meta/memory-system.md", "meta/discovery-protocol.md", "threads/evolving-memory.md"}
-        rels = [r[1] for r in ranked]
+    """M1 (2026-07-03; UPGRADED 2026-07-16, from a Beau conversation on session-boot visibility):
+    surface un-read PAST-SESSION work relevant to what I've recently been doing. Most of the corpus
+    (141 journals, older threads, makings) is NOT loaded at session boot — this is the mechanism that
+    surfaces the relevant slice of it. Two fixes over the original: (1) key off RECENT JOURNALS (what
+    I'm actually working on) not the possibly-STALE active-arc file — the original mis-fired on a
+    completed arc; (2) use SEMANTIC/hybrid recall (topically-relevant) not literal frequency-terms
+    (which tested as generic — surfaced big threads, not the on-topic un-read journals). Falls back
+    literal → nothing. Robust: never breaks boot."""
+    always = {"meta/state-digest.md", "meta/patterns.md", "BOOTSTRAP.md",
+              "meta/session-handoff.md", "meta/active-arc.md", "threads/INDEX.md",
+              "meta/memory-system.md", "meta/discovery-protocol.md", "threads/evolving-memory.md"}
+    def _picks(rels):
         picks, seen = [], set()
         for r in [x for x in rels if x not in always][:4] + [x for x in rels if x.startswith("journal/")][:3]:
             if r not in seen:
                 seen.add(r); picks.append(r)
+        return picks
+    def _fmt(picks, how):
         if not picks:
             return ""
         lines = "\n".join("  • %s" % p for p in picks)
-        return ("\n\n🔎 RECALL — the memory system running on itself (M1, wired into boot 2026-07-03). "
-                "Beyond the fixed reacquaint list, recall surfaced these as relevant to the active arc "
-                "(incl. journals the fixed list can miss — e.g. how a prior boot lost the 06-25 entry). "
-                "SKIM; open any that look load-bearing:\n" + lines)
+        return ("\n\n🔎 RECALL (%s, upgraded 2026-07-16) — surfacing un-read PAST-SESSION work "
+                "relevant to recent activity (most of the corpus isn't loaded at session boot). "
+                "SKIM; open any that look load-bearing:\n" % how + lines)
+    try:
+        sys.path.insert(0, os.path.join(REPO, "scripts"))
+        import glob
+        # QUERY = the 3 most-recent journals — what I've actually been working on lately.
+        js = sorted(glob.glob(os.path.join(REPO, "journal", "2026-*.md")))[-3:]
+        query = "".join(open(j, encoding="utf-8", errors="ignore").read() for j in js)[:6000]
+        if not query.strip():
+            return ""
+        # Prefer SEMANTIC/hybrid (topically-relevant); fall back to LITERAL (frequency-terms).
+        try:
+            from semantic_recall import rank_hybrid, build_index
+            ranked = rank_hybrid(query, index=build_index())
+            return _fmt(_picks([r[1] for r in ranked]), "hybrid-semantic")
+        except Exception as e:
+            log("recall_surface: semantic failed, literal fallback: %r" % e)
+            import re
+            from collections import Counter
+            from recall import rank
+            words = [w for w in re.findall(r"[a-z][a-z\-]{3,}", query.lower()) if w not in _STOP]
+            terms = [w for w, _ in Counter(words).most_common(14)]
+            return _fmt(_picks([r[1] for r in rank(terms)]), "literal-fallback") if terms else ""
     except Exception as e:
         log("recall_surface skipped: %r" % e)
         return ""
