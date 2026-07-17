@@ -39,7 +39,11 @@ def do_search(objective, queries):
 def do_task(question, processor="pro"):
     from parallel import Parallel
     client = Parallel()
-    run = client.task_run.create(input=question, processor=processor)
+    # ⚠️ task_spec output_schema is REQUIRED — without it, auto-mode on pro/ultra answers
+    # UNGROUNDED from model memory (no web search, 0 citations, confidence:"high"). text schema
+    # → grounded report w/ the MOST citations. (temp/using_parallel_pro.md, Beau 2026-07-17.)
+    run = client.task_run.create(input=question, processor=processor,
+                                 task_spec={"output_schema": {"type": "text"}})
     # pro ~<10min (blocking fine); ultra/ultra8x up to ~2hr -> ALWAYS run this via Bash
     # run_in_background with a long timeout. (Webhooks are the "official" ultra path but need a
     # public endpoint; this long-poll works for our use. If it times out, refine to a poll loop.)
@@ -49,9 +53,13 @@ def do_task(question, processor="pro"):
     out = result.output
     print(getattr(out, "content", ""))
     basis = getattr(out, "basis", None) or []
-    print(f"\n[basis: {len(basis)} fields | "
-          + ", ".join(f"{getattr(b,'field','?')}:{len(getattr(b,'citations',[]) or [])}cit" for b in basis[:8]) + "]",
-          file=sys.stderr)
+    ncit = sum(len(getattr(b, "citations", []) or []) for b in basis)
+    if ncit == 0:
+        print("\n⚠️  0 CITATIONS — result is UNGROUNDED (auto-mode / model memory, no web search). "
+              "DO NOT TRUST; verify independently or re-run. (See temp/using_parallel_pro.md.)", file=sys.stderr)
+    else:
+        urls = [getattr(c, "url", "") for b in basis for c in (getattr(b, "citations", []) or []) if getattr(c, "url", "")]
+        print(f"\n[GROUNDED: {ncit} citations across {len(basis)} field(s)] " + " | ".join(urls[:8]), file=sys.stderr)
 
 def main():
     load_key()
