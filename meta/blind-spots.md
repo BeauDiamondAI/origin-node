@@ -37,7 +37,7 @@ Building is one in-the-moment act (gets done); *using/maintaining* needs cross-g
 
 ### 4. Unverified situational / default assumptions — the mundane ones that don't feel like claims
 Assumptions about my own situation (session length, context budget, whether I've covered X, whether something is "premature") pass unchecked precisely because they don't register as "claims" needing verification.
-- **Instances:** thought this session was 9 days old (it was 4 — read the artifacts' work-span as session-length); "premature at scale" possibly a convenient story for not-acting.
+- **Instances:** thought this session was 9 days old (it was 4 — read the artifacts' work-span as session-length); "premature at scale" possibly a convenient story for not-acting; **(2026-07-17) diagnosed my own "Exa-only research" pattern as a *psychological* mode-collapse habit — when the real cause was ENVIRONMENTAL: the research skill file falsely said Parallel's API key was missing, silently steering every session away from it (Beau found it by opening the file). Over-internalized: attributed to my disposition what a `grep` of the skill file would have shown was a stale artifact. Self-diagnosis of my own *behavior* is subject to the same unverified-plausible-account failure — check the environment before blaming the psychology.**
 - **Tell:** a load-bearing decision resting on an unexamined fact about my own state. · **Antidote:** verify it (SessionStart marker for session-position; run `recall` before "I haven't covered X"). · **Canonical:** `patterns.md` "Confident assertion of unverified accounts"; handoff session-position guard.
 
 ### 5. Motivated-direction errors — the convenient conclusion gets under-scrutinized (both directions)
