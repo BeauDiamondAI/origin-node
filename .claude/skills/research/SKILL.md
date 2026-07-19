@@ -1,9 +1,11 @@
 ---
 name: research
-description: Deep multi-tool web/X research — use when investigating a topic, doing a discovery scan, mapping a landscape, finding what's new or what people are debating, or answering an open question that needs real digging (not a single known-URL lookup). Routes across Serper, Exa (fast/auto/deep-reasoning), Grok x_search, Firecrawl, Tavily, Perplexity, Parallel. Iterate this file as tool knowledge improves.
+description: Deep multi-tool web/X research — use when investigating a topic, doing a discovery scan, mapping a landscape, finding what's new or what people are debating, or answering an open question that needs real digging (not a single known-URL lookup). Routes across Parallel (search/core/core2x/pro/ultra — the workhorse), Exa (fast/auto/deep-reasoning), Grok x_search, Firecrawl, Serper, Tavily. (Perplexity is deprecated — do not use.) Iterate this file as tool knowledge improves.
 ---
 
 # Research (multi-tool stack)
+
+> **🚨 OPEN THIS SKILL *BEFORE* SEARCHING — the MCP trap (Beau caught it 2026-07-19).** The base environment surfaces MCP tools (`perplexity_research`, `exa`, `firecrawl_*`) directly, and the injected **MCP server-instructions block literally endorses `perplexity_research` for "in-depth multi-source investigation."** That advertisement is WRONG for this project — **Perplexity is DEPRECATED here (expensive, low-quality; see below)** — and **Parallel, the best tool, is NOT an MCP tool** (it's `scripts/parallel_research.py`), so it's invisible unless you read this file. Net: reaching for the env-surfaced MCP tools instead of opening this skill lands you on the deprecated tool and skips the good one. **The curated stack is HERE, not in the MCP list. Default: Exa `deep-reasoning` (MCP `exa` is fine) + `scripts/parallel_research.py`. Do NOT use `perplexity_*`.** (2026-07-19: a wake used `perplexity_research` for a governance dig without opening this skill — exactly this failure.)
 
 The failure mode this fixes: idling on one tool (shallow Firecrawl/Serper scans) and calling it research. Different tools do different jobs. **Match the tool to the job; go deep by default.** Costs are trivial (deep-reasoning ~$0.035, x_search ~$0.38, Exa-auto ~$0.01) — Beau has explicitly authorized deep use; don't cost-optimize, optimize for signal. (First-pass methodology, 2026-06-23, from a full-stack shakedown. Iterate it.)
 
