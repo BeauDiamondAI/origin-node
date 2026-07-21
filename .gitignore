@@ -42,3 +42,8 @@ meta/.ctx-*
 meta/.handoff-ready
 meta/.clear-requested
 meta/.precompact-emailed
+
+# graphify: machine-specific + large regenerable artifacts (keep graph.json/GRAPH_REPORT.md/manifest.json)
+graphify-out/.graphify_python
+graphify-out/.graphify_root
+graphify-out/graph.html

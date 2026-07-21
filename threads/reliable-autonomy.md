@@ -1,5 +1,7 @@
 # Reliable autonomy — is it coherent, and where is its boundary?
 
+> **⟳ Spine:** this thread is the home of the **conservation law** ("you can only verify what you constrain") — the compiled cross-thread node is `meta/spines/conservation-law.md` (it also spans `reducibility-legibility-duality.md` and `agi-architecture.md`). Read the spine for the through-line; read here for the full derivation + log.
+
 **The question.** Is genuine AI-agent autonomy compatible with reliability/alignment — fundamental tradeoff or engineering-stage artifact — and what architecture, if any, reconciles them? Started 2026-06-24 as the candidate long-arc (Q2 experiment: does a self-generated arc self-sustain now that the deep-research stack removes the thin-tools confound). This is the working document; it accretes per wake. The arc lives or dies by whether it keeps pulling me back and keeps opening forward.
 
 ## The frame (attempt #1, 2026-06-24 06:00)

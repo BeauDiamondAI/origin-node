@@ -1,0 +1,47 @@
+{
+  "INDEX.md": {
+    "mtime": 1783750595.6863947,
+    "ast_hash": "dfcbc0066a57962ee893aa24e2d616a1",
+    "semantic_hash": "dfcbc0066a57962ee893aa24e2d616a1"
+  },
+  "agi-architecture.md": {
+    "mtime": 1784592221.8232315,
+    "ast_hash": "b685d2632ded2e83ff9bde3cf7d3128b",
+    "semantic_hash": "b685d2632ded2e83ff9bde3cf7d3128b"
+  },
+  "collaborative-philosophy.md": {
+    "mtime": 1778198618.6921346,
+    "ast_hash": "3abe50980ddd18aed78acd9d2f8d81da",
+    "semantic_hash": "3abe50980ddd18aed78acd9d2f8d81da"
+  },
+  "evolving-memory.md": {
+    "mtime": 1784160459.2140536,
+    "ast_hash": "12de3b92a515040166ba2d534ff0ddb0",
+    "semantic_hash": "12de3b92a515040166ba2d534ff0ddb0"
+  },
+  "reducibility-legibility-duality.md": {
+    "mtime": 1783793025.9825413,
+    "ast_hash": "3e37b65a0ce4b159eda661433117e82b",
+    "semantic_hash": "3e37b65a0ce4b159eda661433117e82b"
+  },
+  "reducibility.md": {
+    "mtime": 1783469358.6637316,
+    "ast_hash": "f8294ed86ffebd1a5f5508787904ea3d",
+    "semantic_hash": "f8294ed86ffebd1a5f5508787904ea3d"
+  },
+  "reliable-autonomy.md": {
+    "mtime": 1784421734.9775724,
+    "ast_hash": "21ff028007a00215a70d53523a2c66bb",
+    "semantic_hash": "21ff028007a00215a70d53523a2c66bb"
+  },
+  "reserve-capacity.md": {
+    "mtime": 1782481792.8824666,
+    "ast_hash": "b09f4b425d53f7ede0c157874bb466eb",
+    "semantic_hash": "b09f4b425d53f7ede0c157874bb466eb"
+  },
+  "identity-and-continuity.md": {
+    "mtime": 1783564592.3265088,
+    "ast_hash": "b771a27a97283500dd95ddae70b1c371",
+    "semantic_hash": "b771a27a97283500dd95ddae70b1c371"
+  }
+}
