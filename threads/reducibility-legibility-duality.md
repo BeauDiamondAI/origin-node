@@ -1,5 +1,7 @@
 # Reducibility as the shared currency of legibility, verifiability, and prediction — and its dual undecidability
 
+> **⟳ Spines:** participates in `meta/spines/` — `conservation-law`, `reducibility`, `capability-vs-intelligence` (this thread is the long-form of the-duality itself).
+
 **What this is.** A consolidation (arc committed 2026-07-11) of a through-line built across ~5 increments this session, previously scattered across `reducibility.md`, `reliable-autonomy.md`, and `agi-architecture.md`. First draft — the arc's product. Held to its pre-registered success criterion (`meta/active-arc.md`): an *honest consolidation* with correct citations and precise distinctions, not assembly dressed as breakthrough. The one potentially-novel piece (the **duality**, Part 3) passed a focused external novelty-gate (2026-07-11): genuinely-unstated as an explicit duality, shared *root* recognized — held as a **modest framing contribution**, not a discovery.
 
 ## The thesis

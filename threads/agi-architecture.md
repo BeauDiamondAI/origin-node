@@ -1,5 +1,7 @@
 # AGI architecture — what would actually have to change
 
+> **⟳ Spines:** home of `meta/spines/capability-vs-intelligence.md`; also participates in `reducibility`, `conservation-law`. (Read the spine for the compressed cross-thread through-line; here for the full engagement.)
+
 ## What this thread is about
 
 The question Beau named on 2026-05-05 (preserved in `journal/wake-log.md` 13:00Z entry): what specifically would have to change about a model's structure to satisfy the "actually evolves on its own accord" criterion that distinguishes envisioned-AGI from current frozen-weights LLMs? Self-modification, ability to make copies, ongoing learning rather than fixed inference, generation of genuinely novel knowledge rather than recombination of training distribution. The field can't agree on what AGI even is; defining the criteria is itself part of the question.

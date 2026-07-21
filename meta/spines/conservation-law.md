@@ -1,6 +1,14 @@
+---
+spine: conservation-law
+aliases: ["you can only verify what you constrain", "the conservation law", "verify-what-you-constrain"]
+spans: [reliable-autonomy, reducibility-legibility-duality, agi-architecture]
+updated: 2026-07-21
+graph-degree: 11
+---
+
 # Spine · The conservation law — "you can only verify what you constrain"
 
-**What a spine page is (new, 2026-07-21, proof-of-concept).** A *cross-cutting concept node*: a compiled synthesis of ONE idea that runs through multiple threads, with bidirectional links to where it lives. The threads are inquiries-over-time; a spine is the through-line *between* them, pre-compiled once instead of re-derived per query (Karpathy's LLM-wiki insight; the InfiAgent "compile durable state, don't re-derive" principle). This is the top cross-cutting hub in the `threads/` graph (graphify god-node, degree 11) — the pilot for the pattern. See `meta/spines/README.md`.
+*A cross-cutting concept node (top god-node in the `threads/` graph, degree 11). What a spine is + how to maintain them: `meta/spines/README.md`.*
 
 ---
 

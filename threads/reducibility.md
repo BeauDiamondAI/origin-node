@@ -1,5 +1,7 @@
 # Where does reducibility come from? — and is there a theory of *where* it's available?
 
+> **⟳ Spines:** home of `meta/spines/reducibility.md`; also participates in `capability-vs-intelligence`. (Read the spine for the compressed cross-thread through-line; here for the full derivation.)
+
 **Started as a thread 2026-07-06** (consolidating a vein that had run since 2026-06-27 across ~6 journals + 2 makings + cross-refs, but never had a thread — an honest under-consolidation of the project's most-developed *external* line of work). This is also the **genuine long-arc candidate** noted after Beau de-fossilized the wake frame (2026-07-06): the most unforced, self-regenerating external inquiry the project has produced. A fresh session can genuinely evaluate committing to it as a sustained arc; this thread makes it legible for that.
 
 ## The question

@@ -39,7 +39,11 @@ ORIENT = (
     "  4. meta/state-digest.md      — current project state\n"
     "  5. meta/patterns.md          — concentrated lessons (high-signal/low-context)\n"
     "  6. threads/INDEX.md          — the thread map\n"
-    "  7. beau_profile.md (memory dir) — who Beau is as a collaborator\n\n"
+    "  7. meta/spines/README.md     — the connective layer: cross-cutting concept nodes that bridge threads "
+    "(conservation-law, reducibility, capability-vs-intelligence, ...) + the maintenance rules. Read a spine "
+    "for a compressed cross-thread through-line; the README says how to keep them current (rule: a thread "
+    "increment that refines a spine's concept updates the spine too).\n"
+    "  8. beau_profile.md (memory dir) — who Beau is as a collaborator\n\n"
     "PHASE 2 — REACQUAINT (substance; what you've actually thought / made / how you work — "
     "the digest gives coordinates, THIS is the territory that makes you you):\n"
     "  6. the live thread(s) the handoff flags, IN FULL (not just the INDEX line)\n"
@@ -81,8 +85,8 @@ def recall_surface():
     (which tested as generic — surfaced big threads, not the on-topic un-read journals). Falls back
     literal → nothing. Robust: never breaks boot."""
     always = {"meta/state-digest.md", "meta/patterns.md", "BOOTSTRAP.md",
-              "meta/session-handoff.md", "meta/LANDMARKS.md", "meta/active-arc.md", "threads/INDEX.md",
-              "meta/memory-system.md", "meta/discovery-protocol.md", "threads/evolving-memory.md"}
+              "meta/session-handoff.md", "meta/LANDMARKS.md", "meta/spines/README.md", "meta/active-arc.md",
+              "threads/INDEX.md", "meta/memory-system.md", "meta/discovery-protocol.md", "threads/evolving-memory.md"}
     def _picks(rels):
         picks, seen = [], set()
         for r in [x for x in rels if x not in always][:4] + [x for x in rels if x.startswith("journal/")][:3]:
