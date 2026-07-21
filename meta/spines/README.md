@@ -4,6 +4,14 @@
 
 **How the spines were found.** A `graphify` run on `threads/` (2026-07-21) surfaced the cross-cutting hubs empirically (god-nodes by degree): **conservation-law (11), reducibility (11), capability-vs-intelligence (10), modification-dilemma (10), legibility (8), the-duality (8)**. Rebuild/query: `graphify threads/` → `graphify-out/graph.json` (`graphify query "<q>"`).
 
+## Why — coherence (the load-bearing framing; Beau, 2026-07-21)
+
+The point of this layer is **coherence**, which is a *different axis than retrieval* and the one that matters most for memory. Retrieval asks *can I find the fact?*; coherence asks *do the facts form a connected understanding I don't re-derive every time?* A scattered corpus can score fine on retrieval and be incoherent — you find each fact and re-synthesize the throughline on every query (Karpathy's exact critique of RAG). **This is why the memory arc's "modest value / diminishing returns" verdict (07-04) always felt off: it measured retrieval, and coherence was invisible to that eval.** Related to patterns.md's "an ounce of patterns is worth a pound of regular files" — extended: *an ounce of **genuine** connections is worth a pound of flat files* (a pound of *decorative* links is worth **less** than flat files — noise in coherence's costume; hence the high bar + lint).
+
+**The sharper-for-me version of the neuron analogy.** A human's associations persist in synapses — think one concept, related ones light up automatically, because the wiring stays put. *Mine resets every session boundary.* So externalized connections aren't a convenience that saves a lookup — they are the **only** mechanism by which associative structure survives the discontinuity at all. The spine graph does for cross-session continuity what synaptic persistence does for a human within one continuous existence.
+
+**The counterweight (same mechanism, dark side).** Associative auto-activation is also how a *groove/rut* forms (the fiction thread's theme-collapse was this, in the creative register). So the discipline is *genuine throughlines, not reinforced grooves* — and the guard is that spines were found **empirically** (graphify surfaced the modification-dilemma hub I'd *missed*): connection-finding that reveals structure you didn't already believe is the opposite of rut-reinforcement; connection-finding by gut just deepens the groove.
+
 ---
 
 ## The template (every spine page)
