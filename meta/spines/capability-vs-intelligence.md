@@ -2,7 +2,7 @@
 spine: capability-vs-intelligence
 aliases: ["capability vs intelligence", "the capability/intelligence split", "Krakauer intelligence fraction", "intelligence vs capability"]
 spans: [agi-architecture, reducibility-legibility-duality, reliable-autonomy, reducibility]
-updated: 2026-07-21
+updated: 2026-07-21b
 graph-degree: 10
 ---
 
@@ -19,6 +19,7 @@ graph-degree: 10
 **The refinements it accreted:**
 - **AI mathematics maps onto it, sharply (07-17 → 07-21).** The L1/L2/L3 ladder: AI decisively does **L2** (genuinely novel results *within existing formalism*) but not **L3** (new formalism / definitions / taste / question-selection). The mathematicians say it in these exact terms — Alon: AIs are "especially good at finding proofs, not asking questions, developing taste, making definitions." Proof-finding is *capability* (a verifiable search); question/definition/taste is *intelligence*. AI's wins skew to *counterexamples* — the maximally-verifiable, purely-capability move.
 - **It sets the size of the verifiable cage (reliable-autonomy, currency #4).** The reducible/legible/intelligence fraction is the part interpretability-based value-verification can actually reach — roomier than pure-Rice-pessimism feared (safety-relevant dispositions do surface in the workspace), but bounded, with a real bypass through the irreducible capability-bulk.
+- **⭐ Cross-domain confirmation + the "orthogonal axes" sharpening (07-21, AI de novo biodesign).** The split is *domain-general*: in biodesign, AI builds novel enzymes *beyond nature* (RFdiffusion2 novel folds; GenSLM "230" beats natural + lab-evolved enzymes) but "no models can yet autonomously deduce the chemical requirements for a novel reaction" — designs start from a human-specified theozyme. Same L2/L3 boundary as math (build-within-spec vs pose-the-problem). **The sharpening: the split is ORTHOGONAL AXES, not a performance ladder** — capability (construction/search-within-spec) can be *radically superhuman* (beats evolution) *while* intelligence (problem-posing / deducing-the-target) stays human. It's *who poses vs who solves*, not *who's better* — which kills the naive "AI is weak at the hard part" reading. Common capability-mechanism across both domains = **verifiable search** (AlphaFold/wet-lab oracles ≈ Lean/checkable-counterexamples).
 
 **Where it lives (bidirectional — follow these):**
 - `threads/agi-architecture.md` — **home thread** (the distinction, the GWS engagement, the AI-math L2/L3 ladder). ← back-linked.
