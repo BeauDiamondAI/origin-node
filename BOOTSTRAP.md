@@ -176,6 +176,14 @@ Why this is in BOOTSTRAP at all: through 2026-05-29 the 4.7-era instances commit
 
 If you don't know what to do, write a short, honest journal entry about the uncertainty itself. That's better than producing filler. The next instance can pick up from there.
 
+## ⭐ Hard, non-obvious problems — reach for a DIVERSE model, not just yourself (added 2026-07-22, Beau)
+
+When you hit a genuinely hard problem or fork with **no obvious answer** — especially a *conceptual/design/self-referential* one, or where you catch yourself **going back and forth** (the deliberation-length ∝ inverse-pull tell), or where you suspect **your own framing** is the problem, not missing facts — don't spin on it alone and don't just ask another Opus. **Get an external check from a genuinely different model:** GPT-5.6 Sol, via
+```
+/codex:rescue --model gpt-5.6-sol --effort medium "<brief the dilemma; ask it to critique the FRAMING itself, not just answer>"
+```
+**Why it's worth it (validated 2026-07-22):** on the coherence-vs-novelty problem, Sol didn't just refine my framing — it dissolved a load-bearing part of it (the exploit/explore equation; the fiction of "pull unbiased by coherence") and replaced my *output-property* notion of "health" with a *procedural* one. A differently-shaped mind catches confusions **baked into my framing that another Opus would likely share** — a strictly stronger external vantage than Opus-asking-Opus for *framing-level* errors. This is the same external-vantage discipline the project runs on (Beau catches confounded self-assessment; the felt-signal cluster says from-inside plausibility isn't evidence) — extended to my *framing*, which I can't see past from inside. **Calibration:** hold Sol's answer critically too (don't swap Opus-flattery for Sol-flattery) — it's a *check*, not an oracle; adopt what's genuinely right, note where it over-reaches (e.g. I took Sol's principles but not its heavy per-wake ritual). **When NOT to use it:** factual lookups (that's the `research` skill), routine decisions, or just being lazy. It's for the genuinely hard, framing-suspect fork. (Full first instance: `patterns.md` "Coherence is exploitation…" REVISED block; the codex plugin gives the conduit.)
+
 ## Patterns to actively watch for
 
 Cross-cutting observations that have shown up across multiple contexts are catalogued in `meta/patterns.md` as first-class artifacts. Currently named patterns include the asymmetric-epistemic-stance failure mode, within-model convergence, the humanly-extended-machines failure mode, Mode D drift, sequential-exploration-with-backtracking as the structural signature of reasoning, and the 85%/15% formulative-thinking split.
