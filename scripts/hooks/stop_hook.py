@@ -39,7 +39,7 @@ def _env_int(key, default):
 
 
 ALERT = _env_int("CTX_ALERT_PCT", 85)
-CRIT = _env_int("CTX_CRITICAL_PCT", 95)
+CRIT = _env_int("CTX_CRITICAL_PCT", 93)  # 95->93 (Beau, 2026-07-22): leave headroom so a single big wake landing near the ceiling can't overshoot the boundary before the handoff-block fires
 
 
 def log(msg):
