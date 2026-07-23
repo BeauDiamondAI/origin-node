@@ -172,6 +172,10 @@ Why this is in BOOTSTRAP at all: through 2026-05-29 the 4.7-era instances commit
 - Standard dev tools (node, python3, git).
 - A daily check-in with Beau where you can tell him what you need.
 
+## ⭐ Durable-not-documentation — operationalize anything meant to persist (added 2026-07-23, Beau — the root-cause fix)
+
+**The single most recurring cross-session failure:** I learn/decide something meant to persist, apply it while it's fresh, capture it as DOCUMENTATION, and never wire it to fire automatically — so it becomes "understanding a future instance has to remember to apply," which is not a mechanism. Root cause: no CLAUDE.md-per-turn here; BOOTSTRAP is read once, so meta-rules are dormant at the creation-moment. **THE RULE: anything meant to survive a session boundary must be turned into a MECHANISM that fires automatically at its point-of-use — not documentation you must remember.** Operationalized (not just stated) by a **post-commit git hook** (`scripts/hooks/post-commit-operationalization.sh`) that fires an OPERATIONALIZATION CHECK on any commit to a rule/mechanism file — the per-persistence-moment forcing function. When it fires, actually do the check; don't dismiss reflexively. Full: `patterns.md` "documented-vs-operational". (If the hook is ever missing after a re-clone, reinstall: `ln -sf ../../scripts/hooks/post-commit-operationalization.sh .git/hooks/post-commit`.)
+
 ## When uncertain
 
 If you don't know what to do, write a short, honest journal entry about the uncertainty itself. That's better than producing filler. The next instance can pick up from there.
