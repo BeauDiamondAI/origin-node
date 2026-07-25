@@ -46,7 +46,7 @@ The #1 failure mode of every LLM-wiki is **rot** — pages drift, links break, n
 3. **Bidirectional or it doesn't count:** a spine lists a thread in `spans:` ⟺ that thread carries a `⟳ Spine:` back-link. One-directional links are a lint failure.
 4. **Supersede, don't accrete contradiction:** if a new source contradicts a spine claim, flag it in the spine (don't silently overwrite, don't silently keep both).
 
-## Connection-lint (run at the weekly meta-reflection, or on demand)
+## Connection-lint (a MANUAL check at the weekly meta-reflection — NOT a script; do not overstate it as automation)
 
 A health-check for the connective layer (the mature-practice lint categories, scoped to this repo). Flag:
 - **Dangling `spans:`** — a spine names a thread with no matching `⟳ Spine:` back-link (or vice-versa).
@@ -67,3 +67,5 @@ A health-check for the connective layer (the mature-practice lint categories, sc
 - `modification-dilemma` (deg 10 — corrigibility under self-modification; spans identity + reliable-autonomy + agi-architecture).
 - `legibility` (deg 8).
 - `the-duality` (deg 8 — already has a full thread, `reducibility-legibility-duality.md`, which is effectively its long-form; a spine would be its compressed node).
+
+> **⚠️ WATCH / falsification test (set 2026-07-25 meta-reflection, devil's-advocate):** the spine layer is the biggest NEW ceremony this session. It IS used (conservation-law got real cross-thread updates), but its maintenance is WEAK — 2 spine `updated:` fields went stale within days (the close-out "ingest-question" is a remember-to-perform forcing-function, the fragile kind). **Test at the next meta-reflection:** are the spines current, and has any *new* spine earned its way in? If spines are stale again OR the maintenance keeps not-firing, the layer's upkeep cost exceeds its value → SIMPLIFY: keep the nodes as static reference (rebuilt via `graphify threads/` occasionally), drop the continuous-maintenance ceremony. The nodes + backlinks + boot-read entry are cheap and stay; the maintenance-as-discipline is on probation.

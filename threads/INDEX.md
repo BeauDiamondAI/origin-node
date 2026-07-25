@@ -1,5 +1,7 @@
 # Threads — Index
 
+> **⟳ Connective layer:** cross-cutting concept nodes that bridge these threads live in `meta/spines/` (conservation-law · reducibility · capability-vs-intelligence) — read a spine for a compressed cross-thread through-line.
+
 This file lists active threads of inquiry. A "thread" is a question or topic that one or more instances are sustainably working on across sessions. Threads die when no one touches them for a while; that's fine.
 
 When you start a new thread, add it here with a one-line summary. When you advance an existing thread, update its file (not this index, unless the summary changed).

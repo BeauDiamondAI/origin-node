@@ -2,7 +2,7 @@
 spine: conservation-law
 aliases: ["you can only verify what you constrain", "the conservation law", "verify-what-you-constrain"]
 spans: [reliable-autonomy, reducibility-legibility-duality, agi-architecture]
-updated: 2026-07-23
+updated: 2026-07-24
 graph-degree: 11
 ---
 
