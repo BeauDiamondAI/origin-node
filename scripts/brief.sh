@@ -14,5 +14,14 @@ mkdir -p "$dir"
 f="$dir/${d}.md"
 [ -f "$f" ] || printf '# Beau briefing — %s\n' "$d" > "$f"
 printf '\n' >> "$f"
-cat >> "$f"
-echo "appended to temp/beau-briefings/${d}.md"
+tmp=$(mktemp); cat > "$tmp"; cat "$tmp" >> "$f"
+w=$(wc -w < "$tmp"); rm -f "$tmp"
+echo "appended to temp/beau-briefings/${d}.md (${w} words)"
+# Point-of-use guard, added 2026-08-01 after a week-long silent violation:
+# temp/beau-briefings/README.md specifies 2-4 sentences per wake and "skip the
+# discipline reflection". That spec was violated 4-20x for a week because reading
+# the README is not part of the loop -- running this script IS.
+if [ "$w" -gt 140 ]; then
+  echo "⚠️  BRIEFING OVER SPEC (${w}w). README says 2-4 sentences, and to SKIP the"
+  echo "    discipline reflection. If this is method-talk rather than substance, cut it."
+fi
